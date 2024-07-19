@@ -6,7 +6,7 @@ export async function GET(req: any, res: any) {
   const slug = searchParams.get("slug");
   const secret = searchParams.get("secret");
 
-  // const revalidateCollection: any = `/${slug?.replace(/index/, "")}`;
+  //const revalidateCollection: any = `/${slug?.replace(/index/, "")}`;
 
   if (secret !== process.env.FRONTEND_SECRET) {
     return NextResponse.json({ status: 401, message: "Invalid Token" });
