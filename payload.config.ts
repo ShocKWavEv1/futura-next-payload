@@ -1,23 +1,24 @@
-import path from 'path'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { en } from 'payload/i18n/en'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
-import { fileURLToPath } from 'url'
-import { CatalogCollection } from '@/collections/catalog'
-import { MediaCollection } from '@/collections/media'
-import { UserCollection } from '@/collections/users'
-import { TeamCollection } from '@/collections/team'
-import { ReelCollection } from '@/collections/reels'
-import { CategoriesCollection } from '@/collections/categories'
-import { PromosCollection } from '@/collections/promos'
-import Logo from '@/components/Logo'
-import Icon from '@/components/Icon'
-import { OriginalsCollection } from '@/collections/originals'
+import path from "path";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { en } from "payload/i18n/en";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { s3Storage } from "@payloadcms/storage-s3";
+import { buildConfig } from "payload";
+import sharp from "sharp";
+import { fileURLToPath } from "url";
+import { CatalogCollection } from "@/collections/catalog";
+import { MediaCollection } from "@/collections/media";
+import { UserCollection } from "@/collections/users";
+import { TeamCollection } from "@/collections/team";
+import { ReelCollection } from "@/collections/reels";
+import { CategoriesCollection } from "@/collections/categories";
+import { PromosCollection } from "@/collections/promos";
+import { OriginalsCollection } from "@/collections/originals";
+import Logo from "@/components/Logo";
+import Icon from "@/components/Icon";
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   //editor: slateEditor({}),
@@ -32,15 +33,34 @@ export default buildConfig({
     OriginalsCollection,
     MediaCollection,
   ],
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET ?? "",
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URI || '',
+      connectionString: process.env.POSTGRES_URI ?? "",
     },
   }),
+  plugins: [
+    s3Storage({
+      collections: {
+        media: {
+          prefix: "media",
+        },
+      },
+      bucket: process.env.S3_BUCKET ?? "",
+      config: {
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID ?? "",
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
+        },
+        region: process.env.S3_REGION,
+        endpoint: process.env.S3_ENDPOINT,
+      },
+    }),
+  ],
   //db: mongooseAdapter({
   //url: process.env.MONGODB_URI || '',
   //}),
@@ -55,8 +75,8 @@ export default buildConfig({
 
   admin: {
     autoLogin: {
-      email: 'dev@payloadcms.com',
-      password: 'test',
+      email: "dev@payloadcms.com",
+      password: "test",
       prefillOnly: true,
     },
     components: {
@@ -68,18 +88,18 @@ export default buildConfig({
   },
   async onInit(payload) {
     const existingUsers = await payload.find({
-      collection: 'users',
+      collection: "users",
       limit: 1,
-    })
+    });
 
     if (existingUsers.docs.length === 0) {
       await payload.create({
-        collection: 'users',
+        collection: "users",
         data: {
-          email: 'dev@payloadcms.com',
-          password: 'test',
+          email: "dev@payloadcms.com",
+          password: "test",
         },
-      })
+      });
     }
   },
   // Sharp is now an optional dependency -
@@ -89,4 +109,4 @@ export default buildConfig({
   // This is temporary - we may make an adapter pattern
   // for this before reaching 3.0 stable
   sharp,
-})
+});

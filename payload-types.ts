@@ -113,6 +113,7 @@ export interface Catalog {
 export interface Media {
   id: number;
   text?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;

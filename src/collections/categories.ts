@@ -1,25 +1,25 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig } from "payload";
 
 export const CategoriesCollection: CollectionConfig = {
-  slug: 'categories',
+  slug: "categories",
   admin: {
-    useAsTitle: 'label',
+    useAsTitle: "text",
   },
   fields: [
     {
-      name: 'text',
-      type: 'text',
+      name: "text",
+      type: "text",
       required: true,
     },
     {
-      name: 'label',
-      type: 'text',
+      name: "label",
+      type: "text",
       required: false,
     },
     {
-      name: 'description',
-      type: 'textarea',
+      name: "description",
+      type: "textarea",
       required: false,
     },
   ],
-}
+};
