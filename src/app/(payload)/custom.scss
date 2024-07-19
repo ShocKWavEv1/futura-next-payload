@@ -1,0 +1,14 @@
+html[data-theme='dark'] {
+  --theme-bg: black;
+  --font-body: 'Futura';
+}
+
+.step-nav .step-nav__home {
+  width: 140px;
+  height: 26px;
+}
+
+.dashboard__label {
+  font-size: 3.8461538462rem;
+  padding-top: 20px;
+}

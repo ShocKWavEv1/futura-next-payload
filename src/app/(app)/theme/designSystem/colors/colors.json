@@ -1,0 +1,43 @@
+{
+  "color": {
+    "primary.900": {
+      "value": "#560932"
+    },
+    "primary.800": {
+      "value": "#680F36"
+    },
+    "primary.700": {
+      "value": "#82183C"
+    },
+    "primary.600": {
+      "value": "#9B2341"
+    },
+    "primary.500": {
+      "value": "#B53145"
+    },
+    "primary.400": {
+      "value": "#D25F66"
+    },
+    "primary.300": {
+      "value": "#E88682"
+    },
+    "primary.200": {
+      "value": "#F7B8AF"
+    },
+    "primary.100": {
+      "value": "#FBDED6"
+    },
+    "black": {
+      "value": "#000000"
+    },
+    "secondaryBlack": {
+      "value": "#080C0C"
+    },
+    "white": {
+      "value": "#FFFFFE"
+    },
+    "secondaryWhite": {
+      "value": "#FBFFFE"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "next-latest-starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devturbo": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "ci": "payload migrate && bun run build",
+    "generate:types": "payload generate:types",
+    "generate:schema": "payload-graphql generate:schema",
+    "standalone-script": "node ./src/scripts/standalone-script.js"
+  },
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0"
+  },
+  "dependencies": {
+    "@bsmnt/scrollytelling": "^0.3.3",
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@payloadcms/db-mongodb": "3.0.0-beta.65",
+    "@payloadcms/db-postgres": "3.0.0-beta.65",
+    "@payloadcms/next": "3.0.0-beta.65",
+    "@payloadcms/richtext-lexical": "3.0.0-beta.65",
+    "@payloadcms/richtext-slate": "3.0.0-beta.65",
+    "@payloadcms/ui": "3.0.0-beta.65",
+    "@plaiceholder/next": "^3.0.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "@uidotdev/usehooks": "^2.4.1",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^11.3.4",
+    "graphql": "^16.8.2",
+    "gsap": "^3.12.5",
+    "next": "15.0.0-canary.58",
+    "payload": "3.0.0-beta.65",
+    "plaiceholder": "^3.0.0",
+    "react": "19.0.0-rc-6230622a1a-20240610",
+    "react-dom": "19.0.0-rc-6230622a1a-20240610",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.13.0",
+    "react-player": "^2.16.0",
+    "react-top-loading-bar": "^2.3.1",
+    "sass": "^1.77.8",
+    "sharp": "0.32.6",
+    "swr": "^2.2.5",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@payloadcms/graphql": "3.0.0-beta.65",
+    "@types/node": "^20.14.9",
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "15.0.0-rc.0",
+    "typescript": "5.5.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.0",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+    }
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+  }
+}
