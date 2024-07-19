@@ -36,6 +36,7 @@
     "@plaiceholder/next": "^3.0.0",
     "@studio-freight/lenis": "^1.0.42",
     "@uidotdev/usehooks": "^2.4.1",
+    "axios": "^1.7.2",
     "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
     "cross-env": "^7.0.3",
     "framer-motion": "^11.3.4",

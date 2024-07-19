@@ -1,9 +1,17 @@
+import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 import { CollectionConfig } from "payload";
 
 export const CategoriesCollection: CollectionConfig = {
   slug: "categories",
   admin: {
     useAsTitle: "text",
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePage(doc.slug);
+      },
+    ],
   },
   fields: [
     {
