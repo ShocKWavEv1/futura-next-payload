@@ -1,9 +1,10 @@
-import { CollectionConfig } from 'payload'
+import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
+import { CollectionConfig } from "payload";
 
 export const TeamCollection: CollectionConfig = {
-  slug: 'team',
+  slug: "team",
   admin: {
-    useAsTitle: 'name',
+    useAsTitle: "name",
   },
   access: {
     read: () => true,
@@ -11,38 +12,45 @@ export const TeamCollection: CollectionConfig = {
     update: () => true,
     delete: () => true,
   },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePage("categories");
+      },
+    ],
+  },
   fields: [
     {
-      name: 'name',
-      type: 'text',
+      name: "name",
+      type: "text",
       required: true,
     },
     {
-      name: 'slug',
-      label: 'Slug',
-      type: 'text',
+      name: "slug",
+      label: "Slug",
+      type: "text",
       required: true,
     },
     {
-      name: 'role',
-      type: 'text',
+      name: "role",
+      type: "text",
       required: true,
     },
     {
-      name: 'mainImage',
-      type: 'upload',
-      relationTo: 'media',
+      name: "mainImage",
+      type: "upload",
+      relationTo: "media",
       required: true,
     },
     {
-      name: 'instagram',
-      type: 'text',
+      name: "instagram",
+      type: "text",
       required: false,
     },
     {
-      name: 'vimeo',
-      type: 'text',
+      name: "vimeo",
+      type: "text",
       required: false,
     },
   ],
-}
+};

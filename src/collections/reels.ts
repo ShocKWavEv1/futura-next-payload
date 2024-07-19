@@ -1,9 +1,10 @@
-import { CollectionConfig } from 'payload'
+import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
+import { CollectionConfig } from "payload";
 
 export const ReelCollection: CollectionConfig = {
-  slug: 'reel',
+  slug: "reel",
   admin: {
-    useAsTitle: 'name',
+    useAsTitle: "name",
   },
   access: {
     read: () => true,
@@ -11,24 +12,31 @@ export const ReelCollection: CollectionConfig = {
     update: () => true,
     delete: () => true,
   },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePage("reel");
+      },
+    ],
+  },
   fields: [
     {
-      name: 'reels',
-      type: 'array',
+      name: "reels",
+      type: "array",
       fields: [
         {
-          name: 'name',
-          type: 'text',
+          name: "name",
+          type: "text",
           required: true,
         },
         {
-          name: 'mainImage',
-          type: 'upload',
-          relationTo: 'media',
+          name: "mainImage",
+          type: "upload",
+          relationTo: "media",
           required: true,
         },
       ],
       required: true,
     },
   ],
-}
+};
