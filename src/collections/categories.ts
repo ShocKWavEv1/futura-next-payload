@@ -9,7 +9,7 @@ export const CategoriesCollection: CollectionConfig = {
   hooks: {
     afterChange: [
       ({ doc }) => {
-        revalidatePage(doc.slug);
+        revalidatePage("categories");
       },
     ],
   },

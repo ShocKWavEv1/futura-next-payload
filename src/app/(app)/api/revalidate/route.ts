@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: any, res: any) {
-  const slug = req?.query?.slug ?? "";
-  const secret = req?.query?.secret ?? "";
+  const { searchParams } = new URL(req.url);
+  const slug = searchParams.get("slug");
+  const secret = searchParams.get("secret");
+
+  // const revalidateCollection: any = `/${slug?.replace(/index/, "")}`;
 
   if (secret !== process.env.FRONTEND_SECRET) {
     return NextResponse.json({ status: 401, message: "Invalid Token" });
@@ -11,7 +15,7 @@ export async function GET(req: any, res: any) {
   }
 
   try {
-    await res.revalidate(`/${slug.replace(/index/, "")}`);
+    revalidatePath("/");
     return NextResponse.json({ status: 200, message: "Revalidated" });
   } catch (err) {
     console.log("NEXT APP", err);
