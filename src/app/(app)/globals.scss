@@ -30,10 +30,10 @@ body::after {
   animation: grain 2s steps(10) infinite;
   background-image: url(./theme/designSystem/assets/grain.png);
   background-repeat: repeat;
-  content: '';
+  content: "";
   height: 300%;
   left: -100%;
-  opacity: 0.05;
+  opacity: 0.085;
   pointer-events: none;
   position: fixed;
   top: -100%;
@@ -106,4 +106,10 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+.requirements {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff;
 }
