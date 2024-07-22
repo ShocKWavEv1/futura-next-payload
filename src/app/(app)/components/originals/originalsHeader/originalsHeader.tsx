@@ -13,7 +13,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
     >
       <Heading
         variant="H1BOLD"
-        fontSize="max(70px, 4.166667vw)"
+        fontSize="max(60px, 3.166667vw)"
         color="white"
         textAlign="left"
         bg="primary.500"

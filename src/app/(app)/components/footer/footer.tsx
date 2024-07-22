@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = () => {
           </Text>
         </Box>
         <Text pt="20px" variant="MDMEDIUM" color="white">
-          MMXXII, FVTVRA | SLMRN
+          MMXXIV, FVTVRA | SLMRN
         </Text>
       </Box>
     </Box>
