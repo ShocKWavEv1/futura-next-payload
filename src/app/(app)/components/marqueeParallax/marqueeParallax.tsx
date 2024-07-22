@@ -2,10 +2,11 @@
 
 import { Box, Text } from "@chakra-ui/react";
 import { MarqueeParallaxProps } from "./model";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
+  const [isHover, setIsHover] = useState(false);
   const container: any = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -22,7 +23,13 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
         p="20px 0px"
         ref={container}
       >
-        <Slide direction={"left"} left={"-40%"} progress={scrollYProgress} />
+        <Slide
+          direction={"left"}
+          left={"-40%"}
+          progress={scrollYProgress}
+          isHover={isHover}
+          setHover={() => setIsHover(!isHover)}
+        />
       </Box>
     </Box>
   );
@@ -37,6 +44,7 @@ const Slide = (props: any) => {
     [0, 1],
     [150 * direction, -150 * direction]
   );
+  const phrases = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <motion.div
       style={{
@@ -47,18 +55,29 @@ const Slide = (props: any) => {
         whiteSpace: "nowrap",
       }}
     >
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
-      <Phrase src={props.src} />
+      {phrases.map((phrases, index) => {
+        return (
+          <Phrase
+            key={phrases + index}
+            src={props.src}
+            isHover={props.isHover}
+            setHover={() => props.setHover()}
+          />
+        );
+      })}
     </motion.div>
   );
 };
 
-const Phrase = (props: any) => {
+const Phrase = ({
+  src,
+  isHover,
+  setHover,
+}: {
+  src: any;
+  isHover: boolean;
+  setHover: any;
+}) => {
   return (
     <Box
       px="25px"
@@ -66,6 +85,8 @@ const Phrase = (props: any) => {
       gap="20px"
       alignItems="center"
       justifyContent="center"
+      onMouseEnter={() => setHover()}
+      onMouseLeave={() => setHover()}
     >
       <Text
         variant="LGBOLD"
@@ -80,7 +101,7 @@ const Phrase = (props: any) => {
         fontSize="3.5vw"
         color="white"
         textTransform="uppercase"
-        className="requirements"
+        className={!isHover ? "requirements" : "requirements_hover"}
       >
         See all 3 Requirements
       </Text>

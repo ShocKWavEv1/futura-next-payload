@@ -5,7 +5,7 @@ import MarqueeParallax from "../marqueeParallax/marqueeParallax";
 
 const RequirementsMovil: React.FC<RequirementsMovilProps> = () => {
   return (
-    <Box w="100%" display="flex" flexDirection="column" mt="60px">
+    <Box w="100%" display="flex" flexDirection="column" mt="100px">
       <Box w="100%" p={basePadding()}>
         <Heading
           variant="H1BOLD"

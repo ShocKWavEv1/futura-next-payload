@@ -1,6 +1,7 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
 import { HeroCompactProps } from "./model";
 import { basePadding } from "../../lib/basePadding";
+import VideoComponent from "../videoComponent/videoComponent";
 
 const HeroCompact: React.FC<HeroCompactProps> = () => {
   return (
@@ -66,6 +67,9 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
             Descargar lista de equipo
           </Button>
         </Box>
+      </Box>
+      <Box w="100%">
+        <VideoComponent video="media/drones.mp4" />
       </Box>
     </Box>
   );
