@@ -54,7 +54,7 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
           alignItems="center"
           justifyContent="flex-start"
         >
-          <Text variant="MDMEDIUM" color="black">
+          <Text variant="MDMEDIUM" color="#000">
             Compact Movil Tungsteno
           </Text>
         </Box>
@@ -64,7 +64,7 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
           alignItems="center"
           justifyContent="flex-end"
         >
-          <Text variant="XSMEDIUM" color="black">
+          <Text variant="XSMEDIUM" color="#000">
             $10,999
           </Text>
         </Box>
