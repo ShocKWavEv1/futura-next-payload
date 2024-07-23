@@ -19,14 +19,17 @@ const OriginalItem: React.FC<OriginalItemProps> = ({ index, item }) => {
       borderRadius="12px"
       onClick={() => setModalOpen(modalName)}
     >
-      <Text variant="LGMEDIUM" color="#000">
-        Episodio 0{index + 1} - Edurne Keel
-      </Text>
-      <Box pt="30px">
-        <Text variant="XSMEDIUM" color="#000">
-          Rompiendo La Cuarta Pared
+      <Box cursor="pointer">
+        <Text variant="LGMEDIUM" color="#000">
+          Episodio 0{index + 1} - Edurne Keel
         </Text>
+        <Box pt="30px">
+          <Text variant="XSMEDIUM" color="#000">
+            Rompiendo La Cuarta Pared
+          </Text>
+        </Box>
       </Box>
+
       <AnimatePresence mode="wait">
         {modals[modalName] && (
           <Modal handleClose={() => setModalOpen(modalName)}>

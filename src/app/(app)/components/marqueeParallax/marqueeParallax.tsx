@@ -32,6 +32,7 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
         w="100%"
         p="20px 0px"
         ref={container}
+        cursor="pointer"
         onClick={() => setModalOpen(modalName)}
       >
         <Slide

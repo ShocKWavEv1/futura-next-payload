@@ -1,9 +1,15 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import { MenuFooterProps } from "./model";
-import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
+import {
+  ModalKeys,
+  useStoreZustand,
+} from "@/app/(app)/lib/zustand/zustandStore";
+import { useRouter } from "next/navigation";
 
 const MenuFooter: React.FC<MenuFooterProps> = () => {
-  const { count } = useStoreZustand();
+  const { count, setModalOpen } = useStoreZustand();
+  const router = useRouter();
+  const modalName: ModalKeys = "shoppingBag";
   return (
     <Box
       w="100%"
@@ -62,7 +68,15 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
         justifyContent="center"
         mt="-10px"
       >
-        <Button variant="white" size="sm" w="100%">
+        <Button
+          variant="white"
+          size="sm"
+          w="100%"
+          onClick={() => {
+            setModalOpen(modalName);
+            router.push("/checkout");
+          }}
+        >
           🔥 Lo quiero todo 🔥
         </Button>
       </Box>

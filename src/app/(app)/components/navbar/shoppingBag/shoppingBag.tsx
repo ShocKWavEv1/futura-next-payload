@@ -19,6 +19,7 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
       justifyContent="center"
       flexDirection="row"
       gap="10px"
+      cursor="pointer"
       onClick={(e) => setModalOpen(modalName)}
     >
       <Text variant="MDREGULAR" color="white">

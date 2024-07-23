@@ -31,6 +31,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
         borderRadius="12px"
         display="flex"
         gap="20px"
+        cursor="pointer"
       >
         Rompiendo la cuarta pared
         <Box

@@ -29,6 +29,7 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
         display="flex"
         flexDirection="row"
         borderRadius="12px"
+        cursor="pointer"
         onClick={() => setModalOpen(modalName)}
       >
         <Heading
