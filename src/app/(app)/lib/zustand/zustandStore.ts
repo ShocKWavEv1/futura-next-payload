@@ -24,7 +24,7 @@ export const useStoreZustand = create<StoreState>((set) => ({
     set((state) => ({
       modals: {
         ...state.modals,
-        [modalName]: !state.modals[modalName], // Toggle the specific modal state
+        [modalName]: !state.modals[modalName],
       },
     }));
   },

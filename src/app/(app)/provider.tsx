@@ -55,7 +55,7 @@ export function Providers({
 
   return (
     <ChakraProvider theme={theme}>
-      <LoadingBar ref={LoadingBarRef} height={3} color="#ff98a2" />
+      <LoadingBar ref={LoadingBarRef} height={3} color="#B53145" />
       <ScrollProvider>
         <Navbar />
         {children}
