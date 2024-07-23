@@ -16,8 +16,8 @@ const MenuContent: React.FC<MenuContentProps> = () => {
         alignItems="flex-start"
         justifyContent="flex-start"
         flexDirection="column"
-        gap="30px"
-        p="20px 0px"
+        gap="50px"
+        p="30px 0px"
       >
         {count > 0 && items.length !== 0 ? (
           items.map((item: any, index: number) => {

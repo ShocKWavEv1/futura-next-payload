@@ -52,6 +52,7 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
               display="flex"
               alignItems="center"
               justifyContent="center"
+              cursor="pointer"
             >
               <Text variant="XSMEDIUM" color="white" fontSize="0.9vw">
                 Remover todo
