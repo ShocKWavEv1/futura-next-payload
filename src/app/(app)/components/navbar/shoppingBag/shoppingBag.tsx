@@ -1,11 +1,15 @@
 import { Box, Text } from "@chakra-ui/react";
 import { ShoppingBagProps } from "./model";
-import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
+import {
+  ModalKeys,
+  useStoreZustand,
+} from "@/app/(app)/lib/zustand/zustandStore";
 import { AnimatePresence } from "framer-motion";
 import SlideMenu from "./slideMenu/sliedeMenu";
 
 const ShoppingBag: React.FC<ShoppingBagProps> = () => {
-  const { count, isShoppingBagOpen, setIsShoppingBagOpen } = useStoreZustand();
+  const { count, modals, setModalOpen } = useStoreZustand();
+  const modalName: ModalKeys = "shoppingBag";
 
   return (
     <Box
@@ -15,7 +19,7 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
       justifyContent="center"
       flexDirection="row"
       gap="10px"
-      onClick={(e) => setIsShoppingBagOpen()}
+      onClick={(e) => setModalOpen(modalName)}
     >
       <Text variant="MDREGULAR" color="white">
         Bag
@@ -35,7 +39,9 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
         </Text>
       </Box>
       <AnimatePresence mode="wait">
-        {isShoppingBagOpen && <SlideMenu />}
+        {modals.shoppingBag && (
+          <SlideMenu handleClose={() => setModalOpen(modalName)} />
+        )}
       </AnimatePresence>
     </Box>
   );

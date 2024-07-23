@@ -1,1 +1,3 @@
-export interface SlideMenuProps {}
+export interface SlideMenuProps {
+  handleClose: () => void;
+}

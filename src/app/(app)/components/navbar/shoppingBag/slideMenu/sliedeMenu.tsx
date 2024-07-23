@@ -1,27 +1,13 @@
 import { motion } from "framer-motion";
 import { SlideMenuProps } from "./model";
 import { Box } from "@chakra-ui/react";
-import { useLockBodyScroll } from "@uidotdev/usehooks";
 import MenuBody from "./menuBody/menuBody";
 import { basePadding } from "@/app/(app)/lib/basePadding";
-import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
+import Backdrop from "../../../backdrop/backdrop";
 
-const SlideMenu: React.FC<SlideMenuProps> = () => {
-  const { setIsShoppingBagOpen } = useStoreZustand();
-  useLockBodyScroll();
-
+const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-      className="full-screen-menu"
-      onClick={(e) => {
-        e.stopPropagation();
-        setIsShoppingBagOpen();
-      }}
-    >
+    <Backdrop handleClose={handleClose}>
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
@@ -48,7 +34,7 @@ const SlideMenu: React.FC<SlideMenuProps> = () => {
           <MenuBody />
         </Box>
       </motion.div>
-    </motion.div>
+    </Backdrop>
   );
 };
 

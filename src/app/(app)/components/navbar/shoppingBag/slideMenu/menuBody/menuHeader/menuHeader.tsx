@@ -4,14 +4,14 @@ import { TfiClose } from "react-icons/tfi";
 import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
 
 const MenuHeader: React.FC<MenuHeaderProps> = () => {
-  const { setIsShoppingBagOpen } = useStoreZustand();
+  const { setModalOpen } = useStoreZustand();
 
   return (
     <Box w="100%" p="20px 0px" display="flex" justifyContent="flex-start">
       <Text
         onClick={(e) => {
           e.stopPropagation();
-          setIsShoppingBagOpen();
+          setModalOpen("shoppingBag");
         }}
         variant="LGMEDIUM"
         color="white"

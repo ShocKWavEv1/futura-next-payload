@@ -1,9 +1,19 @@
+"use client";
 import { basePadding } from "@/app/(app)/lib/basePadding";
 import { CatalogHeaderProps } from "./model";
 import { Box, Heading } from "@chakra-ui/react";
 import { TfiAngleDown } from "react-icons/tfi";
+import { AnimatePresence } from "framer-motion";
+import {
+  ModalKeys,
+  useStoreZustand,
+} from "@/app/(app)/lib/zustand/zustandStore";
+import Modal from "../../modal/modal";
+import ModalCategories from "../../modalCategories/modalCategories";
 
 const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
+  const { modals, setModalOpen } = useStoreZustand();
+  const modalName: ModalKeys = "categories";
   return (
     <Box w="100%" p={basePadding()}>
       <Heading
@@ -14,7 +24,13 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
       >
         Available for rent
       </Heading>
-      <Box w="auto" display="flex" flexDirection="row" borderRadius="12px">
+      <Box
+        w="auto"
+        display="flex"
+        flexDirection="row"
+        borderRadius="12px"
+        onClick={() => setModalOpen(modalName)}
+      >
         <Heading
           variant="H1BOLD"
           fontSize="max(90px, 5.166667vw)"
@@ -37,6 +53,13 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
           </Box>
         </Heading>
       </Box>
+      <AnimatePresence mode="wait">
+        {modals.categories && (
+          <Modal handleClose={() => setModalOpen(modalName)}>
+            <ModalCategories handleClose={() => setModalOpen(modalName)} />
+          </Modal>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };

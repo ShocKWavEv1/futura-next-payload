@@ -3,7 +3,14 @@
 import { Box, Text } from "@chakra-ui/react";
 import { MarqueeParallaxProps } from "./model";
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
+import Modal from "../modal/modal";
 
 const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
   const [isHover, setIsHover] = useState(false);
@@ -12,6 +19,9 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
     target: container,
     offset: ["start end", "end start"],
   });
+
+  const { modals, setModalOpen } = useStoreZustand();
+  const modalName: ModalKeys = "promos";
 
   return (
     <Box mt="100px" w="100%" overflow="hidden">
@@ -22,6 +32,7 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
         w="100%"
         p="20px 0px"
         ref={container}
+        onClick={() => setModalOpen(modalName)}
       >
         <Slide
           direction={"left"}
@@ -31,6 +42,11 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
           setHover={() => setIsHover(!isHover)}
         />
       </Box>
+      <AnimatePresence mode="wait">
+        {modals.promos && (
+          <Modal handleClose={() => setModalOpen(modalName)}>Hi Promos</Modal>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };

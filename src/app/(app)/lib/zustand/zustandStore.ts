@@ -1,17 +1,31 @@
 import { create } from "zustand";
 
+export type ModalKeys =
+  | "categories"
+  | "originalsCategories"
+  | `originalsVideo_${number}`
+  | "promos"
+  | "promosHero"
+  | "shoppingBag";
 interface StoreState {
   count: number;
   inc: () => void;
-  isShoppingBagOpen: boolean;
-  setIsShoppingBagOpen: () => void;
+  modals: {
+    [key in ModalKeys]?: boolean;
+  };
+  setModalOpen: (modalName: ModalKeys) => void;
 }
 
 export const useStoreZustand = create<StoreState>((set) => ({
-  count: 1,
+  count: 0,
   inc: () => set((state) => ({ count: state.count + 1 })),
-  isShoppingBagOpen: false,
-  setIsShoppingBagOpen: () => {
-    set((state) => ({ isShoppingBagOpen: !state.isShoppingBagOpen }));
+  modals: {},
+  setModalOpen: (modalName: ModalKeys) => {
+    set((state) => ({
+      modals: {
+        ...state.modals,
+        [modalName]: !state.modals[modalName], // Toggle the specific modal state
+      },
+    }));
   },
 }));

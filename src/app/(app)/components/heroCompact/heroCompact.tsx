@@ -1,9 +1,16 @@
+"use client";
 import { Box, Button, Heading } from "@chakra-ui/react";
 import { HeroCompactProps } from "./model";
 import { basePadding } from "../../lib/basePadding";
 import VideoComponent from "../videoComponent/videoComponent";
+import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
+import { AnimatePresence } from "framer-motion";
+import Modal from "../modal/modal";
 
 const HeroCompact: React.FC<HeroCompactProps> = () => {
+  const { modals, setModalOpen } = useStoreZustand();
+  const modalName: ModalKeys = "promosHero";
+
   return (
     <Box w="100%" p={basePadding()}>
       <Box
@@ -58,7 +65,13 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
           <Button shadow="2xl" size="sm" className="view" variant="white">
             ¿Que contiene?
           </Button>
-          <Button shadow="2xl" size="sm" className="view" variant="white">
+          <Button
+            onClick={() => setModalOpen(modalName)}
+            shadow="2xl"
+            size="sm"
+            className="view"
+            variant="white"
+          >
             Promociones
           </Button>
         </Box>
@@ -71,6 +84,13 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
       <Box w="100%">
         <VideoComponent video="media/movil.mp4" />
       </Box>
+      <AnimatePresence mode="wait">
+        {modals.promosHero && (
+          <Modal handleClose={() => setModalOpen(modalName)}>
+            Hi promosHero
+          </Modal>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };

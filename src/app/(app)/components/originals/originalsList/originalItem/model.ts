@@ -1,1 +1,4 @@
-export interface OriginalItemProps {}
+export interface OriginalItemProps {
+  index: number;
+  item: any;
+}

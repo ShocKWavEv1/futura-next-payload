@@ -1,8 +1,17 @@
+"use client";
 import { Box, Heading } from "@chakra-ui/react";
 import { OriginalsHeaderProps } from "./model";
 import { TfiAngleDown } from "react-icons/tfi";
+import { AnimatePresence } from "framer-motion";
+import Modal from "../../modal/modal";
+import {
+  ModalKeys,
+  useStoreZustand,
+} from "@/app/(app)/lib/zustand/zustandStore";
 
 const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
+  const { modals, setModalOpen } = useStoreZustand();
+  const modalName: ModalKeys = "originalsCategories";
   return (
     <Box
       w="auto"
@@ -10,6 +19,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
       mt="20px"
       flexDirection="row"
       borderRadius="12px"
+      onClick={() => setModalOpen(modalName)}
     >
       <Heading
         variant="H1BOLD"
@@ -32,6 +42,13 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
           <TfiAngleDown />
         </Box>
       </Heading>
+      <AnimatePresence mode="wait">
+        {modals.originalsCategories && (
+          <Modal handleClose={() => setModalOpen(modalName)}>
+            Hi Originals
+          </Modal>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };
