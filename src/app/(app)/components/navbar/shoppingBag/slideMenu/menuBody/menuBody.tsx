@@ -54,9 +54,15 @@ const MenuBody: React.FC<MenuBodyProps> = ({
         gridTemplateColumns="1fr"
         borderTop="1.4px solid white"
         borderColor="white"
-        bg="black" // Background color for footer
+        bg="black"
       >
-        <Box w="100%" h="100%" display="grid" gridTemplateColumns="1fr auto">
+        <Box
+          w="100%"
+          h="100%"
+          display="grid"
+          gridTemplateColumns="1fr auto"
+          pt="10px"
+        >
           <Box
             w="100%"
             display="flex"
@@ -94,6 +100,7 @@ const MenuBody: React.FC<MenuBodyProps> = ({
           display="flex"
           alignItems="center"
           justifyContent="center"
+          mt="-5px"
         >
           <Button variant="white" w="100%">
             Lo quiero todo
