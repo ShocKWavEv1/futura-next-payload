@@ -1,7 +1,12 @@
 import { Box, Text } from "@chakra-ui/react";
 import { ShoppingBagProps } from "./model";
+import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
+import { AnimatePresence } from "framer-motion";
+import SlideMenu from "./slideMenu/sliedeMenu";
 
 const ShoppingBag: React.FC<ShoppingBagProps> = () => {
+  const { count, isShoppingBagOpen, setIsShoppingBagOpen } = useStoreZustand();
+
   return (
     <Box
       width="auto"
@@ -10,6 +15,7 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
       justifyContent="center"
       flexDirection="row"
       gap="10px"
+      onClick={(e) => setIsShoppingBagOpen()}
     >
       <Text variant="MDREGULAR" color="white">
         Bag
@@ -25,9 +31,17 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
         justifyContent="center"
       >
         <Text variant="XXSREGULAR" color="white">
-          0
+          {count}
         </Text>
       </Box>
+      <AnimatePresence mode="wait">
+        {isShoppingBagOpen && (
+          <SlideMenu
+            isOpen={isShoppingBagOpen}
+            setIsShoppingBagOpen={() => setIsShoppingBagOpen()}
+          />
+        )}
+      </AnimatePresence>
     </Box>
   );
 };
