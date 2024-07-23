@@ -17,7 +17,7 @@ interface StoreState {
 }
 
 export const useStoreZustand = create<StoreState>((set) => ({
-  count: 0,
+  count: 4,
   inc: () => set((state) => ({ count: state.count + 1 })),
   modals: {},
   setModalOpen: (modalName: ModalKeys) => {
