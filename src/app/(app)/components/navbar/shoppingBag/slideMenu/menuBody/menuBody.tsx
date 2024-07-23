@@ -62,7 +62,6 @@ const MenuBody: React.FC<MenuBodyProps> = ({
             display="flex"
             alignItems="center"
             justifyContent="flex-start"
-            p="0 16px" // Padding for spacing
           >
             <Text variant="MDMEDIUM" color="white">
               Total: $32,699
@@ -73,7 +72,6 @@ const MenuBody: React.FC<MenuBodyProps> = ({
             display="flex"
             alignItems="center"
             justifyContent="flex-end"
-            p="0 16px" // Padding for spacing
           >
             <Box
               w="auto"
