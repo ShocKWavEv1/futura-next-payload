@@ -4,11 +4,10 @@ import { Box } from "@chakra-ui/react";
 import { useLockBodyScroll } from "@uidotdev/usehooks";
 import MenuBody from "./menuBody/menuBody";
 import { basePadding } from "@/app/(app)/lib/basePadding";
+import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
 
-const SlideMenu: React.FC<SlideMenuProps> = ({
-  isOpen,
-  setIsShoppingBagOpen,
-}) => {
+const SlideMenu: React.FC<SlideMenuProps> = () => {
+  const { setIsShoppingBagOpen } = useStoreZustand();
   useLockBodyScroll();
 
   return (
@@ -46,10 +45,7 @@ const SlideMenu: React.FC<SlideMenuProps> = ({
             e.stopPropagation();
           }}
         >
-          <MenuBody
-            isOpen={isOpen}
-            setIsShoppingBagOpen={setIsShoppingBagOpen}
-          />
+          <MenuBody />
         </Box>
       </motion.div>
     </motion.div>

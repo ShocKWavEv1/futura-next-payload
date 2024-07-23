@@ -69,7 +69,7 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
         </Box>
       </Box>
       <Box w="100%">
-        <VideoComponent video="media/drones.mp4" />
+        <VideoComponent video="media/movil.mp4" />
       </Box>
     </Box>
   );

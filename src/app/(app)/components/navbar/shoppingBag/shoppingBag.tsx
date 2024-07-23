@@ -35,12 +35,7 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
         </Text>
       </Box>
       <AnimatePresence mode="wait">
-        {isShoppingBagOpen && (
-          <SlideMenu
-            isOpen={isShoppingBagOpen}
-            setIsShoppingBagOpen={() => setIsShoppingBagOpen()}
-          />
-        )}
+        {isShoppingBagOpen && <SlideMenu />}
       </AnimatePresence>
     </Box>
   );

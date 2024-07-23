@@ -8,7 +8,7 @@ interface StoreState {
 }
 
 export const useStoreZustand = create<StoreState>((set) => ({
-  count: 0,
+  count: 1,
   inc: () => set((state) => ({ count: state.count + 1 })),
   isShoppingBagOpen: false,
   setIsShoppingBagOpen: () => {
