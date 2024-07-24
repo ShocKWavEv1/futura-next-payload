@@ -3,7 +3,10 @@ import { MenuItemProps } from "./model";
 import { TfiInfoAlt } from "react-icons/tfi";
 import PillStepper from "@/app/(app)/components/pillStepper/pillStepper";
 
-const MenuItem: React.FC<MenuItemProps> = () => {
+const MenuItem: React.FC<MenuItemProps> = ({
+  showPill = true,
+  isCheckout = false,
+}) => {
   return (
     <Box
       w="100%"
@@ -12,8 +15,18 @@ const MenuItem: React.FC<MenuItemProps> = () => {
       gridTemplateColumns="auto 1fr"
       gap="10px"
     >
-      <Box w="140px" h="140px" bg="purple.500" borderRadius="4px"></Box>
-      <Box w="100%" h="140px" display="grid" gridTemplateColumns="1fr auto">
+      <Box
+        w={isCheckout ? "100px" : "140px"}
+        h={isCheckout ? "100px" : "140px"}
+        bg="purple.500"
+        borderRadius="4px"
+      ></Box>
+      <Box
+        w="100%"
+        h={isCheckout ? "100px" : "140px"}
+        display="grid"
+        gridTemplateColumns="1fr auto"
+      >
         <Box w="100%" display="grid" gridTemplateColumns="1fr">
           <Box
             w="100%"
@@ -27,27 +40,38 @@ const MenuItem: React.FC<MenuItemProps> = () => {
               Compact Movil Tungsteno
             </Text>
             <Box pt="10px">
-              <Tooltip
-                label="La cantidad máxima que puedes añadir de Compact movil Tungsteno"
-                placement="bottom-start"
-                bg="white"
-                p="10px"
-                color="black"
-                fontFamily="Futura"
-                fontSize="12px"
-              >
-                <Text variant="XSMEDIUM" color="white" display="flex" gap="5px">
-                  <Box
-                    w="auto"
+              {showPill ? (
+                <Tooltip
+                  label="La cantidad máxima que puedes añadir de Compact movil Tungsteno"
+                  placement="bottom-start"
+                  bg="white"
+                  p="10px"
+                  color="black"
+                  fontFamily="Futura"
+                  fontSize="12px"
+                >
+                  <Text
+                    variant="XSMEDIUM"
+                    color="white"
                     display="flex"
-                    alignItems="center"
-                    justifyContent="center"
+                    gap="5px"
                   >
-                    <TfiInfoAlt />
-                  </Box>
-                  Máxima cantidad: 1
+                    <Box
+                      w="auto"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <TfiInfoAlt />
+                    </Box>
+                    Máxima cantidad: 1
+                  </Text>
+                </Tooltip>
+              ) : (
+                <Text variant="XSMEDIUM" color="white" display="flex" gap="5px">
+                  Cantidad agregada: 1
                 </Text>
-              </Tooltip>
+              )}
             </Box>
           </Box>
           <Box
@@ -57,7 +81,7 @@ const MenuItem: React.FC<MenuItemProps> = () => {
             alignItems="flex-end"
             justifyContent="flex-start"
           >
-            <PillStepper />
+            {showPill && <PillStepper />}
           </Box>
         </Box>
         <Box w="100%" display="grid" gridTemplateColumns="1fr">
@@ -79,20 +103,22 @@ const MenuItem: React.FC<MenuItemProps> = () => {
             alignItems="flex-end"
             justifyContent="center"
           >
-            <Box
-              w="auto"
-              p="2px 10px"
-              bg="rgba(255, 255, 255, .1)"
-              borderRadius="25em"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              cursor="pointer"
-            >
-              <Text variant="XSMEDIUM" color="white" fontSize="0.9vw">
-                Remover
-              </Text>
-            </Box>
+            {showPill && (
+              <Box
+                w="auto"
+                p="2px 10px"
+                bg="rgba(255, 255, 255, .1)"
+                borderRadius="25em"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                cursor="pointer"
+              >
+                <Text variant="XSMEDIUM" color="white" fontSize="0.9vw">
+                  Remover
+                </Text>
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

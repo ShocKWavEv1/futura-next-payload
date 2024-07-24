@@ -19,6 +19,10 @@ const Footer: React.FC<FooterProps> = () => {
           fontSize="max(90px, 8.166667vw)"
           color="white"
           textAlign="center"
+          cursor="pointer"
+          _hover={{
+            textDecoration: "underline",
+          }}
         >
           #INGAFFERWETRVST
         </Heading>
@@ -41,13 +45,13 @@ const Footer: React.FC<FooterProps> = () => {
           flexDirection="row"
           gap="20px"
         >
-          <Text variant="MDMEDIUM">
+          <Text variant="MDMEDIUM" cursor="pointer">
             <TfiInstagram color="white" />
           </Text>
-          <Text variant="MDMEDIUM">
+          <Text variant="MDMEDIUM" cursor="pointer">
             <TfiVimeo color="white" />
           </Text>
-          <Text variant="MDMEDIUM">
+          <Text variant="MDMEDIUM" cursor="pointer">
             <TfiYoutube color="white" />
           </Text>
         </Box>

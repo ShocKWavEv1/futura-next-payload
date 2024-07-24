@@ -7,6 +7,14 @@ export type ModalKeys =
   | "promos"
   | "promosHero"
   | "shoppingBag";
+
+export type FormDataKeys =
+  | "name"
+  | "projectName"
+  | `locationCheckbox`
+  | "location"
+  | "date";
+
 interface StoreState {
   count: number;
   inc: () => void;
@@ -14,6 +22,10 @@ interface StoreState {
     [key in ModalKeys]?: boolean;
   };
   setModalOpen: (modalName: ModalKeys) => void;
+  form: {
+    [key in FormDataKeys]?: any;
+  };
+  setFormValue: (key: string, value: any) => void;
 }
 
 export const useStoreZustand = create<StoreState>((set) => ({
@@ -25,6 +37,17 @@ export const useStoreZustand = create<StoreState>((set) => ({
       modals: {
         ...state.modals,
         [modalName]: !state.modals[modalName],
+      },
+    }));
+  },
+  form: {
+    locationCheckbox: true,
+  },
+  setFormValue: (key: string, value: any) => {
+    set((state) => ({
+      form: {
+        ...state.form,
+        [key]: value,
       },
     }));
   },

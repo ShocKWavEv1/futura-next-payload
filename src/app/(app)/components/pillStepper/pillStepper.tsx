@@ -23,6 +23,7 @@ const PillStepper: React.FC<PillStepperProps> = () => {
         borderColor="rgba(255, 255, 255, .3)"
         color="white"
         cursor="pointer"
+        borderLeftRadius="4px"
         _hover={{
           bg: "white",
           color: "black",
@@ -54,6 +55,7 @@ const PillStepper: React.FC<PillStepperProps> = () => {
         borderColor="rgba(255, 255, 255, .3)"
         color="white"
         cursor="pointer"
+        borderRightRadius="4px"
         _hover={{
           bg: "white",
           color: "black",

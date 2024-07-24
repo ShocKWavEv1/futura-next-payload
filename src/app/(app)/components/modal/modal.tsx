@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ children, handleClose }) => {
           onClick={(e) => e.stopPropagation()}
           w="50vw"
           maxHeight="70svh"
-          border="1.4px solid white"
+          shadow="2xl"
           borderRadius="4px"
           bg="black"
           display="flex"

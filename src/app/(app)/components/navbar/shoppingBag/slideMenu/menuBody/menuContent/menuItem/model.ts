@@ -1,1 +1,4 @@
-export interface MenuItemProps {}
+export interface MenuItemProps {
+  showPill?: boolean;
+  isCheckout?: boolean;
+}

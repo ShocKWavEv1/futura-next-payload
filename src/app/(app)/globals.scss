@@ -33,7 +33,7 @@ body::after {
   content: "";
   height: 300%;
   left: -100%;
-  opacity: 0.07;
+  opacity: 0.065;
   pointer-events: none;
   position: fixed;
   top: -100%;
@@ -199,4 +199,8 @@ html.lenis {
   right: 0;
   bottom: 0;
   z-index: 3;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
 }
