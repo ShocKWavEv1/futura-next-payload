@@ -1,5 +1,5 @@
 "use client";
-import { useLockBodyScroll } from "@uidotdev/usehooks";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 import { BackdropProps } from "./model";
 import { motion } from "framer-motion";
 
@@ -16,6 +16,7 @@ const Backdrop: React.FC<BackdropProps> = ({ children, handleClose }) => {
         e.stopPropagation();
         handleClose();
       }}
+      onWheel={(e) => e.stopPropagation()}
     >
       {children}
     </motion.div>

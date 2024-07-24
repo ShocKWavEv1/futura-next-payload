@@ -53,8 +53,15 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
+              color="white"
+              shadow="2xl"
+              _hover={{
+                bg: "white",
+                color: "black",
+                transition: "all .3s ease-in-out",
+              }}
             >
-              <Text variant="XSMEDIUM" color="white" fontSize="0.9vw">
+              <Text variant="XSMEDIUM" fontSize="0.9vw">
                 Remover todo
               </Text>
             </Box>

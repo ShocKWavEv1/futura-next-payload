@@ -9,7 +9,8 @@ const CheckoutLayout: React.FC<CheckoutLayoutProps> = () => {
     <Box
       w="100%"
       p={basePadding()}
-      mt="60px"
+      mt="100px"
+      pb="60px"
       display="flex"
       alignItems="center"
       justifyContent="center"

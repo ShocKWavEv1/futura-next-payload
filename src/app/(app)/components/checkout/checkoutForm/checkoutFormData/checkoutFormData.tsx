@@ -8,7 +8,6 @@ import { z } from "zod";
 import TextInput from "@/app/(app)/lib/ui/textInput/textInput";
 import CheckBoxinput from "@/app/(app)/lib/ui/checkboxInput/checkBoxInput";
 import AlertMessage from "@/app/(app)/lib/ui/alertMessage/alertMessage";
-import DateInput from "@/app/(app)/lib/ui/dateInput/dateInput";
 import { formSchema } from "@/app/(app)/lib/zod/formSchemas/checkoutSchema";
 
 type FormData = z.infer<typeof formSchema>;

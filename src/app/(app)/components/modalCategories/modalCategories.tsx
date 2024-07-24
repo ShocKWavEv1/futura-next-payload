@@ -14,6 +14,7 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({ handleClose }) => {
             bg={index === 0 ? "primary.500" : "transparent"}
             _hover={{ bg: "primary.500", transition: "all .3s ease-in-out" }}
             onClick={handleClose}
+            cursor="pointer"
           >
             <Heading variant="H4BOLD" color="white">
               Category {index}
