@@ -13,6 +13,7 @@ export interface Config {
   collections: {
     users: User;
     promos: Promo;
+    cart: Cart;
     catalog: Catalog;
     categories: Category;
     team: Team;
@@ -78,6 +79,21 @@ export interface Promo {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cart".
+ */
+export interface Cart {
+  id: number;
+  user: string;
+  items: {
+    catalogItem: number | Catalog;
+    quantity: number;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "catalog".
  */
 export interface Catalog {
@@ -102,8 +118,20 @@ export interface Catalog {
   price: number;
   maxQuantity: number;
   maxDays: number;
-  mainImage: number | Media;
   categories: (number | Category)[];
+  mainImage: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -126,18 +154,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  description?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

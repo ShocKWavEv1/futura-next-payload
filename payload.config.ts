@@ -6,6 +6,7 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
+import { CartCollection } from "@/collections/cart";
 import { CatalogCollection } from "@/collections/catalog";
 import { MediaCollection } from "@/collections/media";
 import { UserCollection } from "@/collections/users";
@@ -26,6 +27,7 @@ export default buildConfig({
   collections: [
     UserCollection,
     PromosCollection,
+    CartCollection,
     CatalogCollection,
     CategoriesCollection,
     TeamCollection,

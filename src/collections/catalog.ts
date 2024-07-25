@@ -58,17 +58,17 @@ export const CatalogCollection: CollectionConfig = {
       required: true,
     },
     {
-      name: "mainImage",
-      type: "upload",
-      relationTo: "media",
-      required: true,
-    },
-    {
       name: "categories",
       label: "Categories for this product",
       type: "relationship",
       relationTo: "categories",
       hasMany: true,
+      required: true,
+    },
+    {
+      name: "mainImage",
+      type: "upload",
+      relationTo: "media",
       required: true,
     },
   ],

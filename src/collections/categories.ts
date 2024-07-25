@@ -5,7 +5,7 @@ import { CollectionConfig } from "payload";
 export const CategoriesCollection: CollectionConfig = {
   slug: "categories",
   admin: {
-    useAsTitle: "text",
+    useAsTitle: "name",
   },
   hooks: {
     beforeValidate: [
