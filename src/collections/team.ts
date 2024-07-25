@@ -1,3 +1,4 @@
+import { generateSlug } from "@/app/(app)/lib/slugify/slugify";
 import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 import { CollectionConfig } from "payload";
 
@@ -13,6 +14,11 @@ export const TeamCollection: CollectionConfig = {
     delete: () => true,
   },
   hooks: {
+    beforeValidate: [
+      ({ data }: any) => {
+        return generateSlug(data);
+      },
+    ],
     afterChange: [
       ({ doc }) => {
         revalidatePage("categories");
@@ -43,14 +49,16 @@ export const TeamCollection: CollectionConfig = {
       required: true,
     },
     {
-      name: "instagram",
-      type: "text",
+      name: "socialMedia",
+      type: "array",
       required: false,
-    },
-    {
-      name: "vimeo",
-      type: "text",
-      required: false,
+      fields: [
+        {
+          name: "socialLink",
+          type: "text",
+          required: false,
+        },
+      ],
     },
   ],
 };

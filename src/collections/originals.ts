@@ -1,3 +1,4 @@
+import { generateSlug } from "@/app/(app)/lib/slugify/slugify";
 import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 import { CollectionConfig } from "payload";
 
@@ -13,6 +14,11 @@ export const OriginalsCollection: CollectionConfig = {
     delete: () => true,
   },
   hooks: {
+    beforeValidate: [
+      ({ data }: any) => {
+        return generateSlug(data);
+      },
+    ],
     afterChange: [
       ({ doc }) => {
         revalidatePage("originals");
@@ -42,7 +48,7 @@ export const OriginalsCollection: CollectionConfig = {
           required: true,
         },
         {
-          name: "youtube",
+          name: "urlVideo",
           type: "text",
           required: true,
         },

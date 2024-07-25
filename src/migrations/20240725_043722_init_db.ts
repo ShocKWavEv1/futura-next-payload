@@ -19,14 +19,15 @@ CREATE TABLE IF NOT EXISTS "promos_promos" (
 	"_order" integer NOT NULL,
 	"_parent_id" integer NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL,
-	"name" varchar,
-	"description" varchar
+	"name" varchar NOT NULL,
+	"price" numeric NOT NULL,
+	"temporality" varchar NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "promos" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" varchar NOT NULL,
-	"slug" varchar,
+	"slug" varchar NOT NULL,
 	"description" varchar NOT NULL,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS "promos" (
 CREATE TABLE IF NOT EXISTS "catalog" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" varchar NOT NULL,
-	"slug" varchar,
+	"slug" varchar NOT NULL,
 	"body" jsonb,
 	"price" numeric NOT NULL,
 	"max_quantity" numeric NOT NULL,
@@ -55,11 +56,18 @@ CREATE TABLE IF NOT EXISTS "catalog_rels" (
 
 CREATE TABLE IF NOT EXISTS "categories" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"text" varchar NOT NULL,
-	"label" varchar,
+	"name" varchar NOT NULL,
+	"slug" varchar NOT NULL,
 	"description" varchar,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "team_social_media" (
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" varchar PRIMARY KEY NOT NULL,
+	"social_link" varchar
 );
 
 CREATE TABLE IF NOT EXISTS "team" (
@@ -68,8 +76,6 @@ CREATE TABLE IF NOT EXISTS "team" (
 	"slug" varchar NOT NULL,
 	"role" varchar NOT NULL,
 	"main_image_id" integer NOT NULL,
-	"instagram" varchar,
-	"vimeo" varchar,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
 );
@@ -93,7 +99,7 @@ CREATE TABLE IF NOT EXISTS "originals_originals" (
 	"_parent_id" integer NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL,
 	"name" varchar NOT NULL,
-	"youtube" varchar NOT NULL,
+	"url_video" varchar NOT NULL,
 	"description" jsonb,
 	"thumbnail_id" integer NOT NULL,
 	"duration" varchar
@@ -158,6 +164,8 @@ CREATE INDEX IF NOT EXISTS "catalog_rels_order_idx" ON "catalog_rels" ("order");
 CREATE INDEX IF NOT EXISTS "catalog_rels_parent_idx" ON "catalog_rels" ("parent_id");
 CREATE INDEX IF NOT EXISTS "catalog_rels_path_idx" ON "catalog_rels" ("path");
 CREATE INDEX IF NOT EXISTS "categories_created_at_idx" ON "categories" ("created_at");
+CREATE INDEX IF NOT EXISTS "team_social_media_order_idx" ON "team_social_media" ("_order");
+CREATE INDEX IF NOT EXISTS "team_social_media_parent_id_idx" ON "team_social_media" ("_parent_id");
 CREATE INDEX IF NOT EXISTS "team_created_at_idx" ON "team" ("created_at");
 CREATE INDEX IF NOT EXISTS "reel_reels_order_idx" ON "reel_reels" ("_order");
 CREATE INDEX IF NOT EXISTS "reel_reels_parent_id_idx" ON "reel_reels" ("_parent_id");
@@ -193,6 +201,12 @@ END $$;
 
 DO $$ BEGIN
  ALTER TABLE "catalog_rels" ADD CONSTRAINT "catalog_rels_categories_fk" FOREIGN KEY ("categories_id") REFERENCES "categories"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+ ALTER TABLE "team_social_media" ADD CONSTRAINT "team_social_media_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "team"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -249,6 +263,7 @@ DROP TABLE "promos";
 DROP TABLE "catalog";
 DROP TABLE "catalog_rels";
 DROP TABLE "categories";
+DROP TABLE "team_social_media";
 DROP TABLE "team";
 DROP TABLE "reel_reels";
 DROP TABLE "reel";

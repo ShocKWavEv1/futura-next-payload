@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 const Navbar: React.FC<NavbarProps> = () => {
   const pathname = usePathname();
 
-  const links = ["About", "Promos"];
+  const links = [{ name: "About", href: "/about" }];
 
   return (
     <Box w="100%">
@@ -45,18 +45,20 @@ const Navbar: React.FC<NavbarProps> = () => {
             flexDirection="row"
             gap="20px"
           >
-            {links.map((link: string, index: number) => {
+            {links.map((link: any, index: number) => {
               return (
-                <Box
-                  key={link}
-                  display="flex"
-                  alignItems="center"
-                  cursor="pointer"
-                >
-                  <Text variant="MDREGULAR" color="white">
-                    {link}
-                  </Text>
-                </Box>
+                <Link href={link.href} key={link.name} prefetch>
+                  <Box
+                    key={link}
+                    display="flex"
+                    alignItems="center"
+                    cursor="pointer"
+                  >
+                    <Text variant="MDREGULAR" color="white">
+                      {link.name}
+                    </Text>
+                  </Box>
+                </Link>
               );
             })}
             {pathname !== "/checkout" && <ShoppingBag />}

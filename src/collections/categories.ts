@@ -1,3 +1,4 @@
+import { generateSlug } from "@/app/(app)/lib/slugify/slugify";
 import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 import { CollectionConfig } from "payload";
 
@@ -7,6 +8,11 @@ export const CategoriesCollection: CollectionConfig = {
     useAsTitle: "text",
   },
   hooks: {
+    beforeValidate: [
+      ({ data }: any) => {
+        return generateSlug(data);
+      },
+    ],
     afterChange: [
       ({ doc }) => {
         revalidatePage("categories");
@@ -15,14 +21,15 @@ export const CategoriesCollection: CollectionConfig = {
   },
   fields: [
     {
-      name: "text",
+      name: "name",
       type: "text",
       required: true,
     },
     {
-      name: "label",
+      name: "slug",
+      label: "Slug",
       type: "text",
-      required: false,
+      required: true,
     },
     {
       name: "description",

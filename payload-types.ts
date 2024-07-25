@@ -65,11 +65,12 @@ export interface User {
 export interface Promo {
   id: number;
   name: string;
-  slug?: string | null;
+  slug: string;
   description: string;
   promos: {
-    name?: string | null;
-    description?: string | null;
+    name: string;
+    price: number;
+    temporality: string;
     id?: string | null;
   }[];
   updatedAt: string;
@@ -82,7 +83,7 @@ export interface Promo {
 export interface Catalog {
   id: number;
   name: string;
-  slug?: string | null;
+  slug: string;
   body?: {
     root: {
       type: string;
@@ -132,8 +133,8 @@ export interface Media {
  */
 export interface Category {
   id: number;
-  text: string;
-  label?: string | null;
+  name: string;
+  slug: string;
   description?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -148,8 +149,12 @@ export interface Team {
   slug: string;
   role: string;
   mainImage: number | Media;
-  instagram?: string | null;
-  vimeo?: string | null;
+  socialMedia?:
+    | {
+        socialLink?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -177,7 +182,7 @@ export interface Original {
   slug: string;
   originals: {
     name: string;
-    youtube: string;
+    urlVideo: string;
     description?: {
       root: {
         type: string;

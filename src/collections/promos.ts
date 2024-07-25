@@ -1,3 +1,4 @@
+import { generateSlug } from "@/app/(app)/lib/slugify/slugify";
 import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 import { CollectionConfig } from "payload";
 
@@ -13,6 +14,11 @@ export const PromosCollection: CollectionConfig = {
     delete: () => true,
   },
   hooks: {
+    beforeValidate: [
+      ({ data }: any) => {
+        return generateSlug(data);
+      },
+    ],
     afterChange: [
       ({ doc }) => {
         revalidatePage("promos");
@@ -29,6 +35,7 @@ export const PromosCollection: CollectionConfig = {
       name: "slug",
       label: "Slug",
       type: "text",
+      required: true,
     },
     {
       name: "description",
@@ -43,10 +50,17 @@ export const PromosCollection: CollectionConfig = {
         {
           name: "name",
           type: "text",
+          required: true,
         },
         {
-          name: "description",
+          name: "price",
+          type: "number",
+          required: true,
+        },
+        {
+          name: "temporality",
           type: "text",
+          required: true,
         },
       ],
     },

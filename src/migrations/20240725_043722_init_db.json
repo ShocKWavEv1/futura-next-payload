@@ -1,5 +1,5 @@
 {
-  "id": "85a8d51d-6c43-41fb-a580-69db3c5508b2",
+  "id": "7939525d-5b4c-4788-8ee7-a2620e34a3d6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -117,13 +117,19 @@
           "name": "name",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "description": {
-          "name": "description",
+        "price": {
+          "name": "price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "temporality": {
+          "name": "temporality",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {
@@ -180,7 +186,7 @@
           "name": "slug",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "description": {
           "name": "description",
@@ -236,7 +242,7 @@
           "name": "slug",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "body": {
           "name": "body",
@@ -409,17 +415,17 @@
           "primaryKey": true,
           "notNull": true
         },
-        "text": {
-          "name": "text",
+        "name": {
+          "name": "name",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
-        "label": {
-          "name": "label",
+        "slug": {
+          "name": "slug",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "description": {
           "name": "description",
@@ -452,6 +458,69 @@
         }
       },
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "team_social_media": {
+      "name": "team_social_media",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "social_link": {
+          "name": "social_link",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "team_social_media_order_idx": {
+          "name": "team_social_media_order_idx",
+          "columns": [
+            "_order"
+          ],
+          "isUnique": false
+        },
+        "team_social_media_parent_id_idx": {
+          "name": "team_social_media_parent_id_idx",
+          "columns": [
+            "_parent_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "team_social_media_parent_id_fk": {
+          "name": "team_social_media_parent_id_fk",
+          "tableFrom": "team_social_media",
+          "tableTo": "team",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -488,18 +557,6 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
-        },
-        "instagram": {
-          "name": "instagram",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "vimeo": {
-          "name": "vimeo",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -691,8 +748,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "youtube": {
-          "name": "youtube",
+        "url_video": {
+          "name": "url_video",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
