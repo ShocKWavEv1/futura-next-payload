@@ -20,7 +20,6 @@
     "node": "^18.20.2 || >=20.9.0"
   },
   "dependencies": {
-    "@bsmnt/scrollytelling": "^0.3.3",
     "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
@@ -37,7 +36,6 @@
     "@payloadcms/ui": "3.0.0-beta.65",
     "@plaiceholder/next": "^3.0.0",
     "@studio-freight/lenis": "^1.0.42",
-    "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.7.2",
     "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
     "cross-env": "^7.0.3",
@@ -45,6 +43,7 @@
     "graphql": "^16.8.2",
     "gsap": "^3.12.5",
     "next": "14.2.3",
+    "nid": "^2.0.1",
     "payload": "3.0.0-beta.65",
     "plaiceholder": "^3.0.0",
     "react": "^18",
@@ -55,10 +54,8 @@
     "react-intersection-observer": "^9.13.0",
     "react-player": "^2.16.0",
     "react-top-loading-bar": "^2.3.1",
-    "sass": "^1.77.8",
     "sharp": "0.32.6",
     "swr": "^2.2.5",
-    "uuid": "^10.0.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.4"
   },

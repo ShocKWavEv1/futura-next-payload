@@ -1,11 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import { MenuContentProps } from "./model";
 import MenuItem from "./menuItem/menuItem";
-import { useStoreZustand } from "@/app/(app)/lib/zustand/zustandStore";
+import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
 
 const MenuContent: React.FC<MenuContentProps> = () => {
-  const { count } = useStoreZustand();
-  const items: any = [1, 2, 3, 4];
+  const { shoppingBag } = useStoreShoppingCart();
   return (
     <Box w="100%" h="100%" overflowY="auto">
       <Box
@@ -16,12 +15,12 @@ const MenuContent: React.FC<MenuContentProps> = () => {
         alignItems="flex-start"
         justifyContent="flex-start"
         flexDirection="column"
-        gap="50px"
-        p="30px 0px"
+        gap="40px"
+        p="20px 0px 40px 0px"
       >
-        {count > 0 && items.length !== 0 ? (
-          items.map((item: any, index: number) => {
-            return <MenuItem key={item} />;
+        {shoppingBag?.items.length !== 0 ? (
+          shoppingBag?.items.map((item: any, index: number) => {
+            return <MenuItem key={item} item={item} />;
           })
         ) : (
           <Box w="100%" h="100%" />

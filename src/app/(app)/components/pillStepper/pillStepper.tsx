@@ -2,7 +2,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { PillStepperProps } from "./model";
 import { TfiMinus, TfiPlus } from "react-icons/tfi";
 
-const PillStepper: React.FC<PillStepperProps> = () => {
+const PillStepper: React.FC<PillStepperProps> = ({ item }) => {
   return (
     <Box
       w="auto"
@@ -42,7 +42,7 @@ const PillStepper: React.FC<PillStepperProps> = () => {
         px="10px"
       >
         <Text variant="XSMEDIUM" color="white">
-          20
+          {item?.quantity}
         </Text>
       </Box>
       <Box

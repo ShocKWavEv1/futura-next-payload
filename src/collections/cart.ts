@@ -41,7 +41,7 @@ export const CartCollection: CollectionConfig = {
           required: true,
         },
       ],
-      required: true,
+      required: false,
     },
   ],
 };

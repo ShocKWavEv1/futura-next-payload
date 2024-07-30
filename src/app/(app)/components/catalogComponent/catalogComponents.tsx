@@ -3,11 +3,11 @@ import { CatalogComponentProps } from "./model";
 import CatalogHeader from "./catalogHeader/catalogHeader";
 import CatalogInventory from "./catalogInventory/catalogInventory";
 
-const CatalogComponent: React.FC<CatalogComponentProps> = () => {
+const CatalogComponent: React.FC<CatalogComponentProps> = ({ catalog }) => {
   return (
     <Box w="100%" display="flex" flexDirection="column" mt="100px">
       <CatalogHeader />
-      <CatalogInventory />
+      <CatalogInventory catalog={catalog} />
     </Box>
   );
 };

@@ -7,7 +7,12 @@ const MenuHeader: React.FC<MenuHeaderProps> = () => {
   const { setModalOpen } = useStoreZustand();
 
   return (
-    <Box w="100%" p="20px 0px" display="flex" justifyContent="flex-start">
+    <Box
+      w="100%"
+      p="30px 0px 20px 0px"
+      display="flex"
+      justifyContent="flex-start"
+    >
       <Text
         onClick={(e) => {
           e.stopPropagation();

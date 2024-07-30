@@ -3,14 +3,13 @@ import { VideoComponentProps } from "./model";
 
 const VideoComponent: React.FC<VideoComponentProps> = ({ video }) => {
   return (
-    <Box mt="20px" w="100%" h="80svh" borderRadius="8px">
+    <Box mt="20px" w="100%" h="80svh" bg="white" borderRadius="8px">
       <video
         controls={false}
         autoPlay={true}
         loop={true}
         playsInline={true}
         muted
-        preload="none"
         style={{
           width: "100%",
           height: "80svh",

@@ -1,9 +1,55 @@
+"use client";
 import { Box, Text } from "@chakra-ui/react";
 import { CatalogItemProps } from "./model";
 import Image from "next/image";
 import buy_me from "../../../../theme/designSystem/assets/buy-me.svg";
+import { formatPrice } from "@/app/(app)/utils/utils";
+import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
+import { useToast } from "@chakra-ui/react";
+import {
+  ModalKeys,
+  useStoreZustand,
+} from "@/app/(app)/lib/zustand/zustandStore";
 
-const CatalogItem: React.FC<CatalogItemProps> = () => {
+const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
+  const { addToCart } = useStoreShoppingCart();
+  const { setModalOpen } = useStoreZustand();
+  const toast = useToast();
+
+  const modalName: ModalKeys = "shoppingBag";
+
+  const handleAddtoCart = (item: any) => {
+    addToCart(
+      item,
+      () => setModalOpen(modalName),
+      () => handleToast()
+    );
+  };
+
+  const handleToast = () => {
+    toast({
+      position: "bottom-right",
+      duration: 1500,
+      render: () => (
+        <Box
+          color="white"
+          p="10px"
+          bg="white"
+          border="1.4px solid white"
+          borderRadius="4px"
+          shadow="2xl"
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-start"
+        >
+          <Text variant="XSMEDIUM" color="black">
+            {item.name} ya esta en tu bolsa
+          </Text>
+        </Box>
+      ),
+    });
+  };
+
   return (
     <Box
       w="100%"
@@ -13,6 +59,7 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
       borderRadius="12px"
       position="relative"
       className="catalog_item_container"
+      onClick={() => handleAddtoCart(item)}
     >
       <Box
         w="100%"
@@ -20,14 +67,31 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
         borderTopLeftRadius="12px"
         borderTopRightRadius="12px"
       >
-        <Box className="buyme_overlay">
+        <Box w="100%" h="100%">
+          <Image
+            src={item?.mainImage?.url}
+            alt={item.name}
+            width={200}
+            height={380}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderTopRightRadius: "12px",
+              borderTopLeftRadius: "12px",
+            }}
+          />
+        </Box>
+        <Box className="buyme_overlay" cursor="pointer">
           <Box
-            mt="-14%"
+            mt="-15%"
             w="60%"
             display="flex"
             alignItems="center"
             justifyContent="center"
             mixBlendMode="difference"
+            userSelect="none"
+            pointerEvents="none"
           >
             <Image
               src={buy_me}
@@ -55,7 +119,7 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
           justifyContent="flex-start"
         >
           <Text variant="MDMEDIUM" color="#000">
-            Compact Movil Tungsteno
+            {item.name}
           </Text>
         </Box>
         <Box
@@ -65,7 +129,7 @@ const CatalogItem: React.FC<CatalogItemProps> = () => {
           justifyContent="flex-end"
         >
           <Text variant="XSMEDIUM" color="#000">
-            $10,999
+            {formatPrice(item.price)}
           </Text>
         </Box>
       </Box>

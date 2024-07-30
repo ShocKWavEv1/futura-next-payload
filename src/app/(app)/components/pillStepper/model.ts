@@ -1,1 +1,3 @@
-export interface PillStepperProps {}
+export interface PillStepperProps {
+  item: any;
+}

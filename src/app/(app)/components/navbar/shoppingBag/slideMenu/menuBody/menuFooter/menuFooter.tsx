@@ -5,9 +5,12 @@ import {
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
 import { useRouter } from "next/navigation";
+import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
+import RemoveFromCart from "@/app/(app)/components/removeFromCart/removeFromCart";
 
 const MenuFooter: React.FC<MenuFooterProps> = () => {
-  const { count, setModalOpen } = useStoreZustand();
+  const { shoppingBag } = useStoreShoppingCart();
+  const { setModalOpen } = useStoreZustand();
   const router = useRouter();
   const modalName: ModalKeys = "shoppingBag";
   return (
@@ -34,7 +37,7 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
           justifyContent="flex-start"
         >
           <Text variant="MDMEDIUM" color="white">
-            Total: {count > 0 && `$32,789`}
+            Total: {shoppingBag?.items.length !== 0 && `$32,789`}
           </Text>
         </Box>
         <Box
@@ -43,28 +46,8 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
           alignItems="center"
           justifyContent="flex-end"
         >
-          {count > 0 && (
-            <Box
-              w="auto"
-              p="4px 12px"
-              bg="rgba(255, 255, 255, .1)"
-              borderRadius="25em"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              cursor="pointer"
-              color="white"
-              shadow="2xl"
-              _hover={{
-                bg: "white",
-                color: "black",
-                transition: "all .3s ease-in-out",
-              }}
-            >
-              <Text variant="XSMEDIUM" fontSize="0.9vw">
-                Remover todo
-              </Text>
-            </Box>
+          {shoppingBag?.items.length !== 0 && (
+            <RemoveFromCart item={{}} type="all" text="Remover todo" />
           )}
         </Box>
       </Box>

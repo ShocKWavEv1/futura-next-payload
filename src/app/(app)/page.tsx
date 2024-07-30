@@ -12,8 +12,8 @@ import Footer from "./components/footer/footer";
 const payload = await getPayloadHMR({ config: configPromise });
 
 const Page = async () => {
-  const categories = await payload.find({
-    collection: "categories",
+  const catalog = await payload.find({
+    collection: "catalog",
     limit: 100,
     sort: "createdAt",
   });
@@ -22,7 +22,7 @@ const Page = async () => {
     <Box bg="black" w="100%" h="auto">
       <HeroCompact />
       <RequirementsMovil />
-      <CatalogComponent />
+      <CatalogComponent catalog={catalog.docs} />
       <Reel />
       <Originals />
       <Footer />

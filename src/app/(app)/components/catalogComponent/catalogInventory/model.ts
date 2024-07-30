@@ -1,1 +1,3 @@
-export interface CatalogInventoryProps {}
+export interface CatalogInventoryProps {
+  catalog: any;
+}

@@ -2,28 +2,46 @@ import { Box, Text, Tooltip } from "@chakra-ui/react";
 import { MenuItemProps } from "./model";
 import { TfiInfoAlt } from "react-icons/tfi";
 import PillStepper from "@/app/(app)/components/pillStepper/pillStepper";
+import { formatPrice } from "@/app/(app)/utils/utils";
+import Image from "next/image";
+import RemoveFromCart from "@/app/(app)/components/removeFromCart/removeFromCart";
 
 const MenuItem: React.FC<MenuItemProps> = ({
   showPill = true,
   isCheckout = false,
+  item,
 }) => {
+  console.log("item", item);
   return (
     <Box
       w="100%"
       h="auto"
       display="grid"
       gridTemplateColumns="auto 1fr"
-      gap="10px"
+      gap="20px"
     >
       <Box
-        w={isCheckout ? "100px" : "140px"}
-        h={isCheckout ? "100px" : "140px"}
-        bg="purple.500"
+        w={isCheckout ? "100px" : "150px"}
+        h={isCheckout ? "100px" : "150px"}
+        bg="primary.500"
         borderRadius="4px"
-      ></Box>
+      >
+        <Image
+          src={item?.catalogItem?.mainImage?.url}
+          alt="item"
+          width={140}
+          height={140}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "4px",
+          }}
+        />
+      </Box>
       <Box
         w="100%"
-        h={isCheckout ? "100px" : "140px"}
+        h={isCheckout ? "100px" : "150px"}
         display="grid"
         gridTemplateColumns="1fr auto"
       >
@@ -37,12 +55,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
             flexDirection="column"
           >
             <Text variant="LGMEDIUM" color="white">
-              Compact Movil Tungsteno
+              {item?.catalogItem?.name}
             </Text>
             <Box pt="10px">
               {showPill ? (
                 <Tooltip
-                  label="La cantidad máxima que puedes añadir de Compact movil Tungsteno"
+                  label={`La cantidad máxima que puedes añadir de ${item?.catalogItem?.name}`}
                   placement="bottom-start"
                   bg="white"
                   p="10px"
@@ -64,12 +82,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
                     >
                       <TfiInfoAlt />
                     </Box>
-                    Máxima cantidad: 1
+                    Máxima cantidad: {item?.catalogItem?.maxQuantity}
                   </Text>
                 </Tooltip>
               ) : (
                 <Text variant="XSMEDIUM" color="white" display="flex" gap="5px">
-                  Cantidad agregada: 1
+                  Cantidad agregada: {item?.quantity}
                 </Text>
               )}
             </Box>
@@ -81,7 +99,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             alignItems="flex-end"
             justifyContent="flex-start"
           >
-            {showPill && <PillStepper />}
+            {showPill && <PillStepper item={item} />}
           </Box>
         </Box>
         <Box w="100%" display="grid" gridTemplateColumns="1fr">
@@ -93,7 +111,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             justifyContent="center"
           >
             <Text variant="SMMEDIUM" color="white">
-              $32,699
+              {formatPrice(item?.catalogItem?.price)}
             </Text>
           </Box>
           <Box
@@ -104,27 +122,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             justifyContent="center"
           >
             {showPill && (
-              <Box
-                w="auto"
-                p="2px 10px"
-                bg="rgba(255, 255, 255, .1)"
-                borderRadius="25em"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                cursor="pointer"
-                color="white"
-                shadow="2xl"
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                  transition: "all .3s ease-in-out",
-                }}
-              >
-                <Text variant="XSMEDIUM" fontSize="0.9vw">
-                  Remover
-                </Text>
-              </Box>
+              <RemoveFromCart item={item} type="single" text="Remover" />
             )}
           </Box>
         </Box>

@@ -84,11 +84,13 @@ export interface Promo {
 export interface Cart {
   id: number;
   user: string;
-  items: {
-    catalogItem: number | Catalog;
-    quantity: number;
-    id?: string | null;
-  }[];
+  items?:
+    | {
+        catalogItem: number | Catalog;
+        quantity: number;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }

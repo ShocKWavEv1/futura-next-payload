@@ -1,1 +1,3 @@
-export interface CatalogItemProps {}
+export interface CatalogItemProps {
+  item: any;
+}
