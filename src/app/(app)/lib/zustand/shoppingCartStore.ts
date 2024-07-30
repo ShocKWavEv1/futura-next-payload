@@ -3,7 +3,9 @@ import { create } from "zustand";
 interface StoreState {
   userId: string | null;
   shoppingBag: any;
+  isLoadingCart: boolean;
   setUserId: (userId: string | null) => void;
+  setLoadingCart: (isLoading: boolean) => void;
   initCart: (cart: any) => void;
   addToCart: (item: any, callback: () => void, toast: () => void) => void;
   removeFromCart: (item: any) => void;
@@ -12,9 +14,15 @@ interface StoreState {
 
 export const useStoreShoppingCart = create<StoreState>((set) => ({
   userId: null,
+  isLoadingCart: true,
   setUserId: (userId) => {
     set(() => ({
       userId,
+    }));
+  },
+  setLoadingCart: (isLoading) => {
+    set(() => ({
+      isLoadingCart: isLoading,
     }));
   },
   shoppingBag: [],

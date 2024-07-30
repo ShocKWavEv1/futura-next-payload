@@ -21,8 +21,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
       gap="20px"
     >
       <Box
-        w={isCheckout ? "100px" : "150px"}
-        h={isCheckout ? "100px" : "150px"}
+        w={isCheckout ? "120px" : "150px"}
+        h={isCheckout ? "120px" : "150px"}
         bg="primary.500"
         borderRadius="4px"
       >
@@ -41,7 +41,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       </Box>
       <Box
         w="100%"
-        h={isCheckout ? "100px" : "150px"}
+        h={isCheckout ? "120px" : "150px"}
         display="grid"
         gridTemplateColumns="1fr auto"
       >

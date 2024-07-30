@@ -1,5 +1,3 @@
-"use client";
-import { useEffect } from "react";
 import { Box, SkeletonCircle, Text } from "@chakra-ui/react";
 import { ShoppingBagProps } from "./model";
 import {
@@ -8,32 +6,16 @@ import {
 } from "@/app/(app)/lib/zustand/zustandStore";
 import { AnimatePresence } from "framer-motion";
 import SlideMenu from "./slideMenu/sliedeMenu";
-import useSWR from "swr";
-import { fetcher, swrOptions } from "@/app/(app)/lib/swr/swrConfig";
-import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
-import Nid from "nid";
 
-const ShoppingBag: React.FC<ShoppingBagProps> = () => {
-  const { userId, setUserId, shoppingBag, initCart } = useStoreShoppingCart();
+const ShoppingBag: React.FC<ShoppingBagProps> = ({
+  isLoading,
+  shoppingBag,
+}) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "shoppingBag";
 
-  const url = userId ? `/api/shoppingCart?user=${userId}` : null;
-  const { data, isLoading } = useSWR(url, fetcher, swrOptions);
-
-  useEffect(() => {
-    if (localStorage.getItem("userId") === null) {
-      localStorage.setItem("userId", Nid(12));
-    }
-    setUserId(localStorage.getItem("userId"));
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      initCart(data?.cart);
-    }
-  }, [isLoading]);
-
+  console.log("isLoading", isLoading);
+  console.log("shoppingBag", shoppingBag);
   return (
     <Box
       width="auto"
@@ -66,7 +48,7 @@ const ShoppingBag: React.FC<ShoppingBagProps> = () => {
           alignItems="center"
           justifyContent="center"
         >
-          {!data ? (
+          {!shoppingBag && isLoading ? (
             <SkeletonCircle w="50%" h="50%" />
           ) : (
             <Text variant="XSMEDIUM" fontSize="13px" color="white">

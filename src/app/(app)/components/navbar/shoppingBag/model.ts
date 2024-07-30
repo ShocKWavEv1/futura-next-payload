@@ -1,1 +1,4 @@
-export interface ShoppingBagProps {}
+export interface ShoppingBagProps {
+  isLoading: boolean;
+  shoppingBag: any;
+}

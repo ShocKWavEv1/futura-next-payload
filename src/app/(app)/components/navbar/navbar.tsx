@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { NavbarProps } from "./model";
 import Image from "next/image";
@@ -6,11 +8,41 @@ import ShoppingBag from "./shoppingBag/shoppingBag";
 import { basePadding } from "../../lib/basePadding";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useStoreShoppingCart } from "../../lib/zustand/shoppingCartStore";
+import useSWR from "swr";
+import { fetcher, swrOptions } from "../../lib/swr/swrConfig";
+import Nid from "nid";
 
 const Navbar: React.FC<NavbarProps> = () => {
+  const {
+    userId,
+    setUserId,
+    shoppingBag,
+    initCart,
+    isLoadingCart,
+    setLoadingCart,
+  } = useStoreShoppingCart();
+
   const pathname = usePathname();
 
   const links = [{ name: "About", href: "/about" }];
+
+  const url = userId ? `/api/shoppingCart?user=${userId}` : null;
+  const { data, isLoading } = useSWR(url, fetcher, swrOptions);
+
+  useEffect(() => {
+    if (localStorage.getItem("userId") === null) {
+      localStorage.setItem("userId", Nid(12));
+    }
+    setUserId(localStorage.getItem("userId"));
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      initCart(data?.cart);
+    }
+    setLoadingCart(isLoading);
+  }, [isLoading]);
 
   return (
     <Box w="100%">
@@ -61,7 +93,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </Link>
               );
             })}
-            {pathname !== "/checkout" && <ShoppingBag />}
+            {pathname !== "/checkout" && (
+              <ShoppingBag
+                isLoading={isLoadingCart}
+                shoppingBag={shoppingBag}
+              />
+            )}
           </Box>
         </Box>
       </Box>
