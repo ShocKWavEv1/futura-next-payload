@@ -61,7 +61,7 @@ const CheckoutLayout: React.FC<CheckoutLayoutProps> = () => {
           <Skeleton
             isLoaded={!isLoadingCart}
             w="100%"
-            h="200px"
+            h={isLoadingCart ? "200px" : "auto"}
             display="flex"
             alignItems="flex-start"
             justifyContent="flex-start"
