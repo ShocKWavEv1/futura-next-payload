@@ -89,7 +89,7 @@ export async function updateCart(userId: any, shoppingBag: any) {
     const updatedItems: any = [];
 
     shoppingBag.items.length !== 0 &&
-      shoppingBag.items.forEach((item: any, idx: number) => {
+      shoppingBag?.items?.forEach((item: any, idx: number) => {
         updatedItems.push({
           catalogItem: item.catalogItem.id,
           quantity: item.quantity ? item.quantity : 1,

@@ -2,7 +2,7 @@ import { Box, Text, Tooltip } from "@chakra-ui/react";
 import { MenuItemProps } from "./model";
 import { TfiInfoAlt } from "react-icons/tfi";
 import PillStepper from "@/app/(app)/components/pillStepper/pillStepper";
-import { formatPrice } from "@/app/(app)/utils/utils";
+import { calculateSinglePrice } from "@/app/(app)/utils/utils";
 import Image from "next/image";
 import RemoveFromCart from "@/app/(app)/components/removeFromCart/removeFromCart";
 
@@ -110,7 +110,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             justifyContent="center"
           >
             <Text variant="SMMEDIUM" color="white">
-              {formatPrice(item?.catalogItem?.price)}
+              {calculateSinglePrice(item)}
             </Text>
           </Box>
           <Box

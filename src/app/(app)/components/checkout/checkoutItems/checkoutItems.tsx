@@ -3,6 +3,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { CheckoutItemsProps } from "./model";
 import MenuItem from "../../navbar/shoppingBag/slideMenu/menuBody/menuContent/menuItem/menuItem";
 import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
+import { calculateTotalBagPrice } from "@/app/(app)/utils/utils";
 
 const CheckoutItems: React.FC<CheckoutItemsProps> = () => {
   const { shoppingBag } = useStoreShoppingCart();
@@ -42,7 +43,7 @@ const CheckoutItems: React.FC<CheckoutItemsProps> = () => {
               justifyContent="flex-start"
             >
               <Heading variant="H8MEDIUM" color="white">
-                Total
+                Total:
               </Heading>
             </Box>
             <Box
@@ -52,7 +53,7 @@ const CheckoutItems: React.FC<CheckoutItemsProps> = () => {
               justifyContent="flex-end"
             >
               <Heading variant="H8MEDIUM" color="white">
-                $32,7899
+                {calculateTotalBagPrice(shoppingBag)}
               </Heading>
             </Box>
           </Box>

@@ -7,6 +7,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
 import RemoveFromCart from "@/app/(app)/components/removeFromCart/removeFromCart";
+import { calculateTotalBagPrice } from "@/app/(app)/utils/utils";
 
 const MenuFooter: React.FC<MenuFooterProps> = () => {
   const { shoppingBag } = useStoreShoppingCart();
@@ -39,7 +40,7 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
             justifyContent="flex-start"
           >
             <Text variant="MDMEDIUM" color="white">
-              Total: $32,789
+              {`Total: ${calculateTotalBagPrice(shoppingBag)}`}
             </Text>
           </Box>
         )}
