@@ -1,11 +1,10 @@
 "use client";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useToast } from "@chakra-ui/react";
 import { CatalogItemProps } from "./model";
 import Image from "next/image";
 import buy_me from "../../../../theme/designSystem/assets/buy-me.svg";
 import { formatPrice } from "@/app/(app)/utils/utils";
 import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
-import { useToast } from "@chakra-ui/react";
 import {
   ModalKeys,
   useStoreZustand,
@@ -14,7 +13,8 @@ import { useEffect, useState } from "react";
 import { urlShoppingCart } from "@/app/(app)/lib/routes/routes";
 
 const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
-  const { addToCart, hasCart, userId, shoppingBag } = useStoreShoppingCart();
+  const { setHasCart, addToCart, hasCart, userId, shoppingBag } =
+    useStoreShoppingCart();
   const { setModalOpen } = useStoreZustand();
   const toast = useToast();
 
@@ -33,7 +33,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       () => setModalOpen(modalName),
       () => handleToast()
     );
-    setItemToAdd(item);
+    hasCart && setItemToAdd(item);
     !hasCart && createCartUser(item);
   };
 
@@ -73,6 +73,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
     if (!response.ok) {
       throw new Error("Failed to create shopping cart");
     }
+    const data = await response.json();
+    setHasCart(data?.hasCart);
   };
 
   const updateCartUser = async () => {

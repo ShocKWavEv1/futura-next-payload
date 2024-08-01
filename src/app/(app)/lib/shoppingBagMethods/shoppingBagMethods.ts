@@ -57,6 +57,7 @@ export async function createCart(userId: any, item: any) {
       status: 200,
       message: `Item created for user ${userId}`,
       cart: newCart,
+      hasCart: true,
     };
   } catch (err) {
     console.error("Error creating cart", err);
@@ -107,6 +108,7 @@ export async function updateCart(userId: any, shoppingBag: any) {
       status: 200,
       message: `Cart updated for user ${userId}`,
       cart: updatedCart,
+      hasCart: true,
     };
   } catch (err) {
     console.error("Error updating cart", err);
