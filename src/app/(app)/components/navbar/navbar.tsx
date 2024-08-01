@@ -12,6 +12,7 @@ import { useStoreShoppingCart } from "../../lib/zustand/shoppingCartStore";
 import useSWR from "swr";
 import { fetcher, swrOptions } from "../../lib/swr/swrConfig";
 import Nid from "nid";
+import { urlShoppingCart } from "../../lib/routes/routes";
 
 const Navbar: React.FC<NavbarProps> = () => {
   const {
@@ -21,13 +22,14 @@ const Navbar: React.FC<NavbarProps> = () => {
     initCart,
     isLoadingCart,
     setLoadingCart,
+    setHasCart,
   } = useStoreShoppingCart();
 
   const pathname = usePathname();
 
   const links = [{ name: "About", href: "/about" }];
 
-  const url = userId ? `/api/shoppingCart?user=${userId}` : null;
+  const url = userId ? `${urlShoppingCart}?user=${userId}` : null;
   const { data, isLoading } = useSWR(url, fetcher, swrOptions);
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       initCart(data?.cart);
     }
     setLoadingCart(isLoading);
+    setHasCart(data?.hasCart);
   }, [isLoading]);
 
   return (

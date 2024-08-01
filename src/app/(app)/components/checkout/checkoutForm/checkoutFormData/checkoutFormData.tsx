@@ -25,7 +25,6 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
   } = methods;
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     setFormValue("form", data);
   };
 

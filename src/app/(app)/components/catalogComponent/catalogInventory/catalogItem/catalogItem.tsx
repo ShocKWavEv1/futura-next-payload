@@ -10,13 +10,21 @@ import {
   ModalKeys,
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
+import { useEffect, useState } from "react";
+import { urlShoppingCart } from "@/app/(app)/lib/routes/routes";
 
 const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
-  const { addToCart } = useStoreShoppingCart();
+  const { addToCart, hasCart, userId, shoppingBag } = useStoreShoppingCart();
   const { setModalOpen } = useStoreZustand();
   const toast = useToast();
 
+  const [itemToAdd, setItemToAdd] = useState<any>(null);
+
   const modalName: ModalKeys = "shoppingBag";
+
+  useEffect(() => {
+    if (itemToAdd) updateCartUser();
+  }, [itemToAdd]);
 
   const handleAddtoCart = (item: any) => {
     addToCart(
@@ -24,6 +32,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       () => setModalOpen(modalName),
       () => handleToast()
     );
+    setItemToAdd(item);
+    !hasCart && createCartUser(item);
   };
 
   const handleToast = () => {
@@ -48,6 +58,34 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
         </Box>
       ),
     });
+  };
+
+  const createCartUser = async (item: any) => {
+    const response = await fetch(urlShoppingCart, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, item }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create shopping cart");
+    }
+  };
+
+  const updateCartUser = async () => {
+    const response = await fetch(urlShoppingCart, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, shoppingBag }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create shopping cart");
+    }
   };
 
   return (

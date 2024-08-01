@@ -13,9 +13,6 @@ const ShoppingBag: React.FC<ShoppingBagProps> = ({
 }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "shoppingBag";
-
-  console.log("isLoading", isLoading);
-  console.log("shoppingBag", shoppingBag);
   return (
     <Box
       width="auto"

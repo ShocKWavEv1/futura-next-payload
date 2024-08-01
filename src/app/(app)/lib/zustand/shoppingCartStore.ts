@@ -4,8 +4,10 @@ interface StoreState {
   userId: string | null;
   shoppingBag: any;
   isLoadingCart: boolean;
+  hasCart: boolean;
   setUserId: (userId: string | null) => void;
   setLoadingCart: (isLoading: boolean) => void;
+  setHasCart: (hasCart: boolean) => void;
   initCart: (cart: any) => void;
   addToCart: (item: any, callback: () => void, toast: () => void) => void;
   removeFromCart: (item: any) => void;
@@ -14,7 +16,9 @@ interface StoreState {
 
 export const useStoreShoppingCart = create<StoreState>((set) => ({
   userId: null,
+  shoppingBag: [],
   isLoadingCart: true,
+  hasCart: false,
   setUserId: (userId) => {
     set(() => ({
       userId,
@@ -25,7 +29,11 @@ export const useStoreShoppingCart = create<StoreState>((set) => ({
       isLoadingCart: isLoading,
     }));
   },
-  shoppingBag: [],
+  setHasCart: (hasCart) => {
+    set(() => ({
+      hasCart: hasCart,
+    }));
+  },
   initCart: (cart) => {
     set(() => ({
       shoppingBag: cart,
@@ -51,14 +59,17 @@ export const useStoreShoppingCart = create<StoreState>((set) => ({
     });
   },
   removeFromCart: (item) => {
-    set((state) => ({
-      shoppingBag: {
-        ...state.shoppingBag,
-        items: state.shoppingBag.items.filter(
-          (cartItem: any) => cartItem.catalogItem.id !== item.catalogItem.id
-        ),
-      },
-    }));
+    set((state) => {
+      const updatedItems = state.shoppingBag.items.filter(
+        (cartItem: any) => cartItem.catalogItem.id !== item.catalogItem.id
+      );
+      return {
+        shoppingBag: {
+          ...state.shoppingBag,
+          items: updatedItems,
+        },
+      };
+    });
   },
   removeAll: () => {
     set((state) => ({

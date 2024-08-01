@@ -11,7 +11,6 @@ const MenuItem: React.FC<MenuItemProps> = ({
   isCheckout = false,
   item,
 }) => {
-  console.log("item", item);
   return (
     <Box
       w="100%"
