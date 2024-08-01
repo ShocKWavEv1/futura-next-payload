@@ -37,6 +37,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       localStorage.setItem("userId", Nid(12));
     }
     setUserId(localStorage.getItem("userId"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
     setLoadingCart(isLoading);
     setHasCart(data?.hasCart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   return (

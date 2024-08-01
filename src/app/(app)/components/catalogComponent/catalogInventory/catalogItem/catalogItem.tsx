@@ -24,6 +24,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
 
   useEffect(() => {
     if (itemToAdd) updateCartUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemToAdd]);
 
   const handleAddtoCart = (item: any) => {
