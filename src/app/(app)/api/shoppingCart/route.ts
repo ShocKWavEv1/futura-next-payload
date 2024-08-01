@@ -20,6 +20,11 @@ export async function POST(req: Request) {
 
 export async function PATCH(req: Request) {
   const { userId, shoppingBag } = await req.json();
-  const response = await updateCart(userId, shoppingBag);
-  return NextResponse.json(response);
+  try {
+    const response = await updateCart(userId, shoppingBag);
+    return NextResponse.json(response);
+  } catch (err) {
+    console.error("Error handling PATCH request", err);
+    return NextResponse.json({ status: 500, message: err });
+  }
 }

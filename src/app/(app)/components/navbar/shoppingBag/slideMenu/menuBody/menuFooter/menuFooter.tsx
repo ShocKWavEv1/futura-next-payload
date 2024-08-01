@@ -13,13 +13,14 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
   const { setModalOpen } = useStoreZustand();
   const router = useRouter();
   const modalName: ModalKeys = "shoppingBag";
+  const bagEmpty = shoppingBag?.items.length !== 0;
   return (
     <Box
       w="100%"
       h="17svh"
       display="grid"
       gridTemplateColumns="1fr"
-      borderTop="1.4px solid white"
+      borderTop={bagEmpty ? "1.4px solid white" : "none"}
       borderColor="white"
       bg="black"
     >
@@ -30,23 +31,26 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
         gridTemplateColumns="1fr auto"
         pt="10px"
       >
-        <Box
-          w="100%"
-          display="flex"
-          alignItems="center"
-          justifyContent="flex-start"
-        >
-          <Text variant="MDMEDIUM" color="white">
-            Total: {shoppingBag?.items.length !== 0 && `$32,789`}
-          </Text>
-        </Box>
+        {bagEmpty && (
+          <Box
+            w="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            <Text variant="MDMEDIUM" color="white">
+              Total: $32,789
+            </Text>
+          </Box>
+        )}
+
         <Box
           w="100%"
           display="flex"
           alignItems="center"
           justifyContent="flex-end"
         >
-          {shoppingBag?.items.length !== 0 && (
+          {bagEmpty && (
             <RemoveFromCart item={{}} type="all" text="Remover todo" />
           )}
         </Box>
@@ -59,17 +63,19 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
         justifyContent="center"
         mt="-10px"
       >
-        <Button
-          variant="white"
-          size="sm"
-          w="100%"
-          onClick={() => {
-            setModalOpen(modalName);
-            router.push("/checkout");
-          }}
-        >
-          🔥 Lo quiero todo 🔥
-        </Button>
+        {bagEmpty && (
+          <Button
+            variant="white"
+            size="sm"
+            w="100%"
+            onClick={() => {
+              setModalOpen(modalName);
+              router.push("/checkout");
+            }}
+          >
+            🔥 Lo quiero todo 🔥
+          </Button>
+        )}
       </Box>
     </Box>
   );
