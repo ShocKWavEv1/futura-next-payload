@@ -39,7 +39,16 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
             alignItems="center"
             justifyContent="flex-start"
           >
-            <Text variant="MDMEDIUM" color="white">
+            <Text
+              variant={[
+                "SMMEDIUM",
+                "SMMEDIUM",
+                "MDMEDIUM",
+                "MDMEDIUM",
+                "MDMEDIUM",
+              ]}
+              color="white"
+            >
               {`Total: ${calculateTotalBagPrice(shoppingBag)}`}
             </Text>
           </Box>

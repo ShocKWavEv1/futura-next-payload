@@ -20,7 +20,7 @@ const MenuHeader: React.FC<MenuHeaderProps> = () => {
         }}
         variant="LGMEDIUM"
         color="white"
-        fontSize="1.8vw"
+        fontSize="30px"
         cursor="pointer"
       >
         <TfiClose />

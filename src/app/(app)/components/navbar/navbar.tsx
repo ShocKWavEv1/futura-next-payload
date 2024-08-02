@@ -55,7 +55,13 @@ const Navbar: React.FC<NavbarProps> = () => {
         <Box
           w="100%"
           display="grid"
-          gridTemplateColumns="160px 1fr"
+          gridTemplateColumns={[
+            "120px 1fr",
+            "140px 1fr",
+            "160px 1fr",
+            "160px 1fr",
+            "160px 1fr",
+          ]}
           borderBottom="1.4px solid white"
         >
           <Box
@@ -91,7 +97,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                     alignItems="center"
                     cursor="pointer"
                   >
-                    <Text variant="MDREGULAR" color="white">
+                    <Text
+                      variant={[
+                        "SMREGULAR",
+                        "MDREGULAR",
+                        "MDREGULAR",
+                        "MDREGULAR",
+                        "MDREGULAR",
+                      ]}
+                      color="white"
+                    >
                       {link.name}
                     </Text>
                   </Box>

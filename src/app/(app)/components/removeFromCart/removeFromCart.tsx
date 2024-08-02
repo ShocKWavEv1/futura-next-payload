@@ -35,7 +35,7 @@ const RemoveFromCart: React.FC<RemoveFromCartProps> = ({
   return (
     <Box
       w="auto"
-      p="2px 10px"
+      p="4px 15px"
       bg="rgba(255, 255, 255, .1)"
       borderRadius="25em"
       display="flex"
@@ -54,7 +54,10 @@ const RemoveFromCart: React.FC<RemoveFromCartProps> = ({
         transition: "all .3s ease-in-out",
       }}
     >
-      <Text variant="XSMEDIUM" fontSize="0.9vw">
+      <Text
+        variant="XSMEDIUM"
+        fontSize={["13px", "12px", "12px", "12px", "12px"]}
+      >
         {text}
       </Text>
     </Box>

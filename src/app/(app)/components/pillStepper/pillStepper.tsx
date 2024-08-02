@@ -9,7 +9,7 @@ const PillStepper: React.FC<PillStepperProps> = ({ item }) => {
       p="0px 0px"
       bg="rgba(255, 255, 255, .1)"
       display="grid"
-      gridTemplateColumns="auto 1fr auto"
+      gridTemplateColumns="35px 1fr 35px"
       py="2px"
       borderRadius="4px"
     >
@@ -30,18 +30,18 @@ const PillStepper: React.FC<PillStepperProps> = ({ item }) => {
           transition: "all .3s ease-in-out",
         }}
       >
-        <Text variant="XSMEDIUM">
+        <Text variant="XSMEDIUM" fontSize="15px">
           <TfiMinus />
         </Text>
       </Box>
       <Box
-        w="50px"
+        w="40px"
         display="flex"
         alignItems="center"
         justifyContent="center"
         px="10px"
       >
-        <Text variant="XSMEDIUM" color="white">
+        <Text variant="XSMEDIUM" color="white" fontSize="15px">
           {item?.quantity}
         </Text>
       </Box>
@@ -62,7 +62,7 @@ const PillStepper: React.FC<PillStepperProps> = ({ item }) => {
           transition: "all .3s ease-in-out",
         }}
       >
-        <Text variant="XSMEDIUM">
+        <Text variant="XSMEDIUM" fontSize="15px">
           <TfiPlus />
         </Text>
       </Box>

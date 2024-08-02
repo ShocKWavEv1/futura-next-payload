@@ -32,12 +32,21 @@ const ShoppingBag: React.FC<ShoppingBagProps> = ({
         gap="10px"
         cursor="pointer"
       >
-        <Text variant="MDREGULAR" color="white">
+        <Text
+          variant={[
+            "SMREGULAR",
+            "MDREGULAR",
+            "MDREGULAR",
+            "MDREGULAR",
+            "MDREGULAR",
+          ]}
+          color="white"
+        >
           Bag
         </Text>
         <Box
-          w="26px"
-          h="26px"
+          w={["24px", "26px", "26px", "26px", "26px"]}
+          h={["24px", "26px", "26px", "26px", "26px"]}
           p="0px 0px"
           border="1px solid white"
           borderRadius="25em"
@@ -48,7 +57,11 @@ const ShoppingBag: React.FC<ShoppingBagProps> = ({
           {!shoppingBag && isLoading ? (
             <SkeletonCircle w="50%" h="50%" />
           ) : (
-            <Text variant="XSMEDIUM" fontSize="13px" color="white">
+            <Text
+              variant="XSMEDIUM"
+              fontSize={["12px", "13px", "13px", "13px", "13px"]}
+              color="white"
+            >
               {shoppingBag?.items?.length}
             </Text>
           )}

@@ -16,7 +16,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
       w="100%"
       h="auto"
       display="grid"
-      gridTemplateColumns="auto 1fr"
+      gridTemplateColumns={[
+        "1fr",
+        "auto 1fr",
+        "auto 1fr",
+        "auto 1fr",
+        "auto 1fr",
+      ]}
       gap="20px"
     >
       <Box
@@ -24,6 +30,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         h={isCheckout ? "120px" : "150px"}
         bg="primary.500"
         borderRadius="4px"
+        display={["none", "block", "block", "block", "block"]}
       >
         <Image
           src={item?.catalogItem?.mainImage?.url}
@@ -40,7 +47,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
       </Box>
       <Box
         w="100%"
-        h={isCheckout ? "120px" : "150px"}
+        h={[
+          "120px",
+          isCheckout ? "120px" : "150px",
+          isCheckout ? "120px" : "150px",
+          isCheckout ? "120px" : "150px",
+          isCheckout ? "120px" : "150px",
+        ]}
         display="grid"
         gridTemplateColumns="1fr auto"
       >
@@ -53,7 +66,16 @@ const MenuItem: React.FC<MenuItemProps> = ({
             justifyContent="flex-start"
             flexDirection="column"
           >
-            <Text variant="LGMEDIUM" color="white">
+            <Text
+              variant={[
+                "MDMEDIUM",
+                "MDMEDIUM",
+                "LGMEDIUM",
+                "LGMEDIUM",
+                "LGMEDIUM",
+              ]}
+              color="white"
+            >
               {item?.catalogItem?.name}
             </Text>
             <Box pt="10px">
@@ -72,6 +94,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
                     color="white"
                     display="flex"
                     gap="5px"
+                    fontSize={["14px", "14px", "auto", "auto", "auto"]}
                   >
                     <Box
                       w="auto"
@@ -109,7 +132,16 @@ const MenuItem: React.FC<MenuItemProps> = ({
             alignItems="flex-start"
             justifyContent="center"
           >
-            <Text variant="SMMEDIUM" color="white">
+            <Text
+              variant={[
+                "XSMEDIUM",
+                "XSMEDIUM",
+                "SMMEDIUM",
+                "SMMEDIUM",
+                "SMMEDIUM",
+              ]}
+              color="white"
+            >
               {calculateSinglePrice(item)}
             </Text>
           </Box>

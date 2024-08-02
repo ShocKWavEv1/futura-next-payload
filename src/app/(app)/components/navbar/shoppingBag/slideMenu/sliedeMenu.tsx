@@ -18,13 +18,19 @@ const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose }) => {
         <Box
           position="absolute"
           top={0}
-          left="100%"
+          left={["0%", "20%", "50%", "80%", "100%"]}
           right={0}
           bottom={0}
-          width="50vw"
+          width={["200%", "180%", "150%", "120%", "50vw"]}
           h="100svh"
           bg="black"
-          borderLeft="1.4px solid white"
+          borderLeft={[
+            "none",
+            "1.4px solid white",
+            "1.4px solid white",
+            "1.4px solid white",
+            "1.4px solid white",
+          ]}
           borderColor="white"
           p={basePadding()}
           onClick={(e) => {
