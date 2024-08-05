@@ -104,7 +104,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
     >
       <Box
         w="100%"
-        h="380px"
+        h={["420px", "320px", "320px", "320px", "380px"]}
         borderTopLeftRadius="12px"
         borderTopRightRadius="12px"
       >
@@ -159,7 +159,10 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
           alignItems="center"
           justifyContent="flex-start"
         >
-          <Text variant="MDMEDIUM" color="#000">
+          <Text
+            variant={["SMMEDIUM", "SMMEDIUM", "MDMEDIUM", "MDMEDIUM", "H1BOLD"]}
+            color="#000"
+          >
             {item.name}
           </Text>
         </Box>

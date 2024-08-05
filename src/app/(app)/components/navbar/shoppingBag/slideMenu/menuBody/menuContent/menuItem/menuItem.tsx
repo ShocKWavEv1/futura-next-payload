@@ -10,6 +10,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   showPill = true,
   isCheckout = false,
   item,
+  index,
 }) => {
   return (
     <Box
@@ -121,7 +122,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             alignItems="flex-end"
             justifyContent="flex-start"
           >
-            {showPill && <PillStepper item={item} />}
+            {showPill && <PillStepper item={item} index={index} />}
           </Box>
         </Box>
         <Box w="100%" display="grid" gridTemplateColumns="1fr">

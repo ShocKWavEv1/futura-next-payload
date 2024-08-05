@@ -1,19 +1,11 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/styled-system";
 
-const baseThemeMode = {
-  color: "black",
-  _dark: {
-    color: "white",
-  },
-};
-
 const baseH1Styles = {
   fontFamily: "Futura",
   fontSize: "120px",
   letterSpacing: -4.25,
   lineHeight: "110px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH2Styles = {
@@ -22,7 +14,6 @@ const baseH2Styles = {
   letterSpacing: -3.25,
   lineHeight: "92px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH3Styles = {
@@ -31,7 +22,6 @@ const baseH3Styles = {
   letterSpacing: -2.85,
   lineHeight: "76px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH4Styles = {
@@ -40,7 +30,6 @@ const baseH4Styles = {
   letterSpacing: -1.85,
   lineHeight: "68px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH5Styles = {
@@ -49,7 +38,6 @@ const baseH5Styles = {
   letterSpacing: -1.15,
   lineHeight: "52px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH6Styles = {
@@ -58,7 +46,6 @@ const baseH6Styles = {
   letterSpacing: -0.85,
   lineHeight: "42px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH7Styles = {
@@ -67,7 +54,6 @@ const baseH7Styles = {
   letterSpacing: -0.85,
   lineHeight: "42px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH8Styles = {
@@ -76,7 +62,6 @@ const baseH8Styles = {
   letterSpacing: -0.85,
   lineHeight: "30px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 const baseH9Styles = {
@@ -85,7 +70,6 @@ const baseH9Styles = {
   letterSpacing: -0.85,
   lineHeight: "30px",
   textTransform: "uppercase",
-  ...baseThemeMode,
 };
 
 /* H1 VARIANTS */

@@ -10,6 +10,7 @@ interface StoreState {
   setHasCart: (hasCart: boolean) => void;
   initCart: (cart: any) => void;
   addToCart: (item: any, callback: () => void, toast: () => void) => void;
+  updateCart: (index: number, newItem: any) => void;
   removeFromCart: (item: any) => void;
   removeAll: () => void;
 }
@@ -56,6 +57,18 @@ export const useStoreShoppingCart = create<StoreState>((set) => ({
       }
       toast();
       return state;
+    });
+  },
+  updateCart: (index, newItem) => {
+    set((state) => {
+      const updatedItems = [...state.shoppingBag.items];
+      updatedItems[index] = newItem;
+      return {
+        shoppingBag: {
+          ...state.shoppingBag,
+          items: updatedItems,
+        },
+      };
     });
   },
   removeFromCart: (item) => {

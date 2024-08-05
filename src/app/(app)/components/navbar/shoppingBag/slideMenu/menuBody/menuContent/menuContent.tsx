@@ -20,7 +20,7 @@ const MenuContent: React.FC<MenuContentProps> = () => {
       >
         {shoppingBag?.items.length !== 0 ? (
           shoppingBag?.items.map((item: any, index: number) => {
-            return <MenuItem key={item} item={item} />;
+            return <MenuItem key={item} item={item} index={index} />;
           })
         ) : (
           <Box w="100%" h="100%" />
