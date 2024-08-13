@@ -1,1 +1,3 @@
-export interface OriginalsComponentProps {}
+export interface OriginalsComponentProps {
+  originals: any;
+}

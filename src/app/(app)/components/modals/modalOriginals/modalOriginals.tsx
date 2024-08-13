@@ -1,14 +1,16 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { ModalCategoriesProps } from "./model";
+import { ModalOriginalsProps } from "./model";
 
-const ModalCategories: React.FC<ModalCategoriesProps> = ({ handleClose }) => {
-  const categories: any = [1, 2, 3, 4, 5, 6];
+const ModalOriginals: React.FC<ModalOriginalsProps> = ({
+  originals,
+  handleClose,
+}) => {
   return (
     <Box width="100%" display="grid" gridTemplateColumns="1fr" gap="20px">
-      {categories.map((category: any, index: number) => {
+      {originals.map((original: any, index: number) => {
         return (
           <Box
-            key={category}
+            key={original}
             w="100%"
             p="10px 10px"
             bg={index === 0 ? "primary.500" : "transparent"}
@@ -16,8 +18,8 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({ handleClose }) => {
             onClick={handleClose}
             cursor="pointer"
           >
-            <Heading variant="H4BOLD" color="white">
-              Category {index}
+            <Heading variant="H6BOLD" color="white">
+              {original.name}
             </Heading>
           </Box>
         );
@@ -26,4 +28,4 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({ handleClose }) => {
   );
 };
 
-export default ModalCategories;
+export default ModalOriginals;

@@ -6,10 +6,13 @@ import VideoComponent from "../videoComponent/videoComponent";
 import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
 import { AnimatePresence } from "framer-motion";
 import Modal from "../modal/modal";
+import ModalPromos from "../modals/modalPromos/modalPromos";
 
-const HeroCompact: React.FC<HeroCompactProps> = () => {
+const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "promosHero";
+
+  const download = filesDownload[0]?.data[0]?.fileDownload?.url;
 
   return (
     <Box w="100%" p={basePadding()}>
@@ -76,9 +79,16 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
           </Button>
         </Box>
         <Box>
-          <Button shadow="2xl" size="sm" className="view" colorScheme="primary">
-            Descargar lista de equipo
-          </Button>
+          <a href={download} download>
+            <Button
+              shadow="2xl"
+              size="sm"
+              className="view"
+              colorScheme="primary"
+            >
+              Descargar lista de equipo
+            </Button>
+          </a>
         </Box>
       </Box>
       <Box w="100%">
@@ -87,7 +97,10 @@ const HeroCompact: React.FC<HeroCompactProps> = () => {
       <AnimatePresence mode="wait">
         {modals.promosHero && (
           <Modal handleClose={() => setModalOpen(modalName)}>
-            Hi promosHero
+            <ModalPromos
+              promos={promos}
+              handleClose={() => setModalOpen(modalName)}
+            />
           </Modal>
         )}
       </AnimatePresence>

@@ -8,8 +8,9 @@ import {
   ModalKeys,
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
+import ModalOriginals from "../../modals/modalOriginals/modalOriginals";
 
-const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
+const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({ originals }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "originalsCategories";
   return (
@@ -46,7 +47,10 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = () => {
       <AnimatePresence mode="wait">
         {modals.originalsCategories && (
           <Modal handleClose={() => setModalOpen(modalName)}>
-            Hi Originals
+            <ModalOriginals
+              originals={originals}
+              handleClose={() => setModalOpen(modalName)}
+            />
           </Modal>
         )}
       </AnimatePresence>

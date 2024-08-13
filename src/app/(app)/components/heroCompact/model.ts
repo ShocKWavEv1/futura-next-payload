@@ -1,1 +1,4 @@
-export interface HeroCompactProps {}
+export interface HeroCompactProps {
+  promos: any;
+  filesDownload: any;
+}

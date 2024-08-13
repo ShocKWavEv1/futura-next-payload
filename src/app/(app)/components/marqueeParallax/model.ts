@@ -1,1 +1,3 @@
-export interface MarqueeParallaxProps {}
+export interface MarqueeParallaxProps {
+  requirements: any;
+}

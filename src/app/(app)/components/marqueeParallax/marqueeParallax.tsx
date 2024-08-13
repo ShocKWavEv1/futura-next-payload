@@ -11,8 +11,9 @@ import {
 } from "framer-motion";
 import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
 import Modal from "../modal/modal";
+import ModalRequirements from "../modals/modalRequirements/modalRequirements";
 
-const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
+const MarqueeParallax: React.FC<MarqueeParallaxProps> = ({ requirements }) => {
   const [isHover, setIsHover] = useState(false);
   const container: any = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -21,7 +22,7 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
   });
 
   const { modals, setModalOpen } = useStoreZustand();
-  const modalName: ModalKeys = "promos";
+  const modalName: ModalKeys = "requirements";
 
   return (
     <Box mt="100px" w="100%" overflow="hidden">
@@ -41,11 +42,17 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = () => {
           progress={scrollYProgress}
           isHover={isHover}
           setHover={() => setIsHover(!isHover)}
+          length={requirements[0]?.requirements?.length}
         />
       </Box>
       <AnimatePresence mode="wait">
-        {modals.promos && (
-          <Modal handleClose={() => setModalOpen(modalName)}>Hi Promos</Modal>
+        {modals.requirements && (
+          <Modal handleClose={() => setModalOpen(modalName)}>
+            <ModalRequirements
+              requirements={requirements}
+              handleClose={() => setModalOpen(modalName)}
+            />
+          </Modal>
         )}
       </AnimatePresence>
     </Box>
@@ -79,6 +86,7 @@ const Slide = (props: any) => {
             src={props.src}
             isHover={props.isHover}
             setHover={() => props.setHover()}
+            length={props.length}
           />
         );
       })}
@@ -90,10 +98,12 @@ const Phrase = ({
   src,
   isHover,
   setHover,
+  length,
 }: {
   src: any;
   isHover: boolean;
   setHover: any;
+  length: any;
 }) => {
   return (
     <Box
@@ -120,7 +130,7 @@ const Phrase = ({
         textTransform="uppercase"
         className={!isHover ? "requirements" : "requirements_hover"}
       >
-        See all 3 Requirements
+        See all {length} Requirements
       </Text>
       <Text
         variant="LGBOLD"

@@ -1,1 +1,3 @@
-export interface CatalogHeaderProps {}
+export interface CatalogHeaderProps {
+  categories: any;
+}

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { OriginalItemProps } from "./model";
 import { AnimatePresence } from "framer-motion";
@@ -7,9 +8,15 @@ import {
   ModalKeys,
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
+import ModalOriginalVideo from "../../../modals/modalOriginalVideo/modalOriginalVideo";
 
-const OriginalItem: React.FC<OriginalItemProps> = ({ index, item }) => {
+const OriginalItem: React.FC<OriginalItemProps> = ({
+  index,
+  item,
+  project,
+}) => {
   const { modals, setModalOpen } = useStoreZustand();
+  const [isVideoUrl, setIsVideoUrl] = useState("");
   const modalName: ModalKeys = `originalsVideo_${index}`;
   return (
     <Box
@@ -17,15 +24,18 @@ const OriginalItem: React.FC<OriginalItemProps> = ({ index, item }) => {
       bg="white"
       p="20px"
       borderRadius="12px"
-      onClick={() => setModalOpen(modalName)}
+      onClick={() => {
+        setIsVideoUrl(item.urlVideo);
+        setModalOpen(modalName);
+      }}
     >
       <Box cursor="pointer">
         <Text variant="LGMEDIUM" color="#000">
-          Episodio 0{index + 1} - Edurne Keel
+          {item.name}
         </Text>
         <Box pt="30px">
           <Text variant="XSMEDIUM" color="#000">
-            Rompiendo La Cuarta Pared
+            {project}
           </Text>
         </Box>
       </Box>
@@ -33,7 +43,10 @@ const OriginalItem: React.FC<OriginalItemProps> = ({ index, item }) => {
       <AnimatePresence mode="wait">
         {modals[modalName] && (
           <Modal handleClose={() => setModalOpen(modalName)}>
-            Hi originalsVideo {index + 1}
+            <ModalOriginalVideo
+              originalVideo={isVideoUrl}
+              handleClose={() => setModalOpen(modalName)}
+            />
           </Modal>
         )}
       </AnimatePresence>

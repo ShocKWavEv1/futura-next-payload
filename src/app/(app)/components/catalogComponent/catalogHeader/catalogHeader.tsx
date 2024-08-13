@@ -9,9 +9,9 @@ import {
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
 import Modal from "../../modal/modal";
-import ModalCategories from "../../modalCategories/modalCategories";
+import ModalCategories from "../../modals/modalCategories/modalCategories";
 
-const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
+const CatalogHeader: React.FC<CatalogHeaderProps> = ({ categories }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "categories";
   return (
@@ -57,7 +57,10 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = () => {
       <AnimatePresence mode="wait">
         {modals.categories && (
           <Modal handleClose={() => setModalOpen(modalName)}>
-            <ModalCategories handleClose={() => setModalOpen(modalName)} />
+            <ModalCategories
+              categories={categories}
+              handleClose={() => setModalOpen(modalName)}
+            />
           </Modal>
         )}
       </AnimatePresence>

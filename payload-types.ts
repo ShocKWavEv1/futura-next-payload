@@ -19,6 +19,8 @@ export interface Config {
     team: Team;
     reel: Reel;
     originals: Original;
+    requirements: Requirement;
+    filesDownload: FilesDownload;
     media: Media;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -218,6 +220,35 @@ export interface Original {
     } | null;
     thumbnail: number | Media;
     duration?: string | null;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "requirements".
+ */
+export interface Requirement {
+  id: number;
+  requirements: {
+    description: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "filesDownload".
+ */
+export interface FilesDownload {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  data: {
+    fileDownload: number | Media;
     id?: string | null;
   }[];
   updatedAt: string;

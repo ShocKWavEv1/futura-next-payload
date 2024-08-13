@@ -12,19 +12,49 @@ import Footer from "./components/footer/footer";
 const payload = await getPayloadHMR({ config: configPromise });
 
 const Page = async () => {
+  const filesDownload = await payload.find({
+    collection: "filesDownload",
+    limit: 10,
+    sort: "createdAt",
+  });
+
   const catalog = await payload.find({
     collection: "catalog",
     limit: 100,
     sort: "createdAt",
   });
 
+  const promos = await payload.find({
+    collection: "promos",
+    limit: 10,
+    sort: "createdAt",
+  });
+
+  const requirements = await payload.find({
+    collection: "requirements",
+    limit: 10,
+    sort: "createdAt",
+  });
+
+  const categories = await payload.find({
+    collection: "categories",
+    limit: 10,
+    sort: "createdAt",
+  });
+
+  const originals = await payload.find({
+    collection: "originals",
+    limit: 10,
+    sort: "createdAt",
+  });
+
   return (
     <Box bg="black" w="100%" h="auto">
-      <HeroCompact />
-      <RequirementsMovil />
-      <CatalogComponent catalog={catalog.docs} />
+      <HeroCompact promos={promos.docs} filesDownload={filesDownload.docs} />
+      <RequirementsMovil requirements={requirements.docs} />
+      <CatalogComponent catalog={catalog.docs} categories={categories.docs} />
       <Reel />
-      <Originals />
+      <Originals originals={originals.docs} />
       <Footer />
     </Box>
   );

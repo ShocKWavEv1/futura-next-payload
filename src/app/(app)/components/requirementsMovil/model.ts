@@ -1,1 +1,3 @@
-export interface RequirementsMovilProps {}
+export interface RequirementsMovilProps {
+  requirements: any;
+}

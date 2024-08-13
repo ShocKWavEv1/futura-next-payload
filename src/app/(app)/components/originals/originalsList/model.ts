@@ -1,1 +1,3 @@
-export interface OriginalsListProps {}
+export interface OriginalsListProps {
+  originals: any;
+}

@@ -4,7 +4,7 @@ import { OriginalsComponentProps } from "./model";
 import OriginalsList from "./originalsList/originalList";
 import OriginalsHeader from "./originalsHeader/originalsHeader";
 
-const Originals: React.FC<OriginalsComponentProps> = () => {
+const Originals: React.FC<OriginalsComponentProps> = ({ originals }) => {
   return (
     <Box
       w="100%"
@@ -31,8 +31,8 @@ const Originals: React.FC<OriginalsComponentProps> = () => {
           come to fruition.
         </Heading>
       </Box>
-      <OriginalsHeader />
-      <OriginalsList />
+      <OriginalsHeader originals={originals} />
+      <OriginalsList originals={originals} />
     </Box>
   );
 };

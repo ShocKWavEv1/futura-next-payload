@@ -5,6 +5,7 @@ export type ModalKeys =
   | "originalsCategories"
   | `originalsVideo_${number}`
   | "promos"
+  | "requirements"
   | "promosHero"
   | "shoppingBag";
 

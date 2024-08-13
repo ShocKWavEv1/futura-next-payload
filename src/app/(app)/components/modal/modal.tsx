@@ -18,8 +18,8 @@ const Modal: React.FC<ModalProps> = ({ children, handleClose }) => {
       >
         <Box
           onClick={(e) => e.stopPropagation()}
-          w="50vw"
-          maxHeight="70svh"
+          w={["50vw", "50vw", "50vw", "50vw", "60vw"]}
+          maxHeight="80svh"
           shadow="2xl"
           borderRadius="4px"
           bg="black"

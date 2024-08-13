@@ -3,7 +3,9 @@ import { RequirementsMovilProps } from "./model";
 import { basePadding } from "../../lib/basePadding";
 import MarqueeParallax from "../marqueeParallax/marqueeParallax";
 
-const RequirementsMovil: React.FC<RequirementsMovilProps> = () => {
+const RequirementsMovil: React.FC<RequirementsMovilProps> = ({
+  requirements,
+}) => {
   return (
     <Box w="100%" display="flex" flexDirection="column" mt="100px">
       <Box w="100%" p={basePadding()}>
@@ -20,7 +22,7 @@ const RequirementsMovil: React.FC<RequirementsMovilProps> = () => {
           brings the brightest flame casts.
         </Heading>
       </Box>
-      <MarqueeParallax />
+      <MarqueeParallax requirements={requirements} />
     </Box>
   );
 };

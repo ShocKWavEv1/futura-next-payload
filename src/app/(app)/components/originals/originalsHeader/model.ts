@@ -1,1 +1,3 @@
-export interface OriginalsHeaderProps {}
+export interface OriginalsHeaderProps {
+  originals: any;
+}

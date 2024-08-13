@@ -17,6 +17,8 @@ import { PromosCollection } from "@/collections/promos";
 import { OriginalsCollection } from "@/collections/originals";
 import Logo from "@/components/Logo";
 import Icon from "@/components/Icon";
+import { RequirementsCollection } from "@/collections/requirements";
+import { FilesDownloadCollection } from "@/collections/filesDownload";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -33,6 +35,8 @@ export default buildConfig({
     TeamCollection,
     ReelCollection,
     OriginalsCollection,
+    RequirementsCollection,
+    FilesDownloadCollection,
     MediaCollection,
   ],
   secret: process.env.PAYLOAD_SECRET ?? "",
