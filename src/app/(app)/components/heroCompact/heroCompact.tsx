@@ -59,7 +59,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
       <Box
         w="100%"
         display="grid"
-        gridTemplateColumns="auto 1fr"
+        gridTemplateColumns={["1fr", "1fr", "auto 1fr", "auto 1fr", "auto 1fr"]}
         gap="10px"
         pb="40px"
         borderBottom="1.4px solid white"

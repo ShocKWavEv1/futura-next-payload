@@ -1,10 +1,9 @@
-export interface CatalogComponentProps {
-  catalog: any;
-  categories: any;
+export interface PaginationProps {
   totalPages: number;
-  page: number | undefined;
+  currentPage: any;
   hasNextPage: boolean;
   hasPrevPage: boolean;
   limit: number;
   totalDocs: number;
+  setCurrentPage: (page: number) => void;
 }

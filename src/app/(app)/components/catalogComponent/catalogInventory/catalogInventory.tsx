@@ -11,10 +11,10 @@ const CatalogInventory: React.FC<CatalogInventoryProps> = ({ catalog }) => {
         display="grid"
         gridTemplateColumns={[
           "1fr",
-          "1fr 1fr",
+          "1fr",
           "1fr 1fr",
           "1fr 1fr 1fr",
-          "1fr 1fr 1fr",
+          "repeat(3, 1fr)",
         ]}
         gap="20px"
       >

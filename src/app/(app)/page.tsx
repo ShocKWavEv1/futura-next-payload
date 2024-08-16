@@ -20,8 +20,9 @@ const Page = async () => {
 
   const catalog = await payload.find({
     collection: "catalog",
-    limit: 100,
+    limit: 3,
     sort: "createdAt",
+    page: 1,
   });
 
   const promos = await payload.find({
@@ -52,7 +53,16 @@ const Page = async () => {
     <Box bg="black" w="100%" h="auto">
       <HeroCompact promos={promos.docs} filesDownload={filesDownload.docs} />
       <RequirementsMovil requirements={requirements.docs} />
-      <CatalogComponent catalog={catalog.docs} categories={categories.docs} />
+      <CatalogComponent
+        catalog={catalog.docs}
+        categories={categories.docs}
+        totalPages={catalog.totalPages}
+        page={catalog.page}
+        hasNextPage={catalog.hasNextPage}
+        hasPrevPage={catalog.hasPrevPage}
+        limit={catalog.limit}
+        totalDocs={catalog.totalDocs}
+      />
       <Reel />
       <Originals originals={originals.docs} />
       <Footer />
