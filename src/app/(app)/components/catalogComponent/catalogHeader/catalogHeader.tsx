@@ -11,7 +11,11 @@ import {
 import Modal from "../../modal/modal";
 import ModalCategories from "../../modals/modalCategories/modalCategories";
 
-const CatalogHeader: React.FC<CatalogHeaderProps> = ({ categories }) => {
+const CatalogHeader: React.FC<CatalogHeaderProps> = ({
+  categories,
+  currentCategory,
+  setCurrentCategory,
+}) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "categories";
   return (
@@ -22,7 +26,7 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({ categories }) => {
         color="white"
         textAlign="left"
       >
-        Available for rent
+        Disponible para renta
       </Heading>
       <Box
         w="auto"
@@ -43,7 +47,7 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({ categories }) => {
           display="flex"
           gap="20px"
         >
-          All categories
+          {currentCategory.description}
           <Box
             w="auto"
             display="flex"
@@ -59,6 +63,10 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({ categories }) => {
           <Modal handleClose={() => setModalOpen(modalName)}>
             <ModalCategories
               categories={categories}
+              currentCategory={currentCategory}
+              setCurrentCategory={(category: any) =>
+                setCurrentCategory(category)
+              }
               handleClose={() => setModalOpen(modalName)}
             />
           </Modal>

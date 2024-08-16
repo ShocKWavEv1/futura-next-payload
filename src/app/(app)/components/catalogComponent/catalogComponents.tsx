@@ -20,6 +20,14 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
   const [initialLoad, setInitialLoad] = useState(true);
   const [currentPage, setCurrentPage] = useState(page);
   const [currentCatalog, setCurrentCatalog] = useState(catalog);
+  const [currentCategory, setCurrentCategory] = useState(
+    categories.find((category: any) => {
+      return category.slug === "catalogo";
+    })
+  );
+  const [currentTotalPages, setCurrentTotalPages] = useState(totalPages);
+  const [currentHasNextPage, setCurrentHasNextPage] = useState(hasNextPage);
+  const [currentHasPrevPage, setCurrentHasPrevPage] = useState(hasPrevPage);
 
   useEffect(() => {
     setInitialLoad(false);
@@ -27,22 +35,35 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
 
   useEffect(() => {
     if (!initialLoad) {
-      console.log("handle", currentPage);
-      handlePagination();
+      handleCategoryPagination();
     }
   }, [currentPage]);
 
-  const handlePagination = async () => {
+  useEffect(() => {
+    if (!initialLoad) {
+      setCurrentPage(page);
+      handleCategoryPagination(1);
+    }
+  }, [currentCategory]);
+
+  const handleCategoryPagination = async (page: any = currentPage) => {
     const response = await fetch(
-      `${urlCatalogPagination}?currentPage=${currentPage}&limit=${limit}`
+      `${urlCatalogPagination}?currentPage=${page}&limit=${limit}&category=${currentCategory.id}`
     );
     const data = await response.json();
     setCurrentCatalog(data?.catalog);
+    setCurrentTotalPages(data?.totalPages);
+    setCurrentHasNextPage(data?.hasNextPage);
+    setCurrentHasPrevPage(data?.hasPrevPage);
   };
 
   return (
     <Box w="100%" display="flex" flexDirection="column" mt="100px">
-      <CatalogHeader categories={categories} />
+      <CatalogHeader
+        categories={categories}
+        currentCategory={currentCategory}
+        setCurrentCategory={(category: any) => setCurrentCategory(category)}
+      />
       <CatalogInventory catalog={currentCatalog} />
       {catalog.length > 0 && (
         <Box
@@ -53,11 +74,11 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
           justifyContent="center"
         >
           <Pagination
-            totalPages={totalPages}
+            totalPages={currentTotalPages}
             currentPage={currentPage}
             setCurrentPage={(page: number) => setCurrentPage(page)}
-            hasNextPage={hasNextPage}
-            hasPrevPage={hasPrevPage}
+            hasNextPage={currentHasNextPage}
+            hasPrevPage={currentHasPrevPage}
             limit={limit}
             totalDocs={totalDocs}
           />

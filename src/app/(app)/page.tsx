@@ -18,11 +18,26 @@ const Page = async () => {
     sort: "createdAt",
   });
 
+  const categories = await payload.find({
+    collection: "categories",
+    limit: 10,
+    sort: "createdAt",
+  });
+
+  const allCatalog: any = categories.docs.find((category: any) => {
+    return category.slug === "catalogo";
+  });
+
   const catalog = await payload.find({
     collection: "catalog",
     limit: 3,
     sort: "createdAt",
     page: 1,
+    where: {
+      categories: {
+        equals: allCatalog.id,
+      },
+    },
   });
 
   const promos = await payload.find({
@@ -33,12 +48,6 @@ const Page = async () => {
 
   const requirements = await payload.find({
     collection: "requirements",
-    limit: 10,
-    sort: "createdAt",
-  });
-
-  const categories = await payload.find({
-    collection: "categories",
     limit: 10,
     sort: "createdAt",
   });

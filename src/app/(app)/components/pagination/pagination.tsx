@@ -29,6 +29,8 @@ const Pagination: React.FC<PaginationProps> = ({
       flexDirection="row"
     >
       <Box
+        w="30px"
+        h="30px"
         p="5px"
         borderRadius="2px"
         bg="black"
@@ -37,10 +39,11 @@ const Pagination: React.FC<PaginationProps> = ({
         display="flex"
         alignItems="center"
         justifyContent="center"
-        _hover={{ bg: "rgba(0,0,0,.75)" }}
+        color="white"
+        _hover={{ bg: "white", color: "black" }}
         onClick={() => handlePageClick(currentPage - 1)}
       >
-        <Text variant="SMMEDIUM" color="white">
+        <Text variant="XSMEDIUM" fontSize="14px">
           <TfiAngleLeft />
         </Text>
       </Box>
@@ -74,6 +77,8 @@ const Pagination: React.FC<PaginationProps> = ({
         );
       })}
       <Box
+        w="30px"
+        h="30px"
         p="5px"
         borderRadius="2px"
         bg="black"
@@ -82,10 +87,11 @@ const Pagination: React.FC<PaginationProps> = ({
         display="flex"
         alignItems="center"
         justifyContent="center"
-        _hover={{ bg: "rgba(0,0,0,.75)" }}
+        color="white"
+        _hover={{ bg: "white", color: "black" }}
         onClick={() => handlePageClick(currentPage + 1)}
       >
-        <Text variant="SMMEDIUM" color="white">
+        <Text variant="XSMEDIUM" fontSize="14px">
           <TfiAngleRight />
         </Text>
       </Box>

@@ -3,13 +3,22 @@ import configPromise from "@payload-config";
 
 const payload = await getPayloadHMR({ config: configPromise });
 
-export async function getCatalogPagination(currentPage: number, limit: number) {
+export async function getCatalogPagination(
+  currentPage: number,
+  limit: number,
+  category: number
+) {
   try {
     const catalog = await payload.find({
       collection: "catalog",
-      limit: limit,
+      limit: 3,
       sort: "createdAt",
       page: currentPage,
+      where: {
+        categories: {
+          equals: category,
+        },
+      },
     });
     return {
       status: 200,
