@@ -16,7 +16,7 @@ const ModalRequirements: React.FC<ModalRequirementsProps> = ({
               <Heading as="span" variant="H7BOLD" color="primary.500">
                 ---
               </Heading>{" "}
-              {item.description}
+              {item?.description}
             </Heading>
           </Box>
         );

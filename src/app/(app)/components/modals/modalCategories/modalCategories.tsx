@@ -30,7 +30,7 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({
             cursor="pointer"
           >
             <Heading variant="H4BOLD" color="white">
-              {category.description}
+              {category?.description}
             </Heading>
           </Box>
         );

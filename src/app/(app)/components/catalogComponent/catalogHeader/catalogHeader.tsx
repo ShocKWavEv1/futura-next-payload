@@ -47,7 +47,7 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({
           display="flex"
           gap="20px"
         >
-          {currentCategory.description}
+          {currentCategory?.description}
           <Box
             w="auto"
             display="flex"
