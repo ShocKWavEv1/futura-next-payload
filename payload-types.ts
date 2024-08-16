@@ -200,6 +200,7 @@ export interface Original {
   id: number;
   name: string;
   slug: string;
+  type?: string | null;
   originals: {
     name: string;
     urlVideo: string;

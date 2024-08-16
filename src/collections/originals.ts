@@ -38,6 +38,12 @@ export const OriginalsCollection: CollectionConfig = {
       required: true,
     },
     {
+      name: "type",
+      label: "Type",
+      type: "text",
+      required: false,
+    },
+    {
       name: "originals",
       type: "array",
       required: true,
