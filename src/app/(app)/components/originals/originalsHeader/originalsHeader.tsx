@@ -38,7 +38,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({
         gap="20px"
         cursor="pointer"
       >
-        {originals.name}
+        {originals?.name}
         <Box
           w="auto"
           display="flex"

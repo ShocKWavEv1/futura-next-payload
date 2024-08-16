@@ -29,7 +29,7 @@ const ModalOriginals: React.FC<ModalOriginalsProps> = ({
             cursor="pointer"
           >
             <Heading variant="H6BOLD" color="white">
-              {original.name}
+              {original?.name}
             </Heading>
           </Box>
         );

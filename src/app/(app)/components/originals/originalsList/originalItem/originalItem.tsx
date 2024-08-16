@@ -31,7 +31,7 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
     >
       <Box cursor="pointer">
         <Text variant="LGMEDIUM" color="#000">
-          {item.name}
+          {item?.name}
         </Text>
         <Box pt="30px">
           <Text variant="XSMEDIUM" color="#000">

@@ -13,7 +13,7 @@ const OriginalsList: React.FC<OriginalsListProps> = ({ originals }) => {
               key={item}
               index={index}
               item={item}
-              project={data.name}
+              project={data?.name}
             />
           );
         })}
