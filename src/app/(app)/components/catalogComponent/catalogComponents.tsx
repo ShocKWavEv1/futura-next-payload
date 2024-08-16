@@ -48,7 +48,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
 
   const handleCategoryPagination = async (page: any = currentPage) => {
     const response = await fetch(
-      `${urlCatalogPagination}?currentPage=${page}&limit=${limit}&category=${currentCategory.id}`
+      `${urlCatalogPagination}?currentPage=${page}&limit=${limit}&category=${currentCategory?.id}`
     );
     const data = await response.json();
     setCurrentCatalog(data?.catalog);

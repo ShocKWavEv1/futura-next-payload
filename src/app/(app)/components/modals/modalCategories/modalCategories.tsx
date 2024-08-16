@@ -21,7 +21,9 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({
             w="100%"
             p="10px 10px"
             bg={
-              currentCategory.id === category.id ? "primary.500" : "transparent"
+              currentCategory?.id === category?.id
+                ? "primary.500"
+                : "transparent"
             }
             _hover={{ bg: "primary.500", transition: "all .3s ease-in-out" }}
             onClick={() => handleSelectCategory(category)}

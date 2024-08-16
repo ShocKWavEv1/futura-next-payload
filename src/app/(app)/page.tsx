@@ -24,7 +24,7 @@ const Page = async () => {
     sort: "createdAt",
   });
 
-  const allCatalog: any = categories.docs.find((category: any) => {
+  const allCatalog: any = categories?.docs.find((category: any) => {
     return category.slug === "catalogo";
   });
 
@@ -35,7 +35,7 @@ const Page = async () => {
     page: 1,
     where: {
       categories: {
-        equals: allCatalog.id,
+        equals: allCatalog?.id,
       },
     },
   });

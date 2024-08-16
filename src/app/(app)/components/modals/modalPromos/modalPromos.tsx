@@ -33,7 +33,7 @@ const ModalPromos: React.FC<ModalPromosProps> = ({ promos, handleClose }) => {
                       border="1.4px solid white"
                       borderRadius="4px"
                       p="15px"
-                      key={item.id}
+                      key={item?.id}
                       display="flex"
                       alignItems="flex-start"
                       justifyContent="center"
