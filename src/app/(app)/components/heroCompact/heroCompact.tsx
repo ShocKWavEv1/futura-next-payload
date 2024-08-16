@@ -7,10 +7,12 @@ import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
 import { AnimatePresence } from "framer-motion";
 import Modal from "../modal/modal";
 import ModalPromos from "../modals/modalPromos/modalPromos";
+import ModalWhatContain from "../modals/modalWhatContain/modalWhatContain";
 
 const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "promosHero";
+  const modalNameWhatContain: ModalKeys = "whatContain";
 
   const download = filesDownload[0]?.data[0]?.fileDownload?.url;
 
@@ -65,7 +67,13 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
         borderBottom="1.4px solid white"
       >
         <Box w="100%" gap="10px" display="flex">
-          <Button shadow="2xl" size="sm" className="view" variant="white">
+          <Button
+            shadow="2xl"
+            size="sm"
+            className="view"
+            variant="white"
+            onClick={() => setModalOpen(modalNameWhatContain)}
+          >
             ¿Que contiene?
           </Button>
           <Button
@@ -100,6 +108,14 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
             <ModalPromos
               promos={promos}
               handleClose={() => setModalOpen(modalName)}
+            />
+          </Modal>
+        )}
+        {modals.whatContain && (
+          <Modal handleClose={() => setModalOpen(modalNameWhatContain)}>
+            <ModalWhatContain
+              urlVideo="media/van.mp4"
+              handleClose={() => setModalOpen(modalNameWhatContain)}
             />
           </Modal>
         )}

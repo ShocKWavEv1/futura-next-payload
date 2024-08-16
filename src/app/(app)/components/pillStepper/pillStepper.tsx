@@ -16,6 +16,7 @@ const PillStepper: React.FC<PillStepperProps> = ({ item, index }) => {
     if (JSON.stringify(debouncedShoppingBag) !== JSON.stringify(shoppingBag)) {
       updateCartUser();
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [debouncedShoppingBag, shoppingBag]);
 
   const updateCartUser = async () => {

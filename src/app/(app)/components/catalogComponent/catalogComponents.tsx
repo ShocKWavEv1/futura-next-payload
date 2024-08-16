@@ -37,6 +37,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
     if (!initialLoad) {
       handleCategoryPagination();
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [currentPage]);
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
       setCurrentPage(page);
       handleCategoryPagination(1);
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [currentCategory]);
 
   const handleCategoryPagination = async (page: any = currentPage) => {

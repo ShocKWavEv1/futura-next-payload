@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export type ModalKeys =
+  | "whatContain"
   | "categories"
   | "originalsCategories"
   | `originalsVideo_${number}`
