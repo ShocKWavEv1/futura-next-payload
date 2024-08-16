@@ -9,11 +9,14 @@ import TextInput from "@/app/(app)/lib/ui/textInput/textInput";
 import CheckBoxinput from "@/app/(app)/lib/ui/checkboxInput/checkBoxInput";
 import AlertMessage from "@/app/(app)/lib/ui/alertMessage/alertMessage";
 import { formSchema } from "@/app/(app)/lib/zod/formSchemas/checkoutSchema";
+import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
+import { handleWhatsAppMessage } from "@/app/(app)/utils/utils";
 
 type FormData = z.infer<typeof formSchema>;
 
 const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
   const { form, setFormValue } = useStoreZustand();
+  const { shoppingBag } = useStoreShoppingCart();
   const methods = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: form,
@@ -26,6 +29,10 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
 
   const onSubmit = (data: FormData) => {
     setFormValue("form", data);
+    const message: any = handleWhatsAppMessage(data, shoppingBag);
+    window.open(
+      `https://api.whatsapp.com/send?phone=525543416012&text=${message}`
+    );
   };
 
   const watchCheckbox = watch("locationCheckbox");
