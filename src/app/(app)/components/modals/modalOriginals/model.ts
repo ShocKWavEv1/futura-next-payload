@@ -1,4 +1,6 @@
 export interface ModalOriginalsProps {
-  originals: any;
+  currentOriginal: any;
+  originalsCategories: any;
+  setCurrentOriginal: (original: any) => void;
   handleClose: () => void;
 }

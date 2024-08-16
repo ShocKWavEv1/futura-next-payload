@@ -27,6 +27,12 @@ const ModalPromos: React.FC<ModalPromosProps> = ({ promos, handleClose }) => {
                 gridTemplateColumns="1fr 1fr"
               >
                 {promo?.promos?.map((item: any, index: number) => {
+                  const temporalityLabel =
+                    item.temporality === "dia"
+                      ? `X ${item.temporality}`
+                      : item.temporality === "off"
+                      ? "OFF"
+                      : "";
                   return (
                     <Box
                       w="100%"
@@ -45,11 +51,7 @@ const ModalPromos: React.FC<ModalPromosProps> = ({ promos, handleClose }) => {
                           ? `${item.price}%`
                           : formatPrice(item.price)}{" "}
                         <Heading as="span" variant="H7BOLD" color="white">
-                          {item.temporality === "dia"
-                            ? `X ${item.temporality}`
-                            : item.temporality === "off"
-                            ? "OFF"
-                            : ""}
+                          {temporalityLabel}
                         </Heading>
                       </Heading>
                       <Text variant="XSBOLD" color="primary.500">

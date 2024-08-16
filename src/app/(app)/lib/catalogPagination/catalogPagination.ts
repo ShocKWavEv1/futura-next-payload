@@ -5,13 +5,13 @@ const payload = await getPayloadHMR({ config: configPromise });
 
 export async function getCatalogPagination(
   currentPage: number,
-  limit: number,
+  limit: any,
   category: number
 ) {
   try {
     const catalog = await payload.find({
       collection: "catalog",
-      limit: 3,
+      limit: parseInt(limit),
       sort: "createdAt",
       page: currentPage,
       where: {

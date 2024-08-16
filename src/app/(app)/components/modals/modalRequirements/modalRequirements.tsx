@@ -1,6 +1,5 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { ModalRequirementsProps } from "./model";
-import Head from "next/head";
 
 const ModalRequirements: React.FC<ModalRequirementsProps> = ({
   requirements,

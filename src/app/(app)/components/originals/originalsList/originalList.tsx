@@ -3,7 +3,7 @@ import { OriginalsListProps } from "./model";
 import OriginalItem from "./originalItem/originalItem";
 
 const OriginalsList: React.FC<OriginalsListProps> = ({ originals }) => {
-  const data = originals[0];
+  const data = originals;
   return (
     <Box w="100%" mt="30px">
       <Box w="100%" display="grid" gridTemplateColumns="1fr 1fr" gap="20px">

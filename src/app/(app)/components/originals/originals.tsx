@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { basePadding } from "../../lib/basePadding";
 import { OriginalsComponentProps } from "./model";
@@ -5,6 +7,12 @@ import OriginalsList from "./originalsList/originalList";
 import OriginalsHeader from "./originalsHeader/originalsHeader";
 
 const Originals: React.FC<OriginalsComponentProps> = ({ originals }) => {
+  const [currentOriginal, setCurrentOriginal] = useState(
+    originals?.find((category: any) => {
+      return category.slug === "rompiendo-la-cuarta-pared";
+    })
+  );
+
   return (
     <Box
       w="100%"
@@ -31,8 +39,12 @@ const Originals: React.FC<OriginalsComponentProps> = ({ originals }) => {
           come to fruition.
         </Heading>
       </Box>
-      <OriginalsHeader originals={originals} />
-      <OriginalsList originals={originals} />
+      <OriginalsHeader
+        originals={currentOriginal}
+        originalsCategories={originals}
+        setCurrentOriginal={(original: any) => setCurrentOriginal(original)}
+      />
+      <OriginalsList originals={currentOriginal} />
     </Box>
   );
 };

@@ -10,7 +10,11 @@ import {
 } from "@/app/(app)/lib/zustand/zustandStore";
 import ModalOriginals from "../../modals/modalOriginals/modalOriginals";
 
-const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({ originals }) => {
+const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({
+  originals,
+  originalsCategories,
+  setCurrentOriginal,
+}) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "originalsCategories";
   return (
@@ -34,7 +38,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({ originals }) => {
         gap="20px"
         cursor="pointer"
       >
-        Rompiendo la cuarta pared
+        {originals.name}
         <Box
           w="auto"
           display="flex"
@@ -48,7 +52,11 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({ originals }) => {
         {modals.originalsCategories && (
           <Modal handleClose={() => setModalOpen(modalName)}>
             <ModalOriginals
-              originals={originals}
+              currentOriginal={originals}
+              originalsCategories={originalsCategories}
+              setCurrentOriginal={(original: any) =>
+                setCurrentOriginal(original)
+              }
               handleClose={() => setModalOpen(modalName)}
             />
           </Modal>
