@@ -41,13 +41,20 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
     <Box
       w="100%"
       display="flex"
-      alignItems="flex-start"
+      alignItems={[
+        "center",
+        "center",
+        "flex-start",
+        "flex-start",
+        "flex-start",
+        "flex-start",
+      ]}
       justifyContent="flex-start"
       flexDirection="column"
-      pt="40px"
+      pt={["30px", "30px", "40px", "40px", "40px", "0px"]}
     >
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)} style={{ width: "85%" }}>
+        <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
           <Box w="100%" display="flex" flexDirection="column" gap="30px">
             <TextInput
               type="text"

@@ -12,6 +12,10 @@ import {
 import { ModalKeys, useStoreZustand } from "../../lib/zustand/zustandStore";
 import Modal from "../modal/modal";
 import ModalRequirements from "../modals/modalRequirements/modalRequirements";
+import {
+  mainSectionSpacers,
+  marqueeParallaxSizes,
+} from "../../lib/baseResponsive/baseResponsive";
 
 const MarqueeParallax: React.FC<MarqueeParallaxProps> = ({ requirements }) => {
   const [isHover, setIsHover] = useState(false);
@@ -25,7 +29,7 @@ const MarqueeParallax: React.FC<MarqueeParallaxProps> = ({ requirements }) => {
   const modalName: ModalKeys = "requirements";
 
   return (
-    <Box mt="100px" w="100%" overflow="hidden">
+    <Box mt={mainSectionSpacers} w="100%" overflow="hidden">
       <Box
         borderTop="1.4px solid white"
         borderBottom="1.4px solid white"
@@ -117,7 +121,7 @@ const Phrase = ({
     >
       <Text
         variant="LGBOLD"
-        fontSize="3.5vw"
+        fontSize={marqueeParallaxSizes}
         color="white"
         textTransform="uppercase"
       >
@@ -125,7 +129,7 @@ const Phrase = ({
       </Text>
       <Text
         variant="LGBOLD"
-        fontSize="3.5vw"
+        fontSize={marqueeParallaxSizes}
         color="white"
         textTransform="uppercase"
         className={!isHover ? "requirements" : "requirements_hover"}
@@ -134,7 +138,7 @@ const Phrase = ({
       </Text>
       <Text
         variant="LGBOLD"
-        fontSize="3.5vw"
+        fontSize={marqueeParallaxSizes}
         color="white"
         textTransform="uppercase"
       >

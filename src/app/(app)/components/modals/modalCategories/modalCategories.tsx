@@ -29,7 +29,17 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({
             onClick={() => handleSelectCategory(category)}
             cursor="pointer"
           >
-            <Heading variant="H4BOLD" color="white">
+            <Heading
+              variant={[
+                "H6BOLD",
+                "H6BOLD",
+                "H4BOLD",
+                "H4BOLD",
+                "H4BOLD",
+                "H4BOLD",
+              ]}
+              color="white"
+            >
               {category?.description}
             </Heading>
           </Box>

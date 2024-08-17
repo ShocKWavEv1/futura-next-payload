@@ -9,6 +9,10 @@ import {
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
 import ModalOriginals from "../../modals/modalOriginals/modalOriginals";
+import {
+  headerOriginalsSelectionLineHeightSizes,
+  headerOriginalsSeletionSizes,
+} from "@/app/(app)/lib/baseResponsive/baseResponsive";
 
 const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({
   originals,
@@ -23,27 +27,39 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({
       display="flex"
       mt="20px"
       flexDirection="row"
-      borderRadius="12px"
       onClick={() => setModalOpen(modalName)}
     >
       <Heading
-        variant="H1BOLD"
-        fontSize="max(60px, 3.166667vw)"
+        variant={["H1BOLD", "H5BOLD", "H4BOLD", "H4BOLD", "H4BOLD", "H4BOLD"]}
+        w={["100%", "100%", "auto", "auto", "auto", "auto"]}
+        fontSize={headerOriginalsSeletionSizes}
+        lineHeight={headerOriginalsSelectionLineHeightSizes}
         color="white"
         textAlign="left"
         bg="primary.500"
         px="10px"
-        borderRadius="12px"
+        borderRadius="8px"
         display="flex"
-        gap="20px"
+        gap="40px"
         cursor="pointer"
+        position="relative"
       >
         {originals?.name}
         <Box
           w="auto"
+          h="100%"
           display="flex"
           alignItems="center"
           justifyContent="center"
+          position={[
+            "absolute",
+            "absolute",
+            "relative",
+            "relative",
+            "relative",
+          ]}
+          right={["10px", "10px", "0px", "0px", "0px", "0px"]}
+          top="0%"
         >
           <TfiAngleDown />
         </Box>

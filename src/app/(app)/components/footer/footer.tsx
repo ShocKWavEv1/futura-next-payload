@@ -2,21 +2,25 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import { FooterProps } from "./model";
 import { basePadding } from "../../lib/basePadding";
 import { TfiInstagram, TfiVimeo, TfiYoutube } from "react-icons/tfi";
+import {
+  headerFooterInGafferSizes,
+  mainSectionSpacers,
+} from "../../lib/baseResponsive/baseResponsive";
 
 const Footer: React.FC<FooterProps> = () => {
   return (
     <Box w="100%" p={basePadding()}>
       <Box
         w="100%"
-        mt="100px"
+        mt={mainSectionSpacers}
         display="flex"
         alignItems="center"
         justifyContent="center"
       >
         <Heading
-          pb="40px"
+          pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
           variant="H1BOLD"
-          fontSize="max(90px, 8.166667vw)"
+          fontSize={headerFooterInGafferSizes}
           color="white"
           textAlign="center"
           cursor="pointer"
@@ -31,7 +35,7 @@ const Footer: React.FC<FooterProps> = () => {
         w="100%"
         borderTop={"1.4px solid white"}
         borderColor="white"
-        p="20px 0px"
+        p={["30px 0px", "30px 0px", "20px 0px", "20px 0px", "20px 0px"]}
         display="flex"
         alignItems="center"
         justifyContent="center"

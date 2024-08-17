@@ -11,7 +11,10 @@ const CheckoutForm: React.FC<CheckoutFormProps> = () => {
       alignItems="flex-start"
       justifyContent="flex-start"
     >
-      <Heading variant="H6BOLD" color="white">
+      <Heading
+        variant={["H6BOLD", "H6BOLD", "H6BOLD", "H6BOLD", "H6BOLD", "H6BOLD"]}
+        color="white"
+      >
         SOLO UNOS DATOS MAS…
       </Heading>
       <Text pt="10px" variant="SMMEDIUM" color="white">

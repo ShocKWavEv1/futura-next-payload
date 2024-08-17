@@ -24,7 +24,14 @@ const ModalPromos: React.FC<ModalPromosProps> = ({ promos, handleClose }) => {
                 w="100%"
                 gap="20px"
                 display="grid"
-                gridTemplateColumns="1fr 1fr"
+                gridTemplateColumns={[
+                  "1fr",
+                  "1fr 1fr",
+                  "1fr 1fr",
+                  "1fr 1fr",
+                  "1fr 1fr",
+                  "1fr 1fr",
+                ]}
               >
                 {promo?.promos?.map((item: any, index: number) => {
                   const temporalityLabel =

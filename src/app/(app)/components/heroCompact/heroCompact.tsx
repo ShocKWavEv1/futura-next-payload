@@ -8,6 +8,10 @@ import { AnimatePresence } from "framer-motion";
 import Modal from "../modal/modal";
 import ModalPromos from "../modals/modalPromos/modalPromos";
 import ModalWhatContain from "../modals/modalWhatContain/modalWhatContain";
+import {
+  mainHeaderLineHeightSizes,
+  mainHeaderSizes,
+} from "../../lib/baseResponsive/baseResponsive";
 
 const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
   const { modals, setModalOpen } = useStoreZustand();
@@ -32,11 +36,12 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
           justifyContent="flex-start"
         >
           <Heading
-            pt="50px"
+            pt={["30px", "30px", "40px", "40px", "40px", "40px"]}
             variant="H1BOLD"
-            fontSize="max(90px, 8.166667vw)"
+            fontSize={mainHeaderSizes}
             color="white"
             textAlign="left"
+            lineHeight={mainHeaderLineHeightSizes}
           >
             Compact Movil
           </Heading>
@@ -48,11 +53,12 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
           justifyContent="flex-start"
         >
           <Heading
-            pb="40px"
+            pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
             variant="H1BOLD"
-            fontSize="max(90px, 8.166667vw)"
+            fontSize={mainHeaderSizes}
             color="white"
             textAlign="left"
+            lineHeight={mainHeaderLineHeightSizes}
           >
             Grip & Electric Van
           </Heading>
@@ -63,7 +69,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
         display="grid"
         gridTemplateColumns={["1fr", "1fr", "auto 1fr", "auto 1fr", "auto 1fr"]}
         gap="10px"
-        pb="40px"
+        pb={["30px", "30px", "40px", "40px", "40px", "40px"]}
         borderBottom="1.4px solid white"
       >
         <Box w="100%" gap="10px" display="flex">

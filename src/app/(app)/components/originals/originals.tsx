@@ -5,6 +5,11 @@ import { basePadding } from "../../lib/basePadding";
 import { OriginalsComponentProps } from "./model";
 import OriginalsList from "./originalsList/originalList";
 import OriginalsHeader from "./originalsHeader/originalsHeader";
+import {
+  mainContentHeaderSizes,
+  mainContentLineHeightSizes,
+  mainSectionSpacers,
+} from "../../lib/baseResponsive/baseResponsive";
 
 const Originals: React.FC<OriginalsComponentProps> = ({ originals }) => {
   const [currentOriginal, setCurrentOriginal] = useState(
@@ -18,13 +23,19 @@ const Originals: React.FC<OriginalsComponentProps> = ({ originals }) => {
       w="100%"
       display="flex"
       flexDirection="column"
-      mt="100px"
+      mt={mainSectionSpacers}
       p={basePadding()}
     >
-      <Box w="100%" pt="60px" borderTop="1.4px solid white" borderColor="white">
+      <Box
+        w="100%"
+        pt={["60px", "50px", "60px", "60px", "60px", "60px"]}
+        borderTop="1.4px solid white"
+        borderColor="white"
+      >
         <Heading
           variant="H1BOLD"
-          fontSize="max(90px, 5.166667vw)"
+          fontSize={mainContentHeaderSizes}
+          lineHeight={mainContentLineHeightSizes}
           color="white"
           textAlign="left"
         >

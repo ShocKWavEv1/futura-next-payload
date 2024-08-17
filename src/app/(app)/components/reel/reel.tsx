@@ -2,6 +2,11 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import { ReelProps } from "./model";
 import { basePadding } from "../../lib/basePadding";
 import VideoComponent from "../videoComponent/videoComponent";
+import {
+  mainContentHeaderSizes,
+  mainContentLineHeightSizes,
+  mainSectionSpacers,
+} from "../../lib/baseResponsive/baseResponsive";
 
 const Reel: React.FC<ReelProps> = () => {
   return (
@@ -9,13 +14,19 @@ const Reel: React.FC<ReelProps> = () => {
       w="100%"
       display="flex"
       flexDirection="column"
-      mt="100px"
+      mt={mainSectionSpacers}
       p={basePadding()}
     >
-      <Box w="100%" pt="60px" borderTop="1.4px solid white" borderColor="white">
+      <Box
+        w="100%"
+        pt={["60px", "50px", "60px", "60px", "60px", "60px"]}
+        borderTop="1.4px solid white"
+        borderColor="white"
+      >
         <Heading
           variant="H1BOLD"
-          fontSize="max(90px, 5.166667vw)"
+          fontSize={mainContentHeaderSizes}
+          lineHeight={mainContentLineHeightSizes}
           color="white"
           textAlign="left"
         >

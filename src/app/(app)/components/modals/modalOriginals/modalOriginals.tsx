@@ -28,7 +28,17 @@ const ModalOriginals: React.FC<ModalOriginalsProps> = ({
             onClick={() => handleClick(original)}
             cursor="pointer"
           >
-            <Heading variant="H6BOLD" color="white">
+            <Heading
+              variant={[
+                "H9BOLD",
+                "H8BOLD",
+                "H6BOLD",
+                "H6BOLD",
+                "H6BOLD",
+                "H6BOLD",
+              ]}
+              color="white"
+            >
               {original?.name}
             </Heading>
           </Box>

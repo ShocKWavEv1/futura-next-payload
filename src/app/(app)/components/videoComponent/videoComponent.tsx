@@ -1,9 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import { VideoComponentProps } from "./model";
+import { videoSizes } from "../../lib/baseResponsive/baseResponsive";
 
 const VideoComponent: React.FC<VideoComponentProps> = ({
   video,
-  height = "80svh",
+  height = videoSizes,
 }) => {
   return (
     <Box mt="20px" w="100%" h={height} bg="white" borderRadius="12px">
@@ -15,7 +16,7 @@ const VideoComponent: React.FC<VideoComponentProps> = ({
         muted
         style={{
           width: "100%",
-          height: height,
+          height: "100%",
           borderRadius: "12px",
           objectFit: "cover",
         }}

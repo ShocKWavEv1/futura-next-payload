@@ -10,6 +10,10 @@ import {
 } from "@/app/(app)/lib/zustand/zustandStore";
 import Modal from "../../modal/modal";
 import ModalCategories from "../../modals/modalCategories/modalCategories";
+import {
+  headerSelectionLineHeightSizes,
+  headerSelectionSizes,
+} from "@/app/(app)/lib/baseResponsive/baseResponsive";
 
 const CatalogHeader: React.FC<CatalogHeaderProps> = ({
   categories,
@@ -22,7 +26,8 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({
     <Box w="100%" p={basePadding()}>
       <Heading
         variant="H1BOLD"
-        fontSize="max(90px, 5.166667vw)"
+        fontSize={headerSelectionSizes}
+        lineHeight={headerSelectionLineHeightSizes}
         color="white"
         textAlign="left"
       >
@@ -32,13 +37,14 @@ const CatalogHeader: React.FC<CatalogHeaderProps> = ({
         w="auto"
         display="flex"
         flexDirection="row"
-        borderRadius="12px"
+        borderRadius="8px"
         cursor="pointer"
         onClick={() => setModalOpen(modalName)}
       >
         <Heading
           variant="H1BOLD"
-          fontSize="max(90px, 5.166667vw)"
+          fontSize={headerSelectionSizes}
+          lineHeight={headerSelectionLineHeightSizes}
           color="white"
           textAlign="left"
           bg="primary.500"

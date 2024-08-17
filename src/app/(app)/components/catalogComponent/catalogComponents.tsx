@@ -6,6 +6,7 @@ import CatalogHeader from "./catalogHeader/catalogHeader";
 import CatalogInventory from "./catalogInventory/catalogInventory";
 import Pagination from "../pagination/pagination";
 import { urlCatalogPagination } from "../../lib/routes/routes";
+import { mainSectionSpacers } from "../../lib/baseResponsive/baseResponsive";
 
 const CatalogComponent: React.FC<CatalogComponentProps> = ({
   catalog,
@@ -60,7 +61,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
   };
 
   return (
-    <Box w="100%" display="flex" flexDirection="column" mt="100px">
+    <Box w="100%" display="flex" flexDirection="column" mt={mainSectionSpacers}>
       <CatalogHeader
         categories={categories}
         currentCategory={currentCategory}

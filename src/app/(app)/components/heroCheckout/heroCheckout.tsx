@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { basePadding } from "../../lib/basePadding";
 import { HeroCheckoutProps } from "./model";
+import { mainContentHeaderSizes } from "../../lib/baseResponsive/baseResponsive";
 
 const HeroCheckout: React.FC<HeroCheckoutProps> = () => {
   return (
@@ -18,9 +19,21 @@ const HeroCheckout: React.FC<HeroCheckoutProps> = () => {
           alignItems="flex-start"
           justifyContent="flex-start"
           borderBottom="1.4px solid white"
-          pb="50px"
+          pb={["30px", "30px", "40px", "40px", "40px", "40px"]}
         >
-          <Heading pt="50px" variant="H4BOLD" color="white" textAlign="left">
+          <Heading
+            pt={["30px", "30px", "40px", "40px", "40px", "40px"]}
+            variant={[
+              "H6BOLD",
+              "H5BOLD",
+              "H4BOLD",
+              "H4BOLD",
+              "H4BOLD",
+              "H4BOLD",
+            ]}
+            color="white"
+            textAlign="left"
+          >
             ESTO{" "}
             <Text as="span" color="primary.500">
               NO ES UN CARRITO

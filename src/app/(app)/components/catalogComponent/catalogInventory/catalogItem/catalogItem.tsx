@@ -97,7 +97,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       display="grid"
       gridTemplateColumns="1fr"
       bg="white"
-      borderRadius="12px"
+      borderRadius="8px"
       position="relative"
       className="catalog_item_container"
       onClick={() => handleAddtoCart(item)}
@@ -105,8 +105,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       <Box
         w="100%"
         h={["420px", "420px", "320px", "320px", "380px"]}
-        borderTopLeftRadius="12px"
-        borderTopRightRadius="12px"
+        borderTopLeftRadius="8px"
+        borderTopRightRadius="8px"
       >
         <Box w="100%" h="100%">
           <Image
@@ -118,8 +118,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              borderTopRightRadius: "12px",
-              borderTopLeftRadius: "12px",
+              borderTopRightRadius: "8px",
+              borderTopLeftRadius: "8px",
             }}
           />
         </Box>

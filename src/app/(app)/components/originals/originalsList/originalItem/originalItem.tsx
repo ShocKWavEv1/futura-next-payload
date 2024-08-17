@@ -23,7 +23,7 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
       w="100%"
       bg="white"
       p="20px"
-      borderRadius="12px"
+      borderRadius="8px"
       onClick={() => {
         setIsVideoUrl(item.urlVideo);
         setModalOpen(modalName);
