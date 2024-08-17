@@ -104,7 +104,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
     >
       <Box
         w="100%"
-        h={["420px", "420px", "320px", "320px", "380px"]}
+        h={["320px", "420px", "320px", "320px", "380px"]}
         borderTopLeftRadius="8px"
         borderTopRightRadius="8px"
       >

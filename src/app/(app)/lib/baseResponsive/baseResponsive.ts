@@ -1,6 +1,6 @@
 export const mainHeaderSizes = [
-  "max(90px, 12.166667vw)",
-  "max(90px, 10.166667vw)",
+  "68px",
+  "max(90px, 6.166667vw)",
   "max(90px, 10.166667vw)",
   "max(90px, 9.166667vw)",
   "max(90px, 8.166667vw)",
@@ -8,7 +8,7 @@ export const mainHeaderSizes = [
 ];
 
 export const mainHeaderLineHeightSizes = [
-  "11.166667vw",
+  "70px",
   "90px",
   "10.166667vw",
   "9.166667vw",
@@ -17,7 +17,7 @@ export const mainHeaderLineHeightSizes = [
 ];
 
 export const videoSizes = [
-  "60svh",
+  "40svh",
   "60svh",
   "80svh",
   "80svh",
@@ -26,7 +26,7 @@ export const videoSizes = [
 ];
 
 export const mainContentHeaderSizes = [
-  "max(90px, 5.166667vw)",
+  "max(45px, 5.166667vw)",
   "max(65px, 5.166667vw)",
   "max(90px, 5.166667vw)",
   "max(90px, 5.166667vw)",
@@ -35,7 +35,7 @@ export const mainContentHeaderSizes = [
 ];
 
 export const mainContentLineHeightSizes = [
-  "6.166667vw",
+  "55px",
   "70px",
   "6.166667vw",
   "6.166667vw",
@@ -44,7 +44,7 @@ export const mainContentLineHeightSizes = [
 ];
 
 export const mainSectionSpacers = [
-  "100px",
+  "50px",
   "60px",
   "100px",
   "100px",
@@ -52,10 +52,10 @@ export const mainSectionSpacers = [
   "100px",
 ];
 
-export const marqueeParallaxSizes = ["6vw", "5.6vw", "3vw", "3vw", "3vw"];
+export const marqueeParallaxSizes = ["8.5vw", "5.6vw", "3vw", "3vw", "3vw"];
 
 export const headerSelectionSizes = [
-  "max(90px, 5.166667vw)",
+  "max(40px, 5.166667vw)",
   "max(65px, 5.166667vw)",
   "max(90px, 5.166667vw)",
   "max(90px, 5.166667vw)",
@@ -64,7 +64,7 @@ export const headerSelectionSizes = [
 ];
 
 export const headerSelectionLineHeightSizes = [
-  "6.166667vw",
+  "45px",
   "70px",
   "6.166667vw",
   "6.166667vw",
@@ -73,7 +73,7 @@ export const headerSelectionLineHeightSizes = [
 ];
 
 export const headerOriginalsSeletionSizes = [
-  "max(60px, 4.166667vw)",
+  "22px",
   "28px",
   "max(60px, 4.166667vw)",
   "max(60px, 4.166667vw)",
@@ -81,7 +81,7 @@ export const headerOriginalsSeletionSizes = [
 ];
 
 export const headerOriginalsSelectionLineHeightSizes = [
-  "6.166667vw",
+  "56px",
   "60px",
   "6.166667vw",
   "6.166667vw",
@@ -90,7 +90,7 @@ export const headerOriginalsSelectionLineHeightSizes = [
 ];
 
 export const headerFooterInGafferSizes = [
-  "max(90px, 8.166667vw)",
+  "32px",
   "52px",
   "max(90px, 8.166667vw)",
   "max(90px, 8.166667vw)",

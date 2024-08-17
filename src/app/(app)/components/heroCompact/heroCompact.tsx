@@ -83,6 +83,18 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
             ¿Que contiene?
           </Button>
           <Button
+            display={["none", "flex", "flex", "flex", "flex", "flex"]}
+            onClick={() => setModalOpen(modalName)}
+            shadow="2xl"
+            size="sm"
+            className="view"
+            variant="white"
+          >
+            Promociones
+          </Button>
+        </Box>
+        <Box display={["block", "none", "none", "none", "none", "none"]}>
+          <Button
             onClick={() => setModalOpen(modalName)}
             shadow="2xl"
             size="sm"

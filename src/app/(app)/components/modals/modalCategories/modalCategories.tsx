@@ -31,7 +31,7 @@ const ModalCategories: React.FC<ModalCategoriesProps> = ({
           >
             <Heading
               variant={[
-                "H6BOLD",
+                "H7BOLD",
                 "H6BOLD",
                 "H4BOLD",
                 "H4BOLD",

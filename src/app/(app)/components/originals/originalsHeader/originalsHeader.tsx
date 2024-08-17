@@ -30,7 +30,7 @@ const OriginalsHeader: React.FC<OriginalsHeaderProps> = ({
       onClick={() => setModalOpen(modalName)}
     >
       <Heading
-        variant={["H1BOLD", "H5BOLD", "H4BOLD", "H4BOLD", "H4BOLD", "H4BOLD"]}
+        variant={["H7BOLD", "H5BOLD", "H4BOLD", "H4BOLD", "H4BOLD", "H4BOLD"]}
         w={["100%", "100%", "auto", "auto", "auto", "auto"]}
         fontSize={headerOriginalsSeletionSizes}
         lineHeight={headerOriginalsSelectionLineHeightSizes}

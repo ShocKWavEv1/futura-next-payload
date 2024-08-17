@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = () => {
       >
         <Heading
           pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
-          variant="H1BOLD"
+          variant={["H7BOLD", "H1BOLD", "H1BOLD", "H1BOLD", "H1BOLD"]}
           fontSize={headerFooterInGafferSizes}
           color="white"
           textAlign="center"
@@ -35,7 +35,7 @@ const Footer: React.FC<FooterProps> = () => {
         w="100%"
         borderTop={"1.4px solid white"}
         borderColor="white"
-        p={["30px 0px", "30px 0px", "20px 0px", "20px 0px", "20px 0px"]}
+        p={["20px 0px", "30px 0px", "20px 0px", "20px 0px", "20px 0px"]}
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -59,7 +59,11 @@ const Footer: React.FC<FooterProps> = () => {
             <TfiYoutube color="white" />
           </Text>
         </Box>
-        <Text pt="20px" variant="MDMEDIUM" color="white">
+        <Text
+          pt="20px"
+          variant={["XSMEDIUM", "MDMEDIUM", "MDMEDIUM", "MDMEDIUM", "MDMEDIUM"]}
+          color="white"
+        >
           MMXXIV, FVTVRA | SLMRN
         </Text>
       </Box>
