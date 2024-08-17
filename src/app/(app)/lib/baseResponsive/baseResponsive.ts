@@ -52,7 +52,7 @@ export const mainSectionSpacers = [
   "100px",
 ];
 
-export const marqueeParallaxSizes = ["3.5vw", "5vw", "3vw", "3vw", "3vw"];
+export const marqueeParallaxSizes = ["6vw", "5.6vw", "3vw", "3vw", "3vw"];
 
 export const headerSelectionSizes = [
   "max(90px, 5.166667vw)",
