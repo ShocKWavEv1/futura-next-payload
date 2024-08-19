@@ -22,7 +22,7 @@ const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose }) => {
           right={0}
           bottom={0}
           width={["200%", "180%", "150%", "120%", "50vw"]}
-          h="101svh"
+          h="101dvh"
           bg="black"
           borderLeft={[
             "none",

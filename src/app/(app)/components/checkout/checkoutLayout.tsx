@@ -64,7 +64,7 @@ const CheckoutLayout: React.FC<CheckoutLayoutProps> = () => {
             >
               {shoppingBag?.items?.length === 0 ||
               (!shoppingBag && !isLoadingCart) ? (
-                <Box w="100%" h="40svh" />
+                <Box w="100%" h="40dvh" />
               ) : (
                 <CheckoutForm />
               )}

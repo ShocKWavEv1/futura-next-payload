@@ -8,7 +8,7 @@ const ModalWhatContain: React.FC<ModalWhatContainProps> = ({
 }) => {
   return (
     <Box w="100%">
-      <VideoComponent video={urlVideo} height="60svh" />
+      <VideoComponent video={urlVideo} height="60dvh" />
     </Box>
   );
 };

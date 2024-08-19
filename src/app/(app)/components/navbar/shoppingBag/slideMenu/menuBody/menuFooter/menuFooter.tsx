@@ -18,7 +18,7 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
   return (
     <Box
       w="100%"
-      h="17svh"
+      h="17dvh"
       display="grid"
       gridTemplateColumns="1fr"
       borderTop={bagEmpty ? "1.4px solid white" : "none"}

@@ -8,14 +8,14 @@ const MenuBody: React.FC<MenuBodyProps> = () => {
   return (
     <Box
       w="100%"
-      h="100svh"
+      h="100dvh"
       display="flex"
       flexDirection="column"
       onWheel={(event: any) => event.stopPropagation()}
     >
       <Box
         w="100%"
-        h="calc(100svh - 17svh)"
+        h="calc(100dvh - 17dvh)"
         display="flex"
         flexDirection="column"
         position="relative"

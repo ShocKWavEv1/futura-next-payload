@@ -17,12 +17,12 @@ export const mainHeaderLineHeightSizes = [
 ];
 
 export const videoSizes = [
-  "40svh",
-  "60svh",
-  "80svh",
-  "80svh",
-  "80svh",
-  "80svh",
+  "40dvh",
+  "60dvh",
+  "80dvh",
+  "80dvh",
+  "80dvh",
+  "80dvh",
 ];
 
 export const mainContentHeaderSizes = [
