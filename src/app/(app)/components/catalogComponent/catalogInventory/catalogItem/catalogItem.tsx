@@ -18,6 +18,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
   const { setModalOpen } = useStoreZustand();
   const toast = useToast();
 
+  console.log(item);
+
   const [itemToAdd, setItemToAdd] = useState<any>(null);
 
   const modalName: ModalKeys = "shoppingBag";
