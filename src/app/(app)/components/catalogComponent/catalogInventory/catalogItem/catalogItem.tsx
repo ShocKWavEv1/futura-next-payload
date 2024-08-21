@@ -22,9 +22,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
 
   const modalName: ModalKeys = "shoppingBag";
 
-  const imageUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ""}${
-    item?.mainImage?.url
-  }`;
+  console.log(item);
 
   useEffect(() => {
     if (itemToAdd) updateCartUser();
@@ -114,12 +112,12 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       >
         <Box w="100%" h="100%">
           <Image
-            src={
-              "https://unsplash.com/photos/a-living-room-filled-with-furniture-and-a-fire-place-PEvIC-L4IeE"
-            }
+            src={item.mainImage?.url}
             alt={item.name}
             width={200}
             height={380}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAECAIAAAArjXluAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJUlEQVR4nGO4c+d2bUsPAzMzQ3vPRAYnJ6f+vh6GBw8efP/+HQCseA2/ytznCwAAAABJRU5ErkJggg=="
             style={{
               width: "100%",
               height: "100%",
