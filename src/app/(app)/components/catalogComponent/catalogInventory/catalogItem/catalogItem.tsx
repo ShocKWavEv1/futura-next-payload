@@ -22,6 +22,12 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
 
   const modalName: ModalKeys = "shoppingBag";
 
+  console.log(
+    `${
+      process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : ""
+    }${item?.mainImage?.url}`
+  );
+
   useEffect(() => {
     if (itemToAdd) updateCartUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
