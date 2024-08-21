@@ -22,12 +22,6 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
 
   const modalName: ModalKeys = "shoppingBag";
 
-  console.log(
-    `${
-      process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : ""
-    }${item?.mainImage?.url}`
-  );
-
   useEffect(() => {
     if (itemToAdd) updateCartUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,11 +110,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       >
         <Box w="100%" h="100%">
           <Image
-            src={`${
-              process.env.NEXT_PUBLIC_BASE_URL
-                ? process.env.NEXT_PUBLIC_BASE_URL
-                : ""
-            }${item?.mainImage?.url}`}
+            src={item?.mainImage?.url}
             alt={item.name}
             width={200}
             height={380}
