@@ -114,7 +114,9 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       >
         <Box w="100%" h="100%">
           <Image
-            src={imageUrl}
+            src={
+              "https://unsplash.com/photos/a-living-room-filled-with-furniture-and-a-fire-place-PEvIC-L4IeE"
+            }
             alt={item.name}
             width={200}
             height={380}

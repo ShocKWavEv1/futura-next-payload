@@ -6,7 +6,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["localhost", "127.0.0.1", "futura-next-payload.vercel.app"], // Add any other domains you need
+    domains: [
+      "localhost",
+      "127.0.0.1",
+      "futura-next-payload.vercel.app",
+      "images.unsplash.com",
+    ], // Add any other domains you need
     remotePatterns: [
       {
         protocol: "https",
