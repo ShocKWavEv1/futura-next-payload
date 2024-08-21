@@ -18,8 +18,6 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
   const { setModalOpen } = useStoreZustand();
   const toast = useToast();
 
-  console.log(item);
-
   const [itemToAdd, setItemToAdd] = useState<any>(null);
 
   const modalName: ModalKeys = "shoppingBag";
@@ -112,7 +110,11 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       >
         <Box w="100%" h="100%">
           <Image
-            src={item?.mainImage?.url}
+            src={`${
+              process.env.NEXT_PUBLIC_BASE_URL
+                ? process.env.NEXT_PUBLIC_BASE_URL
+                : ""
+            }${item?.mainImage?.url}`}
             alt={item.name}
             width={200}
             height={380}

@@ -34,7 +34,11 @@ const MenuItem: React.FC<MenuItemProps> = ({
         display={["none", "block", "block", "block", "block"]}
       >
         <Image
-          src={item?.catalogItem?.mainImage?.url}
+          src={`${
+            process.env.NEXT_PUBLIC_BASE_URL
+              ? process.env.NEXT_PUBLIC_BASE_URL
+              : ""
+          }${item?.catalogItem?.mainImage?.url}`}
           alt="item"
           width={140}
           height={140}
