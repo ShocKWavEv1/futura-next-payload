@@ -109,9 +109,12 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
         borderTopRightRadius="8px"
       >
         <Box w="100%" h="100%">
-          <img
+          <Image
             src={item?.mainImage?.url}
             alt={item.name}
+            unoptimized
+            width={200}
+            height={380}
             style={{
               width: "100%",
               height: "100%",

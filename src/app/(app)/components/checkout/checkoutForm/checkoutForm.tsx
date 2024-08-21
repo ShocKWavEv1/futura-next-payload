@@ -5,7 +5,7 @@ import CheckoutFormData from "./checkoutFormData/checkoutFormData";
 const CheckoutForm: React.FC<CheckoutFormProps> = () => {
   return (
     <Box
-      w="100%"
+      w={["100%", "100%", "100%", "95%", "85%", "85%"]}
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
