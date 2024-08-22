@@ -12,13 +12,6 @@ export const CartCollection: CollectionConfig = {
     update: () => true,
     delete: () => true,
   },
-  hooks: {
-    afterChange: [
-      ({ doc }) => {
-        revalidatePage("cart");
-      },
-    ],
-  },
   fields: [
     {
       name: "user",

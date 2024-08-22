@@ -110,7 +110,6 @@ export async function updateCart(userId: any, shoppingBag: any) {
 
     shoppingBag.items.length !== 0 &&
       shoppingBag?.items?.map(async (item: any, idx: number) => {
-        console.log("updateCartn ITEM", item);
         updatedItems.push({
           catalogItem: item.catalogItem.id,
           quantity: item.quantity ? item.quantity : 1,
