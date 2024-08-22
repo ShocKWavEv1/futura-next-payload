@@ -25,6 +25,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         "auto 1fr",
       ]}
       gap="20px"
+      key={item.mainImageUrl}
     >
       <Box
         w={isCheckout ? "120px" : "150px"}
@@ -33,9 +34,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
         borderRadius="4px"
         display={["none", "block", "block", "block", "block"]}
       >
-        <img
-          src={item?.catalogItem?.mainImage?.url}
+        <Image
+          src={item?.mainImageUrl}
           alt={item?.catalogItem?.name}
+          width={200}
+          height={200}
+          placeholder="blur"
+          blurDataURL={item?.base64}
+          unoptimized
           style={{
             width: "100%",
             height: "100%",

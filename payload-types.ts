@@ -90,6 +90,8 @@ export interface Cart {
     | {
         catalogItem: number | Catalog;
         quantity: number;
+        mainImageUrl?: string | null;
+        base64?: string | null;
         id?: string | null;
       }[]
     | null;

@@ -1,5 +1,6 @@
 import { getPayloadHMR } from "@payloadcms/next/utilities";
 import configPromise from "@payload-config";
+import { processData } from "../../utils/utils";
 
 const payload = await getPayloadHMR({ config: configPromise });
 
@@ -20,10 +21,13 @@ export async function getCatalogPagination(
         },
       },
     });
+
+    const updatedCatalog = await processData(catalog);
+
     return {
       status: 200,
       message: "Revalidated",
-      catalog: catalog.docs,
+      catalog: updatedCatalog,
       totalPages: catalog.totalPages,
       page: catalog.page,
       hasNextPage: catalog.hasNextPage,

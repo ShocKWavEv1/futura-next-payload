@@ -8,7 +8,7 @@ import CatalogComponent from "./components/catalogComponent/catalogComponents";
 import Reel from "./components/reel/reel";
 import Originals from "./components/originals/originals";
 import Footer from "./components/footer/footer";
-import getBase64 from "./api/getBase64";
+import { processData } from "./utils/utils";
 
 const payload = await getPayloadHMR({ config: configPromise });
 
@@ -41,11 +41,7 @@ const Page = async () => {
     },
   });
 
-  const base64 = await getBase64(
-    "https://cdn.sanity.io/images/vpqqonbv/production/cf0717d78b4d729dc7cf29c67f07acac9892e30e-564x1043.jpg"
-  );
-
-  console.log(base64);
+  const updatedCatalog: any = await processData(catalog);
 
   const promos = await payload.find({
     collection: "promos",
@@ -70,7 +66,7 @@ const Page = async () => {
       <HeroCompact promos={promos.docs} filesDownload={filesDownload.docs} />
       <RequirementsMovil requirements={requirements.docs} />
       <CatalogComponent
-        catalog={catalog.docs}
+        catalog={updatedCatalog}
         categories={categories.docs}
         totalPages={catalog.totalPages}
         page={catalog.page}

@@ -40,6 +40,16 @@ export const CartCollection: CollectionConfig = {
           type: "number",
           required: true,
         },
+        {
+          name: "mainImageUrl",
+          type: "text",
+          required: false,
+        },
+        {
+          name: "base64",
+          type: "text",
+          required: false,
+        },
       ],
       required: false,
     },

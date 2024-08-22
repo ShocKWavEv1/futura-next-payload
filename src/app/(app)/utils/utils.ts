@@ -1,5 +1,7 @@
+import getBase64 from "../api/getBase64";
+
 export const formatPrice = (price: number) => {
-  return price.toLocaleString("en-US", {
+  return price?.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
@@ -53,4 +55,47 @@ export const handleWhatsAppMessage = (data: any, shoppingBag: any) => {
     shoppingBag
   )} %0a *TOTAL DE COTIZACION: ${calculateTotalBagPrice(shoppingBag)}mxn*`;
   return messageWhatsApp;
+};
+
+export const base64Placeholder =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVR4nAE0AMv/ANra4Pz8/ODf4M3O1ADj4+Ruc3YyLi1oYWEAW1pbAQUFAgECY2FjAI+Ok3JwdLGvtNjX3v2XGj2mfgmhAAAAAElFTkSuQmCC";
+
+const { NEXT_PUBLIC_BASE_URL } = process.env;
+
+export const buildImageUrl = (url: string) => {
+  return `${NEXT_PUBLIC_BASE_URL || ""}${url}`;
+};
+
+export const processData = async (catalog: any) => {
+  return Promise.all(
+    catalog.docs.map(async (item: any) => {
+      const mainImageUrl = buildImageUrl(item.mainImage?.url);
+      const base64 = NEXT_PUBLIC_BASE_URL
+        ? await getBase64(mainImageUrl)
+        : base64Placeholder;
+      item.mainImageUrl = mainImageUrl;
+      item.base64 = base64;
+      return item;
+    })
+  );
+};
+
+export const processDataCart = async (cart: any) => {
+  return Promise.all(
+    cart.docs[0]?.items?.map(async (item: any) => {
+      const mainImageUrl = buildImageUrl(item.catalogItem?.mainImage?.url);
+      const base64 = NEXT_PUBLIC_BASE_URL
+        ? await getBase64(mainImageUrl)
+        : base64Placeholder;
+      item.mainImageUrl = mainImageUrl;
+      item.base64 = base64;
+      return {
+        id: cart.docs[0].id,
+        user: cart.docs[0].user,
+        items: item,
+        createdAt: cart.docs[0].createdAt,
+        updatedAt: cart.docs[0].updatedAt,
+      };
+    })
+  );
 };

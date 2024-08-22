@@ -22,8 +22,6 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
 
   const modalName: ModalKeys = "shoppingBag";
 
-  console.log(item);
-
   useEffect(() => {
     if (itemToAdd) updateCartUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,6 +103,7 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       onClick={() => handleAddtoCart(item)}
     >
       <Box
+        key={item.mainImageUrl}
         w="100%"
         h={["320px", "420px", "320px", "320px", "380px"]}
         borderTopLeftRadius="8px"
@@ -112,12 +111,13 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
       >
         <Box w="100%" h="100%">
           <Image
-            src={item.mainImage?.url}
+            src={item.mainImageUrl}
             alt={item.name}
             width={200}
             height={380}
             placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAECAIAAAArjXluAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJUlEQVR4nGO4c+d2bUsPAzMzQ3vPRAYnJ6f+vh6GBw8efP/+HQCseA2/ytznCwAAAABJRU5ErkJggg=="
+            blurDataURL={item.base64}
+            unoptimized
             style={{
               width: "100%",
               height: "100%",

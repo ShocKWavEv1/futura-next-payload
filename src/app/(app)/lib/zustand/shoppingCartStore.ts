@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { base64Placeholder, buildImageUrl } from "../../utils/utils";
 
 interface StoreState {
   userId: string | null;
@@ -42,7 +43,12 @@ export const useStoreShoppingCart = create<StoreState>((set) => ({
   },
   addToCart: (item, callback, toast) => {
     set((state) => {
-      const newItem = { catalogItem: item, quantity: 1 };
+      const newItem = {
+        catalogItem: item,
+        quantity: 1,
+        mainImageUrl: buildImageUrl(item.mainImage.url),
+        base64: base64Placeholder,
+      };
       const itemExists = state.shoppingBag.items.some(
         (cartItem: any) => cartItem.catalogItem.id === item.id
       );
