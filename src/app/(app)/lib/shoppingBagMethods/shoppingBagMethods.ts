@@ -52,6 +52,7 @@ export async function getCart(userId: any) {
 
 export async function createCart(userId: any, item: any) {
   const mainImageUrl = buildImageUrl(item.mainImageUrl);
+  console.log("mainImageUrl", mainImageUrl);
   if (!userId) {
     return { status: 400, message: "Missing User ID" };
   }
@@ -112,6 +113,7 @@ export async function updateCart(userId: any, shoppingBag: any) {
     shoppingBag.items.length !== 0 &&
       shoppingBag?.items?.forEach(async (item: any, idx: number) => {
         const mainImageUrl = buildImageUrl(item.mainImageUrl);
+        console.log("mainImageUrlUPDATE", mainImageUrl);
         updatedItems.push({
           catalogItem: item.catalogItem.id,
           quantity: item.quantity ? item.quantity : 1,
