@@ -5,8 +5,11 @@ import {
   buildImageUrl,
   processDataCart,
 } from "../../utils/utils";
+import getBase64 from "../../api/getBase64";
 
 const payload = await getPayloadHMR({ config: configPromise });
+
+const { NEXT_PUBLIC_BASE_URL } = process.env;
 
 export async function getCart(userId: any) {
   if (!userId) {
@@ -48,8 +51,7 @@ export async function getCart(userId: any) {
 }
 
 export async function createCart(userId: any, item: any) {
-  const mainImageUrl = buildImageUrl(item.mainImageUrl);
-  console.log("mainImageUrl", mainImageUrl);
+  +console.log("createCart", item.mainImageUrl);
   if (!userId) {
     return { status: 400, message: "Missing User ID" };
   }
@@ -63,8 +65,10 @@ export async function createCart(userId: any, item: any) {
           {
             catalogItem: item.id,
             quantity: 1,
-            mainImageUrl,
-            base64: base64Placeholder,
+            mainImageUrl: item.mainImageUrl,
+            base64: NEXT_PUBLIC_BASE_URL
+              ? await getBase64(item.mainImageUrl)
+              : base64Placeholder,
           },
         ],
       },
@@ -83,6 +87,7 @@ export async function createCart(userId: any, item: any) {
 }
 
 export async function updateCart(userId: any, shoppingBag: any) {
+  console.log("updateCart", userId, shoppingBag);
   if (!userId) {
     return { status: 400, message: "Missing User ID" };
   }
@@ -106,13 +111,14 @@ export async function updateCart(userId: any, shoppingBag: any) {
     const updatedItems: any = [];
 
     shoppingBag.items.length !== 0 &&
-      shoppingBag?.items?.forEach((item: any, idx: number) => {
-        const mainImageUrl = buildImageUrl(item.mainImageUrl);
+      shoppingBag?.items?.forEach(async (item: any, idx: number) => {
         updatedItems.push({
           catalogItem: item.catalogItem.id,
           quantity: item.quantity ? item.quantity : 1,
-          mainImageUrl,
-          base64: base64Placeholder,
+          mainImageUrl: item.mainImageUrl,
+          base64: NEXT_PUBLIC_BASE_URL
+            ? await getBase64(item.mainImageUrl)
+            : base64Placeholder,
         });
       });
 
