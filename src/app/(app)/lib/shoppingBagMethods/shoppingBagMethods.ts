@@ -109,16 +109,17 @@ export async function updateCart(userId: any, shoppingBag: any) {
     const updatedItems: any = [];
 
     shoppingBag.items.length !== 0 &&
-      shoppingBag?.items?.forEach(async (item: any, idx: number) => {
+      shoppingBag?.items?.map(async (item: any, idx: number) => {
         console.log("updateCartn ITEM", item);
         updatedItems.push({
           catalogItem: item.catalogItem.id,
           quantity: item.quantity ? item.quantity : 1,
           mainImageUrl: item.mainImageUrl,
           base64: NEXT_PUBLIC_BASE_URL
-            ? await getBase64(buildImageUrl(item.catalogItem?.mainImage?.url))
+            ? getBase64(buildImageUrl(item.catalogItem?.mainImage?.url))
             : base64Placeholder,
         });
+        return item;
       });
 
     const updatedCart = await payload.update({
