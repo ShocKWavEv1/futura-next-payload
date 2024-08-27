@@ -11,6 +11,7 @@ import AlertMessage from "@/app/(app)/lib/ui/alertMessage/alertMessage";
 import { formSchema } from "@/app/(app)/lib/zod/formSchemas/checkoutSchema";
 import { useStoreShoppingCart } from "@/app/(app)/lib/zustand/shoppingCartStore";
 import { handleWhatsAppMessage } from "@/app/(app)/utils/utils";
+import { DateRangePicker } from "@/app/(app)/lib/ui/dateRangePicker/dateRangePicker";
 
 type FormData = z.infer<typeof formSchema>;
 
@@ -56,6 +57,9 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
           <Box w="100%" display="flex" flexDirection="column" gap="30px">
+            <Box w="100%">
+              <DateRangePicker />
+            </Box>
             <TextInput
               type="text"
               label="Tú Nombre:"

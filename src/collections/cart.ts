@@ -1,5 +1,4 @@
 import { CollectionConfig } from "payload";
-import { revalidatePage } from "@/payloadSyncData/payloadSyncData";
 
 export const CartCollection: CollectionConfig = {
   slug: "cart",

@@ -16,7 +16,6 @@ import { CategoriesCollection } from "@/collections/categories";
 import { PromosCollection } from "@/collections/promos";
 import { OriginalsCollection } from "@/collections/originals";
 import Logo from "@/components/Logo";
-import Icon from "@/components/Icon";
 import { RequirementsCollection } from "@/collections/requirements";
 import { FilesDownloadCollection } from "@/collections/filesDownload";
 
@@ -82,7 +81,6 @@ export default buildConfig({
   admin: {
     components: {
       graphics: {
-        Icon: Icon,
         Logo: Logo,
       },
     },
