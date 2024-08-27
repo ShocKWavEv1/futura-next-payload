@@ -57,9 +57,6 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
           <Box w="100%" display="flex" flexDirection="column" gap="30px">
-            <Box w="100%">
-              <DateRangePicker />
-            </Box>
             <TextInput
               type="text"
               label="Tú Nombre:"
@@ -74,6 +71,15 @@ const CheckoutFormData: React.FC<CheckoutFormDataProps> = () => {
               placeholder="Nombre del proyecto"
               errors={errors}
             />
+            <Box w="100%">
+              <DateRangePicker
+                type="date"
+                label="Duración de tu proyecto:"
+                name="date"
+                placeholder="Selecciona un rango de fechas"
+                errors={errors}
+              />
+            </Box>
             <Box
               w="100%"
               display="flex"

@@ -4,6 +4,7 @@ import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
+import { useFormContext } from "react-hook-form";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,11 +15,27 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Box, Text } from "@chakra-ui/react";
+import { ErrorMessage } from "@hookform/error-message";
+import { DateRangePickerProps } from "./model";
 
-export function DateRangePicker({
+export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
+  type,
+  label,
+  name,
+  placeholder,
+  errors,
+}) => {
+  const { register, setValue } = useFormContext();
   const [date, setDate] = React.useState<DateRange | undefined | any>({});
+
+  React.useEffect(() => {
+    register(name);
+  }, [register, name]);
+
+  React.useEffect(() => {
+    setValue(name, date);
+  }, [date, setValue, name]);
 
   return (
     <Box
@@ -29,7 +46,7 @@ export function DateRangePicker({
       flexDirection="column"
     >
       <Text variant="MDMEDIUM" color="white">
-        Duración del proyecto:
+        {label}
       </Text>
       <div className={cn("w-full  grid gap-2", className)}>
         <Popover>
@@ -54,8 +71,8 @@ export function DateRangePicker({
                   format(date.from, "LLL dd, y")
                 )
               ) : (
-                <Text variant="XSMEDIUM" color="white">
-                  Selecciona un rango de fechas
+                <Text variant="XSMEDIUM" color="white" opacity={0.7}>
+                  {placeholder}
                 </Text>
               )}
             </Button>
@@ -72,6 +89,15 @@ export function DateRangePicker({
           </PopoverContent>
         </Popover>
       </div>
+      <ErrorMessage
+        errors={errors}
+        name="date"
+        render={({ message }) => (
+          <Text variant="XSREGULAR" color="red.500">
+            {message}
+          </Text>
+        )}
+      />
     </Box>
   );
-}
+};

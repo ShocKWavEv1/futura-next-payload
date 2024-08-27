@@ -20,7 +20,7 @@ function Calendar({
       fromDate={today}
       locale={es}
       showOutsideDays={showOutsideDays}
-      className={cn("p-3 bg-slate-950 text-white", className)}
+      className={cn("p-3 bg-black text-white", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
@@ -48,7 +48,7 @@ function Calendar({
           "bg-[#B53145] text-white hover:bg-[#B53145] hover:text-white focus:bg-[#B53145] focus:text-white",
         day_range_middle:
           "bg-[#E88682] text-white hover:bg-[#FBDED6] hover:text-white focus:bg-[#FBDED6] focus:text-white",
-        day_today: "bg-white text-black",
+        day_today: "bg-white text-zinc-900",
         day_outside:
           "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         day_disabled: "text-muted-foreground opacity-50",

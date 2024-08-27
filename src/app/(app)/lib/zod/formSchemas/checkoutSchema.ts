@@ -5,5 +5,5 @@ export const formSchema = z.object({
   projectName: z.string().optional(),
   locationCheckbox: z.boolean().optional(),
   location: z.string().optional(),
-  date: z.date().optional(),
+  date: z.any().optional(),
 });

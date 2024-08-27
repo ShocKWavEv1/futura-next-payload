@@ -1,4 +1,6 @@
+import { format } from "date-fns";
 import getBase64 from "../api/getBase64";
+import { es } from "date-fns/locale";
 
 export const formatPrice = (price: number) => {
   return price?.toLocaleString("en-US", {
@@ -38,20 +40,29 @@ const handleShoppingBagList = (shoppingBag: any) => {
 };
 
 export const handleWhatsAppMessage = (data: any, shoppingBag: any) => {
-  const { name, projectName, locationCheckbox, location } = data;
+  const { name, projectName, locationCheckbox, location, date } = data;
   const messageName = name ? name.toLocaleUpperCase() : "DESCONOCIDO";
   const messageProjectName = !projectName
     ? "DESCONOCIDO"
     : projectName.toLocaleUpperCase();
-  const messageCDMX = locationCheckbox ? "CDMX - " : "";
+  const messageCDMX = locationCheckbox ? "*CDMX - " : "";
   const messageSpecificLocation = location
     ? `${messageCDMX}${location.toLocaleUpperCase()}`
     : "DESCONOCIDO";
   const messageLocation = locationCheckbox
     ? ` ${messageSpecificLocation}`
     : messageSpecificLocation;
-
-  const messageWhatsApp = `Hola *FVTVRA*🔥, mi nombre es: *${messageName}* estoy interesado en rentar equipo con ustedes para el proyecto: *${messageProjectName}* que grabaremos en *${messageLocation}* esta es la lista de equipo que requiero: %0a%0a ${handleShoppingBagList(
+  const dateRange = date?.from
+    ? date?.to
+      ? `${format(date.from, "LLLL dd, y", { locale: es })} - ${format(
+          date.to,
+          "LLLL dd, y",
+          { locale: es }
+        )}`
+      : format(date.from, "LLLL dd, y", { locale: es })
+    : "DESCONOCIDO";
+  const messageDate = dateRange.toLocaleUpperCase();
+  const messageWhatsApp = `Hola *FVTVRA*🔥, mi nombre es: *${messageName}* estoy interesado en rentar equipo con ustedes para la(s) fecha(s): *${messageDate}* para el proyecto: *${messageProjectName}* que grabaremos en *${messageLocation}* esta es la lista de equipo que requiero: %0a%0a ${handleShoppingBagList(
     shoppingBag
   )} %0a *TOTAL DE COTIZACION: ${calculateTotalBagPrice(shoppingBag)}mxn*`;
   return messageWhatsApp;
