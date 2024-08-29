@@ -71,7 +71,7 @@ const MenuFooter: React.FC<MenuFooterProps> = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        mt="-10px"
+        mt="-0.6rem"
       >
         {bagEmpty && (
           <Button

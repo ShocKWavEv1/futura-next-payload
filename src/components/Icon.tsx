@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Icon = () => (
   <div
     style={{
-      width: '140px',
-      height: '26px',
-      display: 'center',
-      placeContent: 'center',
+      width: "140px",
+      height: "26px",
+      display: "center",
+      placeContent: "center",
     }}
   >
     <svg
@@ -18,19 +18,6 @@ const Icon = () => (
       viewBox="0 0 1000 188"
     >
       <style type="text/css">{`.st0{fill:#C12A46;}`}</style>
-      <g>
-        <g>
-          <g>
-            <path
-              className="st0"
-              d="M38.6,113.5c-1.2-13,3.8-24.7,10.4-35.4c0,0,0,0,0,0.1c-2.6,36.9,42.3,101.7,41.3,98.1
-            c-7.3-27.6,14.5-87.3,20.9-91.1c8.7,12.1,8,44,8,44S178.8,87.1,142,15.5c5.1,28.5-9,53.9-14,60.3c-1.3-9.4-3.8-19.3-8.5-25.9
-            l-5.4-7.6c0,0-26.3,12-33.5,70.6c-26-19.9-33.9-80-33.9-80s-7.9,4.3-10.9,18.4c-2.5-9.1-4.2-19.3-3.5-28.3c0.2-2.8,0.6-5.5,1-8
-            c-5.9,9.3-9.9,21.3-11.2,36.4C19.7,80.5,38.9,116.8,38.6,113.5z"
-            />
-          </g>
-        </g>
-      </g>
       <g>
         <path
           className="st0"
@@ -63,6 +50,6 @@ const Icon = () => (
       </g>
     </svg>
   </div>
-)
+);
 
-export default Icon
+export default Icon;

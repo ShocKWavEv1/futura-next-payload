@@ -18,6 +18,7 @@ import { OriginalsCollection } from "@/collections/originals";
 import Logo from "@/components/Logo";
 import { RequirementsCollection } from "@/collections/requirements";
 import { FilesDownloadCollection } from "@/collections/filesDownload";
+import Icon from "@/components/Icon";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -82,6 +83,7 @@ export default buildConfig({
     components: {
       graphics: {
         Logo: Logo,
+        Icon: Icon,
       },
     },
   },

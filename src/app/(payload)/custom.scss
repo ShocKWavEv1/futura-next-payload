@@ -1,11 +1,12 @@
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --theme-bg: black;
-  --font-body: 'Futura';
+  --font-body: "Futura";
 }
 
 .step-nav .step-nav__home {
   width: 140px;
   height: 26px;
+  margin-left: -25px;
 }
 
 .dashboard__label {
