@@ -74,7 +74,7 @@ export const base64Placeholder =
 const { NEXT_PUBLIC_BASE_URL } = process.env;
 
 export const buildImageUrl = (url: string) => {
-  return `${NEXT_PUBLIC_BASE_URL || ""}${url}`;
+  return `${NEXT_PUBLIC_BASE_URL ?? ""}${url}`;
 };
 
 export const processData = async (catalog: any) => {
@@ -107,6 +107,20 @@ export const processDataCart = async (cart: any) => {
         createdAt: cart.docs[0].createdAt,
         updatedAt: cart.docs[0].updatedAt,
       };
+    })
+  );
+};
+
+export const processDataCrew = async (crew: any) => {
+  return Promise.all(
+    crew.docs.map(async (item: any) => {
+      const mainImageUrl = buildImageUrl(item.mainImage?.url);
+      const base64 = NEXT_PUBLIC_BASE_URL
+        ? await getBase64(mainImageUrl)
+        : base64Placeholder;
+      item.mainImageUrl = mainImageUrl;
+      item.base64 = base64;
+      return item;
     })
   );
 };

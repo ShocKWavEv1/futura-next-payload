@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = () => {
       >
         <Heading
           pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
-          variant={["H7BOLD", "H1BOLD", "H1BOLD", "H1BOLD", "H1BOLD"]}
+          variant={["H7BOLD", "H5BOLD", "H4BOLD", "H1BOLD", "H1BOLD"]}
           fontSize={headerFooterInGafferSizes}
           color="white"
           textAlign="center"

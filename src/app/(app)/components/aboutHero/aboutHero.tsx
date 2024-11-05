@@ -1,8 +1,8 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { basePadding } from "../../lib/basePadding";
-import { HeroCheckoutProps } from "./model";
+import { AboutHeroProps } from "./model";
 
-const HeroCheckout: React.FC<HeroCheckoutProps> = () => {
+const AboutHero: React.FC<AboutHeroProps> = () => {
   return (
     <Box w="100%" p={basePadding()}>
       <Box
@@ -33,18 +33,15 @@ const HeroCheckout: React.FC<HeroCheckoutProps> = () => {
             color="white"
             textAlign="left"
           >
-            ESTO{" "}
+            A COLLECTION OF{" "}
             <Text as="span" color="primary.500">
-              NO ES UN CARRITO
+              BAD IDEAS
             </Text>{" "}
-            NADA MÁS ES PARA QUE{" "}
+            AND{" "}
             <Text as="span" color="primary.500">
-              TE DES UN QUEMÓN 🔥
+              BAD ATTITUDE
             </Text>{" "}
-            DE CUANTO TE VA A SALIR EL{" "}
-            <Text as="span" color="primary.500">
-              CHISTECITO.
-            </Text>
+            COME TO FRUITION.{" "}
           </Heading>
         </Box>
       </Box>
@@ -52,4 +49,4 @@ const HeroCheckout: React.FC<HeroCheckoutProps> = () => {
   );
 };
 
-export default HeroCheckout;
+export default AboutHero;
