@@ -14,6 +14,7 @@ export async function GET(req: any, res: any) {
 
   try {
     revalidatePath("/");
+    revalidatePath("/about");
     return NextResponse.json({ status: 200, message: "Revalidated" });
   } catch (err) {
     console.log("NEXT APP", err);
