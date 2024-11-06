@@ -61,6 +61,14 @@ const Page = async () => {
     sort: "createdAt",
   });
 
+  const crew = await payload.find({
+    collection: "team",
+    limit: 10,
+    sort: "createdAt",
+  });
+
+  console.log(crew);
+
   return (
     <Box bg="black" w="100%" h="auto">
       <HeroCompact promos={promos.docs} filesDownload={filesDownload.docs} />
