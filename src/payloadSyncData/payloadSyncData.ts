@@ -1,7 +1,12 @@
 import axios from "axios";
 
-export async function revalidatePage(slug: string) {
-  const url = `${process.env.PAYLOAD_PUBLIC_FRONTEND_URL}/api/revalidate?secret=${process.env.PAYLOAD_PUBLIC_FRONTEND_SECRET}&slug=${slug}`;
+export async function revalidatePage(path?: string) {
+  const pathName = path ?? "/";
+  const url = `${
+    process.env.PAYLOAD_PUBLIC_FRONTEND_URL
+  }/api/revalidate?secret=${
+    process.env.PAYLOAD_PUBLIC_FRONTEND_SECRET
+  }&path=${encodeURIComponent(pathName)}`;
 
   if (
     !process.env.PAYLOAD_PUBLIC_FRONTEND_SECRET ||
@@ -14,7 +19,7 @@ export async function revalidatePage(slug: string) {
       method: "get",
       url,
     });
-    console.log("Revalidation triggered");
+    console.log("Revalidation triggered for path:", path);
   } catch (e) {
     console.log(e);
   }
