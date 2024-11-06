@@ -9,6 +9,8 @@ import { processDataCrew } from "../utils/utils";
 
 const payload = await getPayloadHMR({ config: configPromise });
 
+export const revalidate = 10;
+
 const AboutPage = async () => {
   const crew = await payload.find({
     collection: "team",
