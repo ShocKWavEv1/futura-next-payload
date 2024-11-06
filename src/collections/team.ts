@@ -21,7 +21,7 @@ export const TeamCollection: CollectionConfig = {
     ],
     afterChange: [
       ({ doc }) => {
-        revalidatePage("/about");
+        revalidatePage("team");
       },
     ],
   },
