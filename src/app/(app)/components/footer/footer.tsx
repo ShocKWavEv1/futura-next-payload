@@ -6,6 +6,7 @@ import {
   headerFooterInGafferSizes,
   mainSectionSpacers,
 } from "../../lib/baseResponsive/baseResponsive";
+import Link from "next/link";
 
 const Footer: React.FC<FooterProps> = () => {
   return (
@@ -17,19 +18,21 @@ const Footer: React.FC<FooterProps> = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Heading
-          pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
-          variant={["H7BOLD", "H5BOLD", "H4BOLD", "H1BOLD", "H1BOLD"]}
-          fontSize={headerFooterInGafferSizes}
-          color="white"
-          textAlign="center"
-          cursor="pointer"
-          _hover={{
-            textDecoration: "underline",
-          }}
-        >
-          #INGAFFERWETRVST
-        </Heading>
+        <Link href="https://www.instagram.com/fvtvraproduce/" target="_blank">
+          <Heading
+            pb={["20px", "20px", "40px", "40px", "40px", "40px"]}
+            variant={["H7BOLD", "H5BOLD", "H4BOLD", "H1BOLD", "H1BOLD"]}
+            fontSize={headerFooterInGafferSizes}
+            color="white"
+            textAlign="center"
+            cursor="pointer"
+            _hover={{
+              textDecoration: "underline",
+            }}
+          >
+            #INGAFFERWETRVST
+          </Heading>
+        </Link>
       </Box>
       <Box
         w="100%"
