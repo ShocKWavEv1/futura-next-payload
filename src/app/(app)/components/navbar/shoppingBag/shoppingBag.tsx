@@ -10,6 +10,7 @@ import SlideMenu from "./slideMenu/sliedeMenu";
 const ShoppingBag: React.FC<ShoppingBagProps> = ({
   isLoading,
   shoppingBag,
+  isHidden,
 }) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "shoppingBag";
@@ -70,7 +71,10 @@ const ShoppingBag: React.FC<ShoppingBagProps> = ({
 
       <AnimatePresence mode="wait">
         {modals.shoppingBag && (
-          <SlideMenu handleClose={() => setModalOpen(modalName)} />
+          <SlideMenu
+            handleClose={() => setModalOpen(modalName)}
+            isHidden={isHidden}
+          />
         )}
       </AnimatePresence>
     </Box>

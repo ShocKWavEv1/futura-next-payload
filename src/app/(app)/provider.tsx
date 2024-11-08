@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingBar from "react-top-loading-bar";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useIsTouchDevice } from "./hooks/useIsTouchDevice";
@@ -58,7 +58,9 @@ export function Providers({
       <LoadingBar ref={LoadingBarRef} height={3} color="#B53145" />
       <ScrollProvider>
         <Navbar />
-        {children}
+        <Box w="100%" pt="80px">
+          {children}
+        </Box>
       </ScrollProvider>
     </ChakraProvider>
   );

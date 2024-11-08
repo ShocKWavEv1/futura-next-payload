@@ -129,8 +129,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ item }) => {
         </Box>
         <Box className="buyme_overlay" cursor="pointer">
           <Box
-            mt="-15%"
-            w="60%"
+            mt={["-10%", "-10%", "-15%", "-15%", "-15%", "-15%"]}
+            w={["50%", "40%", "50%", "60%", "60%", "60%"]}
             display="flex"
             alignItems="center"
             justifyContent="center"

@@ -5,7 +5,7 @@ import MenuBody from "./menuBody/menuBody";
 import { basePadding } from "@/app/(app)/lib/basePadding";
 import Backdrop from "../../../backdrop/backdrop";
 
-const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose }) => {
+const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose, isHidden }) => {
   return (
     <Backdrop handleClose={handleClose}>
       <motion.div
@@ -24,6 +24,7 @@ const SlideMenu: React.FC<SlideMenuProps> = ({ handleClose }) => {
           width={["200%", "180%", "150%", "120%", "50vw"]}
           h="101dvh"
           bg="black"
+          mt={isHidden ? "80px" : "0px"}
           borderLeft={[
             "none",
             "1.4px solid white",

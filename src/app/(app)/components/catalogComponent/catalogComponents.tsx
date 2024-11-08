@@ -19,6 +19,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
   totalDocs,
 }) => {
   const [initialLoad, setInitialLoad] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const [currentCatalog, setCurrentCatalog] = useState(catalog);
   const [currentCategory, setCurrentCategory] = useState(
@@ -50,10 +51,16 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
   }, [currentCategory]);
 
   const handleCategoryPagination = async (page: any = currentPage) => {
+    setIsLoading(true);
     const response = await fetch(
       `${urlCatalogPagination}?currentPage=${page}&limit=${limit}&category=${currentCategory?.id}`
     );
     const data = await response.json();
+
+    if (data) {
+      setIsLoading(false);
+    }
+
     setCurrentCatalog(data?.catalog);
     setCurrentTotalPages(data?.totalPages);
     setCurrentHasNextPage(data?.hasNextPage);
@@ -67,7 +74,7 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
         currentCategory={currentCategory}
         setCurrentCategory={(category: any) => setCurrentCategory(category)}
       />
-      <CatalogInventory catalog={currentCatalog} />
+      <CatalogInventory catalog={currentCatalog} isLoading={isLoading} />
       {catalog.length > 0 && (
         <Box
           w="100%"
