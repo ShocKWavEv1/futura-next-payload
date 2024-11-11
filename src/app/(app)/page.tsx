@@ -72,8 +72,8 @@ const Page = async () => {
       <HeroCompact
         promos={promos.docs}
         filesDownload={filesDownload.docs}
-        promoVideo={videos.docs[0].videos[0]}
-        movilVideo={videos.docs[0].videos[1]}
+        promoVideo={videos?.docs[0]?.videos[0]}
+        movilVideo={videos?.docs[0]?.videos[1]}
       />
       <RequirementsMovil requirements={requirements.docs} />
       <CatalogComponent
@@ -86,7 +86,7 @@ const Page = async () => {
         limit={catalog.limit}
         totalDocs={catalog.totalDocs}
       />
-      <Reel reelVideo={videos.docs[0].videos[2]} />
+      <Reel reelVideo={videos?.docs[0]?.videos[2]} />
       <Originals originals={originals.docs} />
       <Footer />
     </Box>
