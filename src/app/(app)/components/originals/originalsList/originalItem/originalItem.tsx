@@ -35,16 +35,15 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
         setModalOpen(modalName);
       }}
     >
-      <Box>
+      <Box w="100%" h="380px">
         <Image
           src={item?.mainImageUrl}
           alt={item?.name}
           placeholder="blur"
           blurDataURL={item?.base64 && item.base64}
           unoptimized
-          width={400}
-          height={400}
-          quality={100}
+          width={300}
+          height={380}
           style={{
             width: "100%",
             height: "100%",
