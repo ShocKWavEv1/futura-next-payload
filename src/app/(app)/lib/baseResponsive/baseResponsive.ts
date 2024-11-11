@@ -37,9 +37,9 @@ export const mainContentHeaderSizes = [
 export const mainContentLineHeightSizes = [
   "55px",
   "70px",
-  "6.166667vw",
-  "6.166667vw",
-  "6.166667vw",
+  "90px",
+  "90px",
+  "90px",
   "6.166667vw",
 ];
 
