@@ -123,7 +123,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({
         </Box>
       </Box>
       <Box w="100%">
-        <VideoComponent video={movilVideo.videoUrl} />
+        <VideoComponent video={movilVideo?.videoUrl} />
       </Box>
       <AnimatePresence mode="wait">
         {modals.promosHero && (
@@ -137,7 +137,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({
         {modals.whatContain && (
           <Modal handleClose={() => setModalOpen(modalNameWhatContain)}>
             <ModalWhatContain
-              urlVideo={promoVideo.videoUrl}
+              urlVideo={promoVideo?.videoUrl}
               handleClose={() => setModalOpen(modalNameWhatContain)}
             />
           </Modal>

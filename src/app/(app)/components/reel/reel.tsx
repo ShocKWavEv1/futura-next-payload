@@ -37,7 +37,7 @@ const Reel: React.FC<ReelProps> = ({ reelVideo }) => {
           defies the odds with the 2k21 video reel collection.
         </Heading>
       </Box>
-      <VideoComponent video={reelVideo.videoUrl} />
+      <VideoComponent video={reelVideo?.videoUrl} />
     </Box>
   );
 };
