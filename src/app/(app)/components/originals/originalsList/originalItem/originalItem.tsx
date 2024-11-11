@@ -44,6 +44,8 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
           unoptimized
           width={500}
           height={500}
+          sizes="(max-width: 600px) 100vw, 600px"
+          quality={100}
           style={{
             width: "100%",
             height: "100%",
