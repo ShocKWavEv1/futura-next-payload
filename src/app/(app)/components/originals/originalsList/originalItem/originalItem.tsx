@@ -20,7 +20,6 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
   const [isVideoUrl, setIsVideoUrl] = useState("");
   const modalName: ModalKeys = `originalsVideo_${index}`;
 
-  console.log(item);
   return (
     <Box
       w="100%"
@@ -43,9 +42,15 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
           placeholder="blur"
           blurDataURL={item?.base64 && item.base64}
           unoptimized
-          width={800}
-          height={800}
-          style={{ width: "100%", objectFit: "cover" }}
+          width={500}
+          height={500}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderTopRightRadius: "8px",
+            borderTopLeftRadius: "8px",
+          }}
         />
       </Box>
       <Box>
