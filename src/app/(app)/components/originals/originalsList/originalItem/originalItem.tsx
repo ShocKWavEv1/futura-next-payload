@@ -42,9 +42,8 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
           placeholder="blur"
           blurDataURL={item?.base64 && item.base64}
           unoptimized
-          width={500}
-          height={500}
-          sizes="(max-width: 600px) 100vw, 600px"
+          width={400}
+          height={400}
           quality={100}
           style={{
             width: "100%",
@@ -52,6 +51,8 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
             objectFit: "cover",
             borderTopRightRadius: "8px",
             borderTopLeftRadius: "8px",
+            borderBottomRightRadius: "8px",
+            borderBottomLeftRadius: "8px",
           }}
         />
       </Box>

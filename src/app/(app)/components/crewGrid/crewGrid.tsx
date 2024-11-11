@@ -46,12 +46,16 @@ const CrewGrid: React.FC<CrewGridProps> = ({ crew }) => {
                 blurDataURL={member.base64}
                 width={400}
                 height={400}
+                quality={100}
                 unoptimized
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
                   aspectRatio: "1",
+                  borderTopLeftRadius: "8px",
+                  borderBottomRightRadius: "8px",
+                  borderBottomLeftRadius: "8px",
                 }}
               />
             </Box>
