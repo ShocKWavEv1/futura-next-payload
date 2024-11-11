@@ -124,3 +124,27 @@ export const processDataCrew = async (crew: any) => {
     })
   );
 };
+
+export const processDataOriginals = async (originals: any) => {
+  return Promise.all(
+    originals.docs.map(async (item: any) => {
+      item.originals = await Promise.all(
+        item.originals.map(async (original: any) => {
+          const mainImageUrl = buildImageUrl(original.thumbnail?.url);
+          const base64 = NEXT_PUBLIC_BASE_URL
+            ? await getBase64(mainImageUrl)
+            : base64Placeholder;
+
+          return {
+            ...original,
+            mainImageUrl,
+            base64,
+          };
+        })
+      );
+
+      // Return the modified item
+      return item;
+    })
+  );
+};

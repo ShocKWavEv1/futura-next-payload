@@ -8,7 +8,7 @@ import CatalogComponent from "./components/catalogComponent/catalogComponents";
 import Reel from "./components/reel/reel";
 import Originals from "./components/originals/originals";
 import Footer from "./components/footer/footer";
-import { processData } from "./utils/utils";
+import { processData, processDataOriginals } from "./utils/utils";
 
 const payload = await getPayloadHMR({ config: configPromise });
 
@@ -61,6 +61,8 @@ const Page = async () => {
     sort: "createdAt",
   });
 
+  const updatedOriginals = await processDataOriginals(originals);
+
   const videos = await payload.find({
     collection: "videos",
     limit: 10,
@@ -87,7 +89,7 @@ const Page = async () => {
         totalDocs={catalog.totalDocs}
       />
       <Reel reelVideo={videos?.docs[0]?.videos[2]} />
-      <Originals originals={originals.docs} />
+      <Originals originals={updatedOriginals} />
       <Footer />
     </Box>
   );

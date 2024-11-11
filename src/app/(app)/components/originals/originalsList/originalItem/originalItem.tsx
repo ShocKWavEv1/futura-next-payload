@@ -9,6 +9,7 @@ import {
   useStoreZustand,
 } from "@/app/(app)/lib/zustand/zustandStore";
 import ModalOriginalVideo from "../../../modals/modalOriginalVideo/modalOriginalVideo";
+import Image from "next/image";
 
 const OriginalItem: React.FC<OriginalItemProps> = ({
   index,
@@ -18,28 +19,44 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
   const { modals, setModalOpen } = useStoreZustand();
   const [isVideoUrl, setIsVideoUrl] = useState("");
   const modalName: ModalKeys = `originalsVideo_${index}`;
+
+  console.log(item);
   return (
     <Box
       w="100%"
-      bg="white"
+      bg="black"
       p="20px"
+      display="grid"
+      gridTemplateColumns="1fr"
+      gap="16px"
       borderRadius="8px"
+      cursor="pointer"
       onClick={() => {
         setIsVideoUrl(item.urlVideo);
         setModalOpen(modalName);
       }}
     >
-      <Box cursor="pointer">
-        <Text variant="LGMEDIUM" color="#000">
+      <Box>
+        <Image
+          src={item?.mainImageUrl}
+          alt={item?.name}
+          placeholder="blur"
+          blurDataURL={item?.base64 && item.base64}
+          width={800}
+          height={800}
+          style={{ width: "100%", objectFit: "cover" }}
+        />
+      </Box>
+      <Box>
+        <Text variant="LGMEDIUM" color="white">
           {item?.name}
         </Text>
-        <Box pt="30px">
-          <Text variant="XSMEDIUM" color="#000">
+        <Box pt="16px">
+          <Text variant="SMMEDIUM" color="white">
             {project}
           </Text>
         </Box>
       </Box>
-
       <AnimatePresence mode="wait">
         {modals[modalName] && (
           <Modal handleClose={() => setModalOpen(modalName)}>

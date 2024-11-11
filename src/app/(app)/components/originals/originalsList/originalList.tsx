@@ -11,7 +11,7 @@ const OriginalsList: React.FC<OriginalsListProps> = ({ originals }) => {
         display="grid"
         gridTemplateColumns={[
           "1fr",
-          "1fr 1fr",
+          "1fr",
           "1fr 1fr",
           "1fr 1fr",
           "1fr 1fr",
