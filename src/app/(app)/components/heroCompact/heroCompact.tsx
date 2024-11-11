@@ -13,7 +13,12 @@ import {
   mainHeaderSizes,
 } from "../../lib/baseResponsive/baseResponsive";
 
-const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
+const HeroCompact: React.FC<HeroCompactProps> = ({
+  promos,
+  filesDownload,
+  promoVideo,
+  movilVideo,
+}) => {
   const { modals, setModalOpen } = useStoreZustand();
   const modalName: ModalKeys = "promosHero";
   const modalNameWhatContain: ModalKeys = "whatContain";
@@ -118,7 +123,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
         </Box>
       </Box>
       <Box w="100%">
-        <VideoComponent video="media/movil.mp4" />
+        <VideoComponent video={movilVideo.videoUrl} />
       </Box>
       <AnimatePresence mode="wait">
         {modals.promosHero && (
@@ -132,7 +137,7 @@ const HeroCompact: React.FC<HeroCompactProps> = ({ promos, filesDownload }) => {
         {modals.whatContain && (
           <Modal handleClose={() => setModalOpen(modalNameWhatContain)}>
             <ModalWhatContain
-              urlVideo="media/van.mp4"
+              urlVideo={promoVideo.videoUrl}
               handleClose={() => setModalOpen(modalNameWhatContain)}
             />
           </Modal>

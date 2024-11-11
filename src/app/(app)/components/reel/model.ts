@@ -1,1 +1,3 @@
-export interface ReelProps {}
+export interface ReelProps {
+  reelVideo: any;
+}

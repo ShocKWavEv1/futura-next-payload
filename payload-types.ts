@@ -22,6 +22,7 @@ export interface Config {
     requirements: Requirement;
     filesDownload: FilesDownload;
     media: Media;
+    videos: Video;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -252,6 +253,20 @@ export interface FilesDownload {
   description: string;
   data: {
     fileDownload: number | Media;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "videos".
+ */
+export interface Video {
+  id: number;
+  videos: {
+    videoName: string;
+    videoUrl: string;
     id?: string | null;
   }[];
   updatedAt: string;

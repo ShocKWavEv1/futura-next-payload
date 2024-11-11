@@ -19,6 +19,7 @@ import Logo from "@/components/Logo";
 import { RequirementsCollection } from "@/collections/requirements";
 import { FilesDownloadCollection } from "@/collections/filesDownload";
 import Icon from "@/components/Icon";
+import { VideoCollection } from "@/collections/videos";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -38,6 +39,7 @@ export default buildConfig({
     RequirementsCollection,
     FilesDownloadCollection,
     MediaCollection,
+    VideoCollection,
   ],
   secret: process.env.PAYLOAD_SECRET ?? "",
   typescript: {

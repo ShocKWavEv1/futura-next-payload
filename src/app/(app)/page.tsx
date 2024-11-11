@@ -61,17 +61,20 @@ const Page = async () => {
     sort: "createdAt",
   });
 
-  const crew = await payload.find({
-    collection: "team",
+  const videos = await payload.find({
+    collection: "videos",
     limit: 10,
     sort: "createdAt",
   });
 
-  console.log(crew);
-
   return (
     <Box bg="black" w="100%" h="auto">
-      <HeroCompact promos={promos.docs} filesDownload={filesDownload.docs} />
+      <HeroCompact
+        promos={promos.docs}
+        filesDownload={filesDownload.docs}
+        promoVideo={videos.docs[0].videos[0]}
+        movilVideo={videos.docs[0].videos[1]}
+      />
       <RequirementsMovil requirements={requirements.docs} />
       <CatalogComponent
         catalog={updatedCatalog}
@@ -83,7 +86,7 @@ const Page = async () => {
         limit={catalog.limit}
         totalDocs={catalog.totalDocs}
       />
-      <Reel />
+      <Reel reelVideo={videos.docs[0].videos[2]} />
       <Originals originals={originals.docs} />
       <Footer />
     </Box>

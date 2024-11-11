@@ -8,7 +8,7 @@ import {
   mainSectionSpacers,
 } from "../../lib/baseResponsive/baseResponsive";
 
-const Reel: React.FC<ReelProps> = () => {
+const Reel: React.FC<ReelProps> = ({ reelVideo }) => {
   return (
     <Box
       w="100%"
@@ -37,7 +37,7 @@ const Reel: React.FC<ReelProps> = () => {
           defies the odds with the 2k21 video reel collection.
         </Heading>
       </Box>
-      <VideoComponent video="media/fvtvra_reel.mp4" />
+      <VideoComponent video={reelVideo.videoUrl} />
     </Box>
   );
 };
