@@ -42,6 +42,7 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
           alt={item?.name}
           placeholder="blur"
           blurDataURL={item?.base64 && item.base64}
+          unoptimized
           width={800}
           height={800}
           style={{ width: "100%", objectFit: "cover" }}
