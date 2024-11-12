@@ -35,7 +35,7 @@ const OriginalItem: React.FC<OriginalItemProps> = ({
         setModalOpen(modalName);
       }}
     >
-      <Box w="100%" h="380px">
+      <Box w="100%" h={["240px", "240px", "240px", "320px", "380px", "380px"]}>
         <Image
           src={item?.mainImageUrl}
           alt={item?.name}
