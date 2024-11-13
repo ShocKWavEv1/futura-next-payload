@@ -16,14 +16,7 @@ export const mainHeaderLineHeightSizes = [
   "8.166667vw",
 ];
 
-export const videoSizes = [
-  "40dvh",
-  "60dvh",
-  "80dvh",
-  "80dvh",
-  "80dvh",
-  "80dvh",
-];
+export const videoSizes = ["40vh", "60vh", "80vh", "80vh", "80vh", "80vh"];
 
 export const mainContentHeaderSizes = [
   "max(45px, 5.166667vw)",
