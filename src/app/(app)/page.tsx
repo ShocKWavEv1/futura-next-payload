@@ -61,7 +61,7 @@ const Page = async () => {
     sort: "createdAt",
   });
 
-  const updatedOriginals = await processDataOriginals(originals);
+  // const updatedOriginals = await processDataOriginals(originals);
 
   const videos = await payload.find({
     collection: "videos",
@@ -89,7 +89,7 @@ const Page = async () => {
         totalDocs={catalog.totalDocs}
       />
       <Reel reelVideo={videos?.docs[0]?.videos[2]} />
-      <Originals originals={updatedOriginals} />
+      <Originals originals={originals.docs} />
       <Footer />
     </Box>
   );
