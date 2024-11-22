@@ -64,7 +64,9 @@ export const handleWhatsAppMessage = (data: any, shoppingBag: any) => {
   const messageDate = dateRange.toLocaleUpperCase();
   const messageWhatsApp = `Hola *FVTVRA*🔥, mi nombre es: *${messageName}* estoy interesado en rentar equipo con ustedes para la(s) fecha(s): *${messageDate}* para el proyecto: *${messageProjectName}* que grabaremos en *${messageLocation}* esta es la lista de equipo que requiero: %0a%0a ${handleShoppingBagList(
     shoppingBag
-  )} %0a *TOTAL DE COTIZACION: ${calculateTotalBagPrice(shoppingBag)}mxn*`;
+  )} %0a *TOTAL DE COTIZACIÓN: ${calculateTotalBagPrice(
+    shoppingBag
+  )}mxn APROX. POR DÍA*`;
   return messageWhatsApp;
 };
 
