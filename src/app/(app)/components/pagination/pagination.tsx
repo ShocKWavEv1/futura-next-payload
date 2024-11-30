@@ -27,6 +27,7 @@ const Pagination: React.FC<PaginationProps> = ({
       alignItems="center"
       justifyContent="center"
       flexDirection="row"
+      flexFlow="wrap"
     >
       <Box
         w="30px"

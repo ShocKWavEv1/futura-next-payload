@@ -82,7 +82,6 @@ const CatalogComponent: React.FC<CatalogComponentProps> = ({
           display="flex"
           alignItems="center"
           justifyContent="center"
-          flexFlow="wrap"
         >
           <Pagination
             totalPages={currentTotalPages}
